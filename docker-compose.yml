@@ -5,3 +5,20 @@ services:
     volumes:
     # ホスト側のbackendフォルダをコンテナ側から読み書きできるようにしている
       - ./backend:/work
+
+  web:
+    image: nginx:1.20-alpine
+    ports:
+      - 8080:80
+    volumes:
+    # ホスト側のbackendとdefault.confをコンテナ側から読み書きできるようにしている -> それぞれ:の後のファイルに書き込むようにしている
+      - ./backend:/work
+      - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+  mysql:
+    build: ./infra/mysql
+    volumes:
+      - db-store:/var/lib/mysql
+
+  volumes:
+    db-store:
