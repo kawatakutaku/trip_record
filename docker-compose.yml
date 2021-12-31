@@ -3,7 +3,7 @@ services:
   app:
     build: ./infra/php
     volumes:
-    # ホスト側のbackendフォルダをコンテナ側から読み書きできるようにしている
+    # ホスト側のbackendフォルダをコンテナ側から読み書きできるようにしている -> コンテナ側のworkで行ったことがホスト側のbackendに反映される
       - ./backend:/work
 
   web:
