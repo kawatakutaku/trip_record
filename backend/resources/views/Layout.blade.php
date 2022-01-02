@@ -1,4 +1,3 @@
-<!-- TODO layoutをlaravelに合うように変更する -->
 <!doctype html>
 <html lang="ja">
     <head>
@@ -20,7 +19,8 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <!-- TODO bladeの中でif文を使う方法を採用する -->
+                    {{-- TODO bladeの中でif文を使う方法を採用する --}}
+                    {{-- TODO layoutsというフォルダを作成するかは検討する --}}
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'make_trip:create_trip' %}">旅行作成</a>
