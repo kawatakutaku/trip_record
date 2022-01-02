@@ -13,8 +13,9 @@
             <div class="col-8 col-xl-6 col-md-8 col-sm-4 col-xs-12">
                 <div class="row mb-4">
                     <div class="col-12">
-                        {% csrf_token %}
-                        {% bootstrap_form form layout='horizontal' %}
+                        @csrf
+                        {{-- TODO bootstrap_formとは何かを特定する --}}
+                        {{-- {% bootstrap_form form layout='horizontal' %} --}}
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success btn-block">登録</button>

@@ -6,47 +6,47 @@
     <div class="row justify-content-center d-flex">
         <div class="col-md-8 col-xl-6">
             <form action="{% url 'make_trip:create_trip' %}" method="post">
-                {% csrf_token %}
+                @csrf
                 <h5 class="text-secondary mb-2">グループ名と旅行タイトルの作成</h5>
                     <div class="row p-3 justify-content-center">
                         <div class="col-6">
-                            {{ group.title }}
+                            {{ $group->$title }}
                         </div>
                         <div class="col-6">
-                            {{ trip.trip_name }}
+                            {{ $trip->$trip_name }}
                         </div>
                     </div>
                     <h5 class="text-secondary mt-5">旅行のスケジュール</h5>
                     <div class="row mt-3 justify-content-center">
                         <div class="col-5" id="start">
-                            {{ trip.start }}
-                            {% if error_msg_start %}
+                            {{ $trip->$start }}
+                            @if ($error_msg_start)
                                 <ul class="list-unstyled">
-                                    <li class="text-danger">{{ error_msg_start }}</li>
+                                    <li class="text-danger">{{ $error_msg_start }}</li>
                                 </ul>
-                            {% endif %}
+                            @endif
                         </div>
                         <p class="mt-2">〜</p>
                         <div class="col-5" id="end">
-                            {{ trip.end }}
-                            {% if error_msg_end %}
+                            {{ $trip->$end }}
+                            @if ($error_msg_end)
                                 <ul class="list-unstyled">
-                                    <li class="text-danger">{{ error_msg_end }}</li>
+                                    <li class="text-danger">{{ $error_msg_end }}</li>
                                 </ul>
-                            {% endif %}
+                            @endif
                         </div>
                     </div>
                     <h5 class="text-secondary mt-5">予算を入力してください</h5>
                     <div class="row mt-3 justify-content-center">
                         <div class="col-10">
-                            {{ budget.predict_money }}
-                            {% if budget.predict_money.errors %}
+                            {{ $budget->$predict_money }}
+                            @if ($budget->$predict_money->$errors)
                                 <ul class="list-unstyled">
-                                    {% for error in budget.predict_money.errors %}
-                                        <li class="text-danger">{{ error }}</li>
-                                    {% endfor %}
+                                    @foreach ($budget->$predict_money->$errors as $error)
+                                        <li class="text-danger">{{ $error }}</li>
+                                    @endforeach
                                 </ul>
-                            {% endif %}
+                            @endif
                         </div>
                     </div>
                     <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
