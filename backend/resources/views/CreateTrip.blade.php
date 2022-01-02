@@ -5,7 +5,7 @@
 <div class="container-fluid mt-5">
     <div class="row justify-content-center d-flex">
         <div class="col-md-8 col-xl-6">
-            <form action="{% url 'make_trip:create_trip' %}" method="post">
+            <form action="/create_trip" method="post">
                 @csrf
                 <h5 class="text-secondary mb-2">グループ名と旅行タイトルの作成</h5>
                     <div class="row p-3 justify-content-center">

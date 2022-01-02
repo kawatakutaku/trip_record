@@ -8,7 +8,7 @@
             <h3 class="text-secondary">新規登録</h3>
         </div>
     </div>
-    <form action="{% url 'account_signup' %}" method="POST">
+    <form action="/account_signup" method="POST">
         <div class="row d-flex justify-content-center">
             <div class="col-8 col-xl-6 col-md-8 col-sm-4 col-xs-12">
                 <div class="row mb-4">

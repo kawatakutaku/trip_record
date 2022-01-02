@@ -7,7 +7,7 @@
             <h3 class="text-light">ログアウトしますか？</h3>
         </div>
         <div class="col-12">
-            <a name="logout" id="logout" class="btn btn-light" href="{% url 'account_logout' %}" role="button" style="color: rgba(130, 130, 130, 1);">ログアウト</a>
+            <a name="logout" id="logout" class="btn btn-light" href="/account_logout" role="button" style="color: rgba(130, 130, 130, 1);">ログアウト</a>
         </div>
     </div>
 </div>

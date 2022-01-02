@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // TODO Controllerを作成して、そこをgetやpostの第二引数として使用するようにする(logout, mypage, signup, createtrip)+postメソッド
+// TODO ルーティングはbladeのactionの部分と統一させる
 
 Route::get('/', function () {
     return view('Login');
