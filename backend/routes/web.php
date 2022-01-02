@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// TODO Controllerを作成して、そこをgetやpostの第二引数として使用するようにする(logout, mypage, signup, createtrip)+postメソッド
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('Login');
 });
