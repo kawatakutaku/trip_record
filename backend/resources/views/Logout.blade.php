@@ -1,6 +1,6 @@
-<!doctype html>
-{% extends 'make_trip/layout.html' %}
-{% block container%}
+@extends('Layout')
+
+@section('container')
 <div class="container-fluid pt-5">
     <div class="row">
         <div class="col-sm-12 mt-5 mb-4">
@@ -11,4 +11,4 @@
         </div>
     </div>
 </div>
-{% endblock %}
+@endsection

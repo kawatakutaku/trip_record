@@ -1,7 +1,7 @@
 <!doctype html>
-{% extends 'make_trip/layout.html' %}
-
-{% block container %}
+@extends('Layout')
+@section('container')
+{{-- TODO bladeの中でif文を使う方法を採用する --}}
 <div class="container-fluid mt-5">
     <div class="row justify-content-center d-flex">
         <div class="col-md-8 col-xl-6">
@@ -56,9 +56,9 @@
         </div>
     </div>
 </div>
-{% endblock %}
+@endsection
 
-{% block js %}
+@section('js')
 <script>
     $(function(){
         $.datetimepicker.setLocale('ja');
@@ -173,4 +173,4 @@
         });
     });
 </script>
-{% endblock %}
+@endsection

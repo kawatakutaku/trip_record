@@ -1,9 +1,6 @@
-<!doctype html>
-{% extends 'make_trip/layout.html' %}
+@extends('Layout')
 
-{% load bootstrap4 %}
-
-{% block container %}
+@section('container')
     <div class="container-fluid p-3">
         <div class="row justify-content-center mt-4">
             <div class="col-12 mt-5 col-md-4 col-xl-2 col-12">
@@ -17,4 +14,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
+@endsection
