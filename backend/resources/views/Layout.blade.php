@@ -21,7 +21,7 @@
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     {{-- TODO layoutsというフォルダを作成するかは検討する --}}
                     <li class="nav-item">
-                        <a name="create_trip" id="create_trip" class="btn btn-outline-light text-light mr-2" href="#" role="button">旅行作成</a>
+                        <a name="create_trip" id="create_trip" class="btn btn-outline-light text-light mr-2" href="{{ route('trip.create') }}" role="button">旅行作成</a>
                     </li>
                     <li class="nav-item">
                         <a name="logout" id="logout" class="btn btn-outline-light text-light" href="#" role="button">ログアウト</a>

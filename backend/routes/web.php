@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\TripController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/trips/create', TripController::class.'@create')->name('trip.create');
 Route::post('/trips/create', TripController::class.'@store')->name('trip.store');
+
+Route::get('/mypage', MyPageController::class)->name('mypage');
+
+// Route::get('/logout');

@@ -2,7 +2,7 @@
 @extends('Layout')
 @section('container')
 {{-- TODO bladeの中でif文を使う方法を採用する --}}
-@if ($trip_content_future !== null && $trip_content_before !== null)
+@if ($trips === null)
     <div class="container-fluid pt-5">
         <div class="row justify-content-center d-flex mt-5">
             <div class="col-md-8 col-xl-6">
@@ -15,45 +15,24 @@
         <div class="row justify-content-center mt-5 d-flex">
             <div class="col-md-8">
                 <div class="border-bottom border-dark pb-5 mb-5">
-                    <h2 class="text-secondary">次の旅行</h2>
-                    @if ($trip_content_future)
-                        <div class="row justify-content-center">
-                            @foreach ($trip_content_future as $content)
-                                <div class="col-sm-4 col-md-4 m-3">
-                                    <a class="btn btn-light pt-4 pb-4" href="/trip/{content.id}" role="button">
-                                        {{ $content->$trip_name }} <br>
-                                        {{ $content->$start }} 〜 {{ $content->$end }}
-                                    </a>
-                                    <div class="row justify-content-end">
-                                        <div class="col-sm-7 col-md-7 col-7 col-xl-4">
-                                            <a class="text-success" href="/trip/{content.id}"><i class="fa fa-edit"></i></a>
-                                            <a class="ml-4 text-success" href="/delete/{content.id}"><i class="fas fa-trash-alt"></i></a>
-                                        </div>
+                    <h2 class="text-light">次の旅行</h2>
+                    <div class="row justify-content-center">
+                        @foreach($trips as $trip)
+                            <div class="col-sm-4 col-md-4 m-3">
+                                <a class="btn btn-light pt-4 pb-4" href="/trip/{content.id}" role="button">
+                                    {{ $trip->trip_name }} <br>
+                                    {{ $trip->start_day }} 〜 {{ $trip->end_day }}
+                                </a>
+                                <div class="row justify-content-end">
+                                    <div class="col-sm-7 col-md-7 col-7 col-xl-4">
+                                        {{-- <a class="text-success" href="/trip/{content.id}"><i class="fa fa-edit"></i></a> --}}
+                                        {{-- <a class="ml-4 text-success" href="/delete/{content.id}"><i class="fas fa-trash-alt"></i></a> --}}
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
-                    @endif
-                </div>
-                <h2 class="text-secondary">これまでの旅行</h2>
-                @if ($trip_content_before)
-                    <div class="row justify-content-center">
-                        @foreach ($trip_content_before as $content)
-                        <div class="col-sm-4 col-md-4 m-3">
-                            <a class="btn btn-light pt-4 pb-4" href="/trip/{content.id}" role="button">
-                                {{ $content->$trip_name }} <br>
-                                {{ $content->$start }} 〜 {{ $content->$end }}
-                            </a>
-                            <div class="row justify-content-end">
-                                <div class="col-sm-7 col-md-7 col-7 col-xl-4">
-                                    <a class="text-success" href="/trip/{content.id}"><i class="fa fa-edit"></i></a>
-                                    <a class="ml-4 text-success" href="/delete/{content.idz}"><i class="fas fa-trash-alt"></i></a>
-                                </div>
                             </div>
-                        </div>
                         @endforeach
                     </div>
-                @endif
+                </div>
             </div>
         </div>
     </div>
