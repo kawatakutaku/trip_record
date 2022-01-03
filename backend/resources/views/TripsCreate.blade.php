@@ -1,29 +1,29 @@
 <!doctype html>
 @extends('Layout')
 @section('container')
-{{-- TODO bladeの中でif文を使う方法を採用する --}}
 <div class="container-fluid mt-5">
     <div class="row justify-content-center d-flex">
         <div class="col-md-8 col-xl-6">
             <form action="{{ route('trip.create') }}" method="post">
                 @csrf
-                <h5 class="text-secondary mb-2">旅行タイトルの作成</h5>
-                    <div class="row p-3 justify-content-center">
-                        <div class="col-6">
-                            <input type="text" class="form-control" name="trip_name" id="trip_name">
-                        </div>
+                <div class="row p-2 justify-content-center">
+                    <div class="col-6">
+                        <input type="text" class="form-control" name="trip_name" id="trip_name" placeholder="旅行のタイトル">
                     </div>
-                    <div class="row mt-3 justify-content-center">
-                        <div class="col-5" id="start">
-                            <input type="text" class="form-control" name="start_day" id="start_day">
-                        </div>
-                        <div class="col-5" id="end">
-                            <input type="text" class="form-control" name="end_day" id="end_day">
-                        </div>
+                </div>
+                <div class="row p-2 mt-3 justify-content-center">
+                    <div class="col-6" id="start">
+                        <input type="text" class="form-control" name="start_day" id="start_day" placeholder="出発日">
                     </div>
-                    <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
-                        <button type="submit" class="btn btn-success btn-block">次へ</button>
+                </div>
+                <div class="row p-2 mt-3 justify-content-center">
+                    <div class="col-6" id="end">
+                        <input type="text" class="form-control" name="end_day" id="end_day" placeholder="帰宅日">
                     </div>
+                </div>
+                <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
+                    <button type="submit" class="btn btn-outline-light btn-block">次へ</button>
+                </div>
             </form>
         </div>
     </div>

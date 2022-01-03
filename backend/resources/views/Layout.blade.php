@@ -11,18 +11,17 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css">
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     </head>
-    <body class="h-100 text-center" style="background-color: rgba(110, 155, 94, 0.47);">
-        <nav class="navbar navbar-expand-sm navbar-light p-30" style="background-color: rgba(101, 152, 106, 0.99);">
+    <body class="h-100 text-center" style="background-color: rgba(61, 137, 164, 0.92)">
+        <nav class="navbar navbar-expand-sm navbar-light p-30">
             <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavId">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    {{-- TODO bladeの中でif文を使う方法を採用する --}}
                     {{-- TODO layoutsというフォルダを作成するかは検討する --}}
                     <li class="nav-item">
-                        <a class="nav-link" href="/create_trip">旅行作成</a>
+                        <a name="create_trip" id="create_trip" class="btn btn-outline-light text-light" href="#" role="button">旅行作成</a>
                     </li>
                 </ul>
                 @yield('navigation')
