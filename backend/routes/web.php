@@ -16,5 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 // TODO Controllerを作成して、そこをgetやpostの第二引数として使用するようにする(logout, mypage, signup, login)+postメソッド
 // TODO ルーティングはbladeのactionの部分と統一させる
+// TODO prefixを使用して、統一できる部分は統一させる(resourceも使うようにする)
 
 Route::get('/trips/create', TripController::class.'@create')->name('trip.create');
+Route::post('/trips/create', TripController::class.'@store')->name('trip.store');
