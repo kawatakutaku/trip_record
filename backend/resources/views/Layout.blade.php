@@ -21,40 +21,11 @@
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                     {{-- TODO bladeの中でif文を使う方法を採用する --}}
                     {{-- TODO layoutsというフォルダを作成するかは検討する --}}
-                    @if ($user !== null)
                     <li class="nav-item">
                         <a class="nav-link" href="/create_trip">旅行作成</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/myPage">マイページ</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/groups">グループ一覧</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/add_group">グループ参加</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/account_change_password">パスワードの変更</a>
-                    </li>
-                    @else
-                    <li class="nav-item">
-                        <a class="nav-link" href="/account_login">ログイン</a>
-                    </li>
-                    @endif
-                    <li class="nav-item">
-                        <a class="nav-link" href="/account_reset_password">パスワードのリセット</a>
-                    </li>
-                    @if ($user !== null)
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">ログアウト</a>
-                    </li>
-                    @endif
                 </ul>
                 @yield('navigation')
-                @if ($user !== null)
-                    {{-- <span class="h6 text-light mb-0">ようこそ、{{ $user.username }}さん</span> --}}
-                @endif
             </div>
         </nav>
         @yield('container')
