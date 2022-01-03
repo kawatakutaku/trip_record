@@ -7,11 +7,7 @@ use Illuminate\Http\Request;
 
 class TripController extends Controller
 {
-    public function index() {
-        $trips = Trip::all();
-
-        return view('trips/index', [
-            'trips' => $trips,
-        ]);
+    public function create() {
+        return view('TripsCreate');
     }
 }

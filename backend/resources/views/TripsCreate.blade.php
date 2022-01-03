@@ -5,30 +5,20 @@
 <div class="container-fluid mt-5">
     <div class="row justify-content-center d-flex">
         <div class="col-md-8 col-xl-6">
-            <form action="/create_trip" method="post">
+            <form action="{{ route('trip.create') }}" method="post">
                 @csrf
                 <h5 class="text-secondary mb-2">旅行タイトルの作成</h5>
                     <div class="row p-3 justify-content-center">
                         <div class="col-6">
-                            {{ $trip->$trip_name }}
+                            <input type="text" class="form-control" name="trip_name" id="trip_name">
                         </div>
                     </div>
                     <div class="row mt-3 justify-content-center">
                         <div class="col-5" id="start">
-                            {{ $trip->$start_day }}
-                            @if ($error_msg_start)
-                                <ul class="list-unstyled">
-                                    <li class="text-danger">{{ $error_msg_start }}</li>
-                                </ul>
-                            @endif
+                            <input type="text" class="form-control" name="start_day" id="start_day">
                         </div>
                         <div class="col-5" id="end">
-                            {{ $trip->$end_day }}
-                            @if ($error_msg_end)
-                                <ul class="list-unstyled">
-                                    <li class="text-danger">{{ $error_msg_end }}</li>
-                                </ul>
-                            @endif
+                            <input type="text" class="form-control" name="end_day" id="end_day">
                         </div>
                     </div>
                     <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
