@@ -15,7 +15,7 @@ class CreateTripsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
-            $table->string('trip_name', 20);
+            $table->string('spot', 20);
             $table->timestamp('start_day');
             $table->timestamp('end_day');
             $table->timestamps();
