@@ -16,6 +16,7 @@ class TripsTableSeeder extends Seeder
      */
     public function run()
     {
+        // TODO factoryを使って、自動的にデータを生成する方法を採用する
         $spots = ['家', '空港', '港'];
         $start_days = ['2021-12-31', '2022-1-1', '2022-1-2'];
         $end_days = ['2021-12-31', '2022-1-1', '2022-1-2'];
