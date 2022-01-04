@@ -1,6 +1,6 @@
 <!doctype html>
-@extends('Layout')
-@section('container')
+@extends('layouts.app')
+@section('content')
 {{-- TODO bladeの中でif文を使う方法を採用する --}}
 @if ($trips === null)
     <div class="container-fluid pt-5">

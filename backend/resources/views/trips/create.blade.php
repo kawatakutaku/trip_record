@@ -1,6 +1,6 @@
 <!doctype html>
-@extends('Layout')
-@section('container')
+@extends('layouts.app')
+@section('content')
 <div class="container-fluid mt-5">
     <div class="row justify-content-center d-flex">
         <div class="col-md-8 col-xl-6">
