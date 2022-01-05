@@ -34,4 +34,6 @@ class TripController extends Controller
 
         return redirect()->route('mypage');
     }
+
+    // TODO updateとdeleteの部分を記述する
 }
