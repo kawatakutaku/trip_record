@@ -64,7 +64,7 @@ class TripController extends Controller
      */
     public function show($id)
     {
-        //
+        // 
     }
 
     /**

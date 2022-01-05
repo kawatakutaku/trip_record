@@ -21,10 +21,17 @@ use Illuminate\Support\Facades\Route;
 // TODO ルーティングはbladeのactionの部分と統一させる
 // TODO prefixを使用して、統一できる部分は統一させる(resourceも使うようにする)
 
-
-// 旅行作成
-Route::get('/trips/create', TripController::class.'@create')->name('trip.create');
-Route::post('/trips/create', TripController::class.'@store')->name('trip.store');
+// TODO trip/createとかのルーティングの部分を修正する
+// 旅行作成のCRUD
+Route::resource('trips', TripController::class)->only([
+    // 'index',
+    'create',
+    'store',
+    // 'show',
+    'edit',
+    'update',
+    'delete',
+]);
 
 // マイページ
 Route::get('/mypage', MyPageController::class)->name('mypage');
@@ -33,7 +40,9 @@ Route::get('/mypage', MyPageController::class)->name('mypage');
 Auth::routes();
 
 // ログアウト
-Route::get('/logout', LogoutController::class.'@logoutForm')->name('logout.form');
-Route::post('/logout', LogoutController::class.'@logout')->name('logout');
+Route::group(['prefix'=>'logout'], function(){
+    Route::get('/', LogoutController::class.'@logoutForm')->name('logout.form');
+    Route::post('/', LogoutController::class.'@logout')->name('logout');
+});
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
