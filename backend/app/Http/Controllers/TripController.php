@@ -8,14 +8,35 @@ use Illuminate\Support\Facades\Auth;
 
 class TripController extends Controller
 {
-    // 旅行作成の入力画面を表示する処理
-    public function create() {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        // 旅行作成の入力画面を表示する処理
         return view('trips.create');
     }
 
-    // TODO repositoryなどで、DB登録を行うようにする
-    // 旅行作成処理を実行する
-    public function store(Request $request) {
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
         // Tripモデルのインスタンスを作成する
         $trip = new Trip();
 
@@ -35,5 +56,48 @@ class TripController extends Controller
         return redirect()->route('mypage');
     }
 
-    // TODO updateとdeleteの部分を記述する
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }
