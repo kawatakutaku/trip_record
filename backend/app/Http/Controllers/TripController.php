@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class TripController extends Controller
 {
+    // TODO FormRequestにてバリデーションの設定をする(value objectを使用する)
+
     /**
-     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
