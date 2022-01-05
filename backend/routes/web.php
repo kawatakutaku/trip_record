@@ -30,7 +30,7 @@ Route::resource('trips', TripController::class)->only([
     'show',
     'edit',
     'update',
-    'delete',
+    'destroy',
 ]);
 
 // マイページ

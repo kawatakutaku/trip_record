@@ -45,15 +45,16 @@ class TripController extends Controller
 
 
         // requestから渡ってきた値をモデルのインスタンスに登録している
-        $trip->trip_name = $request->trip_name;
-        $trip->start_day = $request->start_day;
-        $trip->end_day = $request->end_day;
+        $trip->trip_name = $request->input('trip_name');
+        $trip->start_day = $request->input('start_day');
+        $trip->end_day = $request->input('end_day');
         $trip->user_id = $userId;
 
         // DBに保存している
         $trip->save();
 
-        return redirect()->route('mypage', [ 'id' => $trip->id ]);
+        // TODO routeの第二引数の配列は必要なのか検討
+        return redirect()->route('mypage');
     }
 
     /**
@@ -91,7 +92,16 @@ class TripController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $trip = Trip::find($id);
+
+        $trip->trip_name = $request->input('trip_name');
+        $trip->start_day = $request->input('start_day');
+        $trip->end_day = $request->input('end_day');
+
+        $trip->save();
+
+        // TODO routeの第二引数の配列は必要なのか検討
+        return redirect()->route('mypage');
     }
 
     /**
@@ -102,6 +112,10 @@ class TripController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $trip = Trip::find($id);
+
+        $trip->delete();
+
+        return redirect()->route('mypage');
     }
 }

@@ -13,11 +13,13 @@
                 </div>
                 <div class="row p-2 mt-3 justify-content-center">
                     <div class="col-6" id="start">
+                        <!-- TODO カレンダーを使った入力方法を採用する-->
                         <input type="text" class="form-control" name="start_day" id="start_day" value="{{ old('start_day') }}" placeholder="出発日">
                     </div>
                 </div>
                 <div class="row p-2 mt-3 justify-content-center">
                     <div class="col-6" id="end">
+                        <!-- TODO カレンダーを使った入力方法を採用する-->
                         <input type="text" class="form-control" name="end_day" id="end_day" value="{{ old('end_day') }}" placeholder="帰宅日">
                     </div>
                 </div>

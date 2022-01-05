@@ -23,6 +23,11 @@
                 </div>
             </div>
             <a name="trips_edit" id="trips_edit" class="btn btn-outline-light" href="{{ route("trips.edit", ["trip" => $trip->id]) }}" role="button">変更する</a>
+            <form action="{{ route('trips.destroy', $trip->id) }}" method="post">
+                @csrf
+                @method('delete')
+                <button type="submit" class="btn btn-outline-light mt-4">削除する</button>
+            </form>
         </div>
     </div>
 </div>

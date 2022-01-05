@@ -27,8 +27,13 @@
                                 <div class="row justify-content-end">
                                     <div class="col-sm-7 col-md-7 col-7 col-xl-4">
                                         <!-- TODO editやshowのtrip_idのキーをtrip_idに変更する-->
+                                        <form action="{{ route('trips.destroy', ['trip' => $trip->id]) }}" method="POST">
                                         <a class="text-success" href="{{ route('trips.edit', ['trip' => $trip->id]) }}"><i class="fa fa-edit"></i></a>
-                                        {{-- <a class="ml-4 text-success" href="/delete/{content.id}"><i class="fas fa-trash-alt"></i></a> --}}
+                                            @csrf
+                                            @method('delete')
+                                            <!-- TODO 削除ボタンを編集ボタンと統一させる-->
+                                            <button type="submit" class="btn btn-outline-primary" style="border: none;"><i class="fas fa-trash-alt"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

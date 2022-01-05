@@ -4,7 +4,8 @@
 <div class="container-fluid mt-5">
     <div class="row justify-content-center d-flex">
         <div class="col-md-8 col-xl-6">
-            <form action="{{ route('trips.update', ['trip' => '$trip_id']) }}" method="post">
+            <form action="{{ route('trips.update', ['trip' => $trip->id]) }}" method="post">
+                @method('PUT')
                 @csrf
                 <div class="row p-2 justify-content-center">
                     <div class="col-6">
