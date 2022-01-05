@@ -26,7 +26,7 @@ class TripController extends Controller
     public function create()
     {
         // 旅行作成の入力画面を表示する処理
-        return view('trips.create');
+        return view('trip.create');
     }
 
     /**
@@ -53,7 +53,7 @@ class TripController extends Controller
         // DBに保存している
         $trip->save();
 
-        return redirect()->route('mypage');
+        return redirect()->route('mypage', [ 'id' => $trip->id ]);
     }
 
     /**
@@ -64,7 +64,7 @@ class TripController extends Controller
      */
     public function show($id)
     {
-        // 
+        // return view('trips.{$trip_id}.show');
     }
 
     /**
@@ -73,9 +73,11 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        //
+        $trip = Trip::find($id);
+
+        return view('trips.edit', compact("trip"));
     }
 
     /**

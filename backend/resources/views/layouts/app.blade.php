@@ -55,10 +55,13 @@
                                 </li>
                             @endif
                         @else
+                            <!-- TODO ナビゲーションの記述をloginやregisterと揃えたほうが良いか検討する -->
                             <li class="nav-item">
                                 <nav class="nav justify-content-center">
                                     <a id="mypage" class="nav-link" href="{{ route('mypage') }}" role="button" aria-expanded="false">マイページ</a>
-                                    <a id="trip" class="nav-link" href="{{ route('trip.create') }}" role="button" aria-expanded="false">旅行作成</a>
+                                    <!-- TODO editやshowのtrip_idのキーをtrip_idに変更する -->
+                                    <a id="trip" class="nav-link" href="{{ route('trips.create', ['trip' => '$trip_id']) }}" role="button" aria-expanded="false">旅行作成</a>
+                                    <!-- TODO logoutは一旦確認画面を挟む必要があるのか検討する -->
                                     <a id="logout" class="nav-link" href="{{ route('logout.form') }}" role="button" aria-expanded="false">ログアウト</a>
                                 </nav>
                             </li>
