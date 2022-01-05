@@ -5,9 +5,10 @@
     <div class="row">
         <div class="col-sm-12 mt-5 mb-4">
             <h3 class="text-light">ログアウトしますか？</h3>
-        </div>
-        <div class="col-12">
-            <a name="logout" id="logout" class="btn btn-light" href="{{ route('logout') }}" role="button" style="color: rgba(130, 130, 130, 1);">ログアウト</a>
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit" name="logout" id="logout" class="btn btn-outline-light btn-lg mt-4">ログアウト</button>
+            </form>
         </div>
     </div>
 </div>

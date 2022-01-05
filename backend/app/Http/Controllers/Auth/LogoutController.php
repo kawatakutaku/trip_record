@@ -7,5 +7,15 @@ use Illuminate\Http\Request;
 
 class LogoutController extends Controller
 {
-    // 
+    public function logoutForm()
+    {
+        return view('auth/logout');
+    }
+
+    public function logout()
+    {
+        $this->auth = auth();
+        $this->auth->logout();
+        return redirect()->route('login');
+    }
 }
