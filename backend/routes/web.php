@@ -27,7 +27,7 @@ Route::resource('trips', TripController::class)->only([
     // 'index',
     'create',
     'store',
-    // 'show',
+    'show',
     'edit',
     'update',
     'delete',

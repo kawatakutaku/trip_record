@@ -20,7 +20,7 @@
                         @foreach($trips as $trip)
                             <div class="col-sm-4 col-md-4 m-3">
                                 <!-- TODO editやshowのtrip_idのキーをtrip_idに変更する-->
-                                <a class="btn btn-light pt-4 pb-4" href="{{ route('trips.edit', ['trip' => $trip->id]) }}" role="button">
+                                <a class="btn btn-light pt-4 pb-4" href="{{ route('trips.show', ['trip' => $trip->id]) }}" role="button">
                                     {{ $trip->trip_name }} <br>
                                     {{ $trip->start_day }} 〜 {{ $trip->end_day }}
                                 </a>

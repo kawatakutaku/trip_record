@@ -26,7 +26,7 @@ class TripController extends Controller
     public function create()
     {
         // 旅行作成の入力画面を表示する処理
-        return view('trip.create');
+        return view('trips.create');
     }
 
     /**
@@ -64,7 +64,9 @@ class TripController extends Controller
      */
     public function show($id)
     {
-        // return view('trips.{$trip_id}.show');
+        $trip = Trip::find($id);
+
+        return view('trips.show', compact("trip"));
     }
 
     /**
