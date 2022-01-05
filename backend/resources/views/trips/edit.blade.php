@@ -4,23 +4,23 @@
 <div class="container-fluid mt-5">
     <div class="row justify-content-center d-flex">
         <div class="col-md-8 col-xl-6">
-            <form action="{{ route('trips.store') }}" method="post">
+            <form action="{{ route('trips.update', ['trip' => $trip->id]) }}" method="post">
+                @method('PUT')
                 @csrf
                 <div class="row p-2 justify-content-center">
                     <div class="col-6">
-                        <input type="text" class="form-control" name="trip_name" id="trip_name" value="{{ old('trip_name') }}" placeholder="旅行のタイトル">
+                        <!-- TODO valueを条件分岐して、最初は初期値を表示するようにする -->
+                        <input type="text" class="form-control" name="trip_name" id="trip_name" value="{{ old('trip_name') ?? $trip->trip_name }} ">
                     </div>
                 </div>
                 <div class="row p-2 mt-3 justify-content-center">
                     <div class="col-6" id="start">
-                        <!-- TODO カレンダーを使った入力方法を採用する-->
-                        <input type="text" class="form-control" name="start_day" id="start_day" value="{{ old('start_day') }}" placeholder="出発日">
+                        <input type="text" class="form-control" name="start_day" id="start_day" value="{{ old('start_day') ?? $trip->start_day }}">
                     </div>
                 </div>
                 <div class="row p-2 mt-3 justify-content-center">
                     <div class="col-6" id="end">
-                        <!-- TODO カレンダーを使った入力方法を採用する-->
-                        <input type="text" class="form-control" name="end_day" id="end_day" value="{{ old('end_day') }}" placeholder="帰宅日">
+                        <input type="text" class="form-control" name="end_day" id="end_day" value="{{ old('end_day') ?? $trip->end_day }}">
                     </div>
                 </div>
                 <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">

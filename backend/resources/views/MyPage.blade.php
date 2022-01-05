@@ -6,7 +6,7 @@
     <div class="container-fluid pt-5">
         <div class="row justify-content-center d-flex mt-5">
             <div class="col-md-8 col-xl-6">
-                <h3 class="text-secondary">さあ、旅行に行こう！</h3>
+                <h3 class="text-secondary">さあ、旅行に行こう!</h3>
             </div>
         </div>
     </div>
@@ -19,14 +19,21 @@
                     <div class="row justify-content-center">
                         @foreach($trips as $trip)
                             <div class="col-sm-4 col-md-4 m-3">
-                                <a class="btn btn-light pt-4 pb-4" href="/trip/{content.id}" role="button">
+                                <!-- TODO editやshowのtrip_idのキーをtrip_idに変更する-->
+                                <a class="btn btn-light pt-4 pb-4" href="{{ route('trips.show', ['trip' => $trip->id]) }}" role="button">
                                     {{ $trip->trip_name }} <br>
                                     {{ $trip->start_day }} 〜 {{ $trip->end_day }}
                                 </a>
                                 <div class="row justify-content-end">
                                     <div class="col-sm-7 col-md-7 col-7 col-xl-4">
-                                        {{-- <a class="text-success" href="/trip/{content.id}"><i class="fa fa-edit"></i></a> --}}
-                                        {{-- <a class="ml-4 text-success" href="/delete/{content.id}"><i class="fas fa-trash-alt"></i></a> --}}
+                                        <!-- TODO editやshowのtrip_idのキーをtrip_idに変更する-->
+                                        <form action="{{ route('trips.destroy', ['trip' => $trip->id]) }}" method="POST">
+                                        <a class="text-success" href="{{ route('trips.edit', ['trip' => $trip->id]) }}"><i class="fa fa-edit"></i></a>
+                                            @csrf
+                                            @method('delete')
+                                            <!-- TODO 削除ボタンを編集ボタンと統一させる-->
+                                            <button type="submit" class="btn btn-outline-primary" style="border: none;"><i class="fas fa-trash-alt"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
