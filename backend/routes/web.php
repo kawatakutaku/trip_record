@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\TripController;
 use Illuminate\Support\Facades\Auth;
@@ -32,5 +31,9 @@ Route::get('/mypage', MyPageController::class)->name('mypage');
 
 // 認証系
 Auth::routes();
+
+// ログアウト
+Route::get('/logout', LogoutController::class.'@logoutForm')->name('logout.form');
+Route::post('/logout', LogoutController::class.'@logout')->name('logout');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
