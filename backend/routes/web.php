@@ -17,32 +17,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// TODO Controllerを作成して、そこをgetやpostの第二引数として使用するようにする(logout, mypage, signup, login)+postメソッド
 // TODO ルーティングはbladeのactionの部分と統一させる
-// TODO prefixを使用して、統一できる部分は統一させる(resourceも使うようにする)
 
-// TODO trip/createとかのルーティングの部分を修正する
-// 旅行作成のCRUD
-Route::resource('trips', TripController::class)->only([
-    // 'index',
-    'create',
-    'store',
-    'show',
-    'edit',
-    'update',
-    'destroy',
-]);
+Route::group(['middleware' => 'auth'], function(){
 
-// マイページ
-Route::get('/mypage', MyPageController::class)->name('mypage');
+    // 旅行作成のCRUD
+    Route::resource('trips', TripController::class)->only([
+        // 'index',
+        'create',
+        'store',
+        'show',
+        'edit',
+        'update',
+        'destroy',
+    ]);
+
+    // マイページ
+    Route::get('/mypage', MyPageController::class)->name('mypage');
+
+    // ログアウト
+    Route::group(['prefix'=>'logout'], function(){
+        Route::get('/', LogoutController::class.'@logoutForm')->name('logout.form');
+        Route::post('/', LogoutController::class.'@logout')->name('logout');
+    });
+});
 
 // 認証系
 Auth::routes();
-
-// ログアウト
-Route::group(['prefix'=>'logout'], function(){
-    Route::get('/', LogoutController::class.'@logoutForm')->name('logout.form');
-    Route::post('/', LogoutController::class.'@logout')->name('logout');
-});
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
