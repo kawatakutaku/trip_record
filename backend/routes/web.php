@@ -44,4 +44,5 @@ Route::group(['middleware' => 'auth'], function(){
 
 // 認証系
 Auth::routes();
+// TODO homeを削除して、ログイン後のリダイレクト先をマイページにする
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
