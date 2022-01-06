@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 class TripController extends Controller
 {
     // TODO FormRequestにてバリデーションの設定をする(value objectを使用する)
-
     /**
      *
      * @return \Illuminate\Http\Response
@@ -42,7 +41,9 @@ class TripController extends Controller
         $trip = new Trip();
 
         // TODO セッションなどから、ユーザー情報を取得する方法を採用する(今の状態だと、認証中の全ユーザーを取得してしまう)
+        // TODO userIdはconstructorなどで、取得できないか検討(以前はできなかった->nullが返ってくる)
         $userId = Auth::id();
+        // dd($userId);
 
 
         // requestから渡ってきた値をモデルのインスタンスに登録している
@@ -54,7 +55,6 @@ class TripController extends Controller
         // DBに保存している
         $trip->save();
 
-        // TODO routeの第二引数の配列は必要なのか検討
         return redirect()->route('mypage');
     }
 
@@ -101,7 +101,6 @@ class TripController extends Controller
 
         $trip->save();
 
-        // TODO routeの第二引数の配列は必要なのか検討
         return redirect()->route('mypage');
     }
 

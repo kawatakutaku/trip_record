@@ -9,13 +9,13 @@ class LogoutController extends Controller
 {
     public function logoutForm()
     {
-        return view('auth/logout');
+        return view('auth.logout');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         $this->auth = auth();
         $this->auth->logout();
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }
