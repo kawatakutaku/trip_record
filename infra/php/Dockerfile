@@ -15,4 +15,7 @@ RUN apt-get update && \
 
 COPY ./php.ini /usr/local/etc/php/php.ini
 
+RUN curl -SL https://deb.nodesource.com/setup_15.x | bash
+RUN apt-get install -y nodejs
+
 WORKDIR /work

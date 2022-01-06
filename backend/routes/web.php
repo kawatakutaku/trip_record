@@ -1,9 +1,5 @@
 <?php
 
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\MyPageController;
-use App\Http\Controllers\TripController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,32 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// TODO ルーティングはbladeのactionの部分と統一させる
-
-Route::group(['middleware' => 'auth'], function(){
-
-    // 旅行作成のCRUD
-    Route::resource('trips', TripController::class)->only([
-        // 'index',
-        'create',
-        'store',
-        'show',
-        'edit',
-        'update',
-        'destroy',
-    ]);
-
-    // マイページ
-    Route::get('/mypage', MyPageController::class)->name('mypage');
-
-    // ログアウト
-    Route::group(['prefix'=>'logout'], function(){
-        Route::get('/', LogoutController::class.'@logoutForm')->name('logout.form');
-        Route::post('/', LogoutController::class.'@logout')->name('logout');
-    });
+Route::get('/', function () {
+    return view('welcome');
 });
 
-// 認証系
-Auth::routes();
-// TODO homeを削除して、ログイン後のリダイレクト先をマイページにする
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
