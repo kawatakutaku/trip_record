@@ -85,7 +85,7 @@
                         $(this).nextAll('span.error-info').remove();
                     }
                 }
-    
+
                 $('.bigDate').datetimepicker({
                     defaultDate: start_time,
                     timepicker: false,
@@ -101,7 +101,7 @@
                 let year_ls = []
                 let month_ls = []
                 let day_ls = []
-    
+
                 // フォームに入力されたのはstringだから数字に直す
                 for (let i=0; i<10; i++){
                     if (i < 4){
@@ -115,11 +115,11 @@
                 // Dateの月は0~11になっている、日付は当日までをOKにしておくため
                 end_time = new Date(Number(year_ls), Number(month_ls)-1, Number(day_ls)+1);
                 console.log('end:', end);
-    
+
                 if (end_time.getTime() <= start_time.getTime()){
                     error = true;
                 }
-    
+
                 if (error) {
                     //エラーで、エラーメッセージがなかったら
                     if(!$(this).nextAll('span.error-info').length) {
@@ -133,7 +133,7 @@
                         $(this).nextAll('span.error-info').remove();
                     }
                 }
-    
+
                 $('.bigDate').datetimepicker({
                     defaultDate: end_time,
                     timepicker: false,
