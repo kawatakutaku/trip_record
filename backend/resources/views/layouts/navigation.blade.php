@@ -24,6 +24,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                <!-- 旅行作成へのリンク-->
+                <!-- TODO Dashboardの言語ファイルを使用しているから修正する-->
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('trips.create')" :active="request()->routeIs('trips.create')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->
