@@ -21,18 +21,17 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
+                    <!-- TODO 以下を、bootstrapを使って記述をしているからtailwindに合わせる-->
                     <h2 class="text-light">次の旅行</h2>
                     <div class="row justify-content-center">
                         @foreach($trips as $trip)
                             <div class="col-sm-4 col-md-4 m-3">
-                                <!-- TODO editやshowのtrip_idのキーをtrip_idに変更する-->
                                 <a class="btn btn-light pt-4 pb-4" href="{{ route('trips.show', ['trip' => $trip->id]) }}" role="button">
                                     {{ $trip->trip_name }} <br>
                                     {{ $trip->start_day }} 〜 {{ $trip->end_day }}
                                 </a>
                                 <div class="row justify-content-end">
                                     <div class="col-sm-7 col-md-7 col-7 col-xl-4">
-                                        <!-- TODO editやshowのtrip_idのキーをtrip_idに変更する-->
                                         <form action="{{ route('trips.destroy', ['trip' => $trip->id]) }}" method="POST">
                                         <a class="text-success" href="{{ route('trips.edit', ['trip' => $trip->id]) }}"><i class="fa fa-edit"></i></a>
                                             @csrf

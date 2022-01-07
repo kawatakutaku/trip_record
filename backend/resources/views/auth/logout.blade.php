@@ -1,3 +1,4 @@
+<!-- TODO 不要であればこのファイルを削除する-->
 @extends('layouts.app')
 
 @section('content')
