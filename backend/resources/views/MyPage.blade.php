@@ -21,7 +21,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <!-- TODO 以下を、bootstrapを使って記述をしているからtailwindに合わせる-->
+                    <!-- TODO 旅行の一覧を2列で表示するように変更する-->
                     <h2 class="text-gray-800 py-4">次の旅行</h2>
                     @foreach($trips as $trip)
                     <a class="bg-blue-500" href="{{ route('trips.show', ['trip' => $trip->id]) }}" role="button">
