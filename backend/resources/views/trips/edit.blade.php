@@ -13,25 +13,19 @@
                     <!-- TODO 以下を、bootstrapを使って記述をしているからtailwindに合わせる-->
                     <form action="{{ route('trips.store') }}" method="post">
                         @csrf
-                        <div class="row p-2 justify-content-center">
-                            <div class="col-6">
-                                <input type="text" class="form-control" name="trip_name" id="trip_name" value="{{ old('trip_name') ?? $trip->trip_name }}">
-                            </div>
+                        <div class="mb-4">
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="trip_name" id="trip_name" value="{{ old('trip_name') ?? $trip->trip_name }}">
                         </div>
-                        <div class="row p-2 mt-3 justify-content-center">
-                            <div class="col-6" id="start">
-                                <!-- TODO カレンダーを使った入力方法を採用する-->
-                                <input type="text" class="form-control" name="start_day" id="start_day" value="{{ old('start_day') ?? $trip->start_day }}">
-                            </div>
+                        <!-- TODO カレンダーを使った入力方法を採用する-->
+                        <div class="mb-4">
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="start_day" id="start_day" value="{{ old('start_day') ?? $trip->start_day }}">
                         </div>
-                        <div class="row p-2 mt-3 justify-content-center">
-                            <div class="col-6" id="end">
-                                <!-- TODO カレンダーを使った入力方法を採用する-->
-                                <input type="text" class="form-control" name="end_day" id="end_day" value="{{ old('end_day') ?? $trip->end_day }}">
-                            </div>
+                        <!-- TODO カレンダーを使った入力方法を採用する-->
+                        <div class="mb-4">
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="end_day" id="end_day" value="{{ old('end_day') ?? $trip->end_day }}">
                         </div>
-                        <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
-                            <button type="submit" class="btn btn-outline-light btn-block">次へ</button>
+                        <div class="flex items-center justify-between">
+                            <button class="bg-blue-500 hover:bg-blue-700 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">次へ </button>
                         </div>
                     </form>
                 </div>
