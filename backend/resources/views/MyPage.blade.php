@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <!-- TODO Dashboardの言語ファイルを使用しているから修正する-->
-            {{ __('Dashboard') }}
+            <!-- TODO Dashboardのように言語ファイルを使用する-->
+            マイページ
         </h2>
     </x-slot>
 

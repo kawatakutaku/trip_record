@@ -18,18 +18,18 @@
                 </div>
 
                 <!-- MyPageへのリンク-->
-                <!-- TODO Dashboardの言語ファイルを使用しているから修正する-->
+                <!-- TODO Dashboardのように言語ファイルを使用する-->
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('mypage')" :active="request()->routeIs('mypage')">
-                        {{ __('Dashboard') }}
+                        マイページ
                     </x-nav-link>
                 </div>
 
                 <!-- 旅行作成へのリンク-->
-                <!-- TODO Dashboardの言語ファイルを使用しているから修正する-->
+                <!-- TODO Dashboardのように語ファイルを使用する-->
                 <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('trips.create')" :active="request()->routeIs('trips.create')">
-                        {{ __('Dashboard') }}
+                        旅行作成
                     </x-nav-link>
                 </div>
             </div>
