@@ -16,6 +16,14 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
+                <!-- MyPageへのリンク-->
+                <!-- TODO Dashboardの言語ファイルを使用しているから修正する-->
+                <div class="space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link :href="route('mypage')" :active="request()->routeIs('mypage')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

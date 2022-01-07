@@ -1,20 +1,26 @@
-<!doctype html>
-@extends('layouts.app')
-@section('content')
-{{-- TODO bladeの中でif文を使う方法を採用する --}}
-@if ($trips === null)
-    <div class="container-fluid pt-5">
-        <div class="row justify-content-center d-flex mt-5">
-            <div class="col-md-8 col-xl-6">
-                <h3 class="text-secondary">さあ、旅行に行こう!</h3>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <!-- TODO Dashboardの言語ファイルを使用しているから修正する-->
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
+
+    @if ($trips === null)
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
+                    さあ、旅行に行こう!
+                </div>
             </div>
         </div>
     </div>
-@else
-    <div class="container-fluid">
-        <div class="row justify-content-center mt-5 d-flex">
-            <div class="col-md-8">
-                <div class="border-bottom border-dark pb-5 mb-5">
+    @else
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 bg-white border-b border-gray-200">
                     <h2 class="text-light">次の旅行</h2>
                     <div class="row justify-content-center">
                         @foreach($trips as $trip)
@@ -43,5 +49,5 @@
             </div>
         </div>
     </div>
-@endif
-@endsection
+    @endif
+</x-app-layout>
