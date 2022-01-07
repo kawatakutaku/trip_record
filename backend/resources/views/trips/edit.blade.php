@@ -24,6 +24,7 @@
                         <div class="mb-4">
                             <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="end_day" id="end_day" value="{{ old('end_day') ?? $trip->end_day }}">
                         </div>
+                        <!-- TODO 背景色が反映されない-->
                         <div class="flex items-center justify-between">
                             <button class="bg-blue-500 hover:bg-blue-700 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">次へ </button>
                         </div>
