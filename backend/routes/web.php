@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\TripController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,3 +26,13 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/mypage', MyPageController::class)->name('mypage');
+
+Route::resource('trips', TripController::class)->only([
+    'index',
+    'create',
+    'store',
+    'show',
+    'edit',
+    'update',
+    'destroy'
+]);
