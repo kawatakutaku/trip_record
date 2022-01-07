@@ -11,6 +11,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <!-- TODO 以下を、bootstrapを使って記述をしているからtailwindに合わせる-->
+                    @if ($errors->any())
+                        <x-alert />
+                    @endif
                     <form action="{{ route('trips.update', ['trip' => $trip->id]) }}" method="post">
                         @method('put')
                         @csrf
