@@ -11,7 +11,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <!-- TODO 以下を、bootstrapを使って記述をしているからtailwindに合わせる-->
-                    <form action="{{ route('trips.store') }}" method="post">
+                    <form action="{{ route('trips.update', ['trip' => $trip->id]) }}" method="post">
+                        @method('put')
                         @csrf
                         <div class="mb-4">
                             <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="trip_name" id="trip_name" value="{{ old('trip_name') ?? $trip->trip_name }}">
@@ -26,7 +27,7 @@
                         </div>
                         <!-- TODO 背景色が反映されない-->
                         <div class="flex items-center justify-between">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">次へ </button>
+                            <button class="bg-blue-500 hover:bg-blue-700 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">次へ </button>
                         </div>
                     </form>
                 </div>
