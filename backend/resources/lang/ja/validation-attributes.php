@@ -1,5 +1,6 @@
 <?php
 
+// TODO attributes内を変更したのに、エラーメッセージが日本語にならない
 return [
     'attributes' => [
         'address'               => 'Address',
@@ -36,5 +37,8 @@ return [
         'title'                 => 'Title',
         'username'              => 'Username',
         'year'                  => 'Year',
+        'trip_name'             => '旅行タイトル',
+        'start_day'             => '出発日',
+        'end_day'             => '帰宅日',
     ],
 ];
