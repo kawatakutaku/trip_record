@@ -24,9 +24,9 @@ class TripStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'trip_name' => 'required',
-            'start_day' => 'required',
-            'end_day' => 'required',
+            'trip_name' => 'required|string|max:50',
+            'start_day' => 'required|date',
+            'end_day' => 'required|date',
         ];
     }
 
