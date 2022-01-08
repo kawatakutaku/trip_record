@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TripStoreRequest;
+use App\Http\Requests\TripUpdateRequest;
 use App\Models\Trip;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -92,7 +93,7 @@ class TripController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TripUpdateRequest $request, $id)
     {
         // TODO 空欄にするとvalidationじゃなくて、DB側のエラーが発生する
         $trip = Trip::find($id);
