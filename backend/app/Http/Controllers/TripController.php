@@ -94,6 +94,7 @@ class TripController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // TODO 空欄にするとvalidationじゃなくて、DB側のエラーが発生する
         $trip = Trip::find($id);
 
         $trip->trip_name = $request->input('trip_name');
