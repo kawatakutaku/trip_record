@@ -29,4 +29,13 @@ class TripUpdateRequest extends FormRequest
             'end_day' => 'required',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'trip_name' => '旅行タイトル',
+            'start_day' => '出発日',
+            'end_day' => '帰宅日',
+        ];
+    }
 }
