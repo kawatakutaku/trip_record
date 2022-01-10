@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
+     // TODO FormRequestにてバリデーションの設定をする(value objectを使用する)
     /**
-     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
@@ -23,7 +23,8 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        // 旅行作成の入力画面を表示する処理
+        return view('trips.create');
     }
 
     /**
@@ -32,9 +33,27 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TripStoreRequest $request)
     {
-        //
+        // Tripモデルのインスタンスを作成する
+        $trip = new Trip();
+
+        // TODO セッションなどから、ユーザー情報を取得する方法を採用する(今の状態だと、認証中の全ユーザーを取得してしまう)
+        // TODO userIdはconstructorなどで、取得できないか検討(以前はできなかった->nullが返ってくる)
+        $userId = Auth::id();
+        // dd($userId);
+
+
+        // requestから渡ってきた値をモデルのインスタンスに登録している
+        $trip->trip_name = $request->input('trip_name');
+        $trip->start_day = $request->input('start_day');
+        $trip->end_day = $request->input('end_day');
+        $trip->user_id = $userId;
+
+        // DBに保存している
+        $trip->save();
+
+        return redirect()->route('mypage');
     }
 
     /**
@@ -45,7 +64,9 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+        $trip = Trip::find($id);
+
+        return view('trips.show', compact("trip"));
     }
 
     /**
@@ -54,9 +75,11 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        //
+        $trip = Trip::find($id);
+
+        return view('trips.edit', compact("trip"));
     }
 
     /**
@@ -66,9 +89,17 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TripUpdateRequest $request, $id)
     {
-        //
+        $trip = Trip::find($id);
+
+        $trip->trip_name = $request->input('trip_name');
+        $trip->start_day = $request->input('start_day');
+        $trip->end_day = $request->input('end_day');
+
+        $trip->save();
+
+        return redirect()->route('mypage');
     }
 
     /**
@@ -79,6 +110,10 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $trip = Trip::find($id);
+
+        $trip->delete();
+
+        return redirect()->route('mypage');
     }
 }
