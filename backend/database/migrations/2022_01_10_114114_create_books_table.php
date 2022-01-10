@@ -13,6 +13,7 @@ class CreateBooksTable extends Migration
      */
     public function up()
     {
+        // TODO tripの方から少しコピーしてきて、テーブルを作成する
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->timestamps();

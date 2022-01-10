@@ -13,6 +13,7 @@ class BookFactory extends Factory
      */
     public function definition()
     {
+        // TODO factoryで自動的にデータを生成するようにする
         return [
             //
         ];

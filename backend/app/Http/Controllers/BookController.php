@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
      // TODO FormRequestにてバリデーションの設定をする(value objectを使用する)
+    //  TODO bookのcontrollerを完成させる
     /**
      *
      * @return \Illuminate\Http\Response
