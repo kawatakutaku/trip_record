@@ -13,9 +13,13 @@ class CreateBooksTable extends Migration
      */
     public function up()
     {
-        // TODO tripの方から少しコピーしてきて、テーブルを作成する
         Schema::create('books', function (Blueprint $table) {
             $table->id();
+            $table->string('title', 50);
+            $table->text('description');
+            $table->string('book_img');
+            $table->foreignId('user_id');
+            $table->foreignId('genre_id');
             $table->timestamps();
         });
     }

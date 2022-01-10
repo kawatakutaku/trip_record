@@ -15,7 +15,9 @@ class BookFactory extends Factory
     {
         // TODO factoryで自動的にデータを生成するようにする
         return [
-            //
+            'title' => $this->faker->title(),
+            'description' => $this->faker->text(),
+            'img' => $this->faker->image(),
         ];
     }
 }

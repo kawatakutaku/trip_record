@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Trip;
+use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,10 +13,10 @@ class MyPageController extends Controller
         // TODO 複数のユーザーがログインしている場合は全員のユーザーのidを取得してしまうのではないか？
         // 指定のuser_idのユーザーを取得する
         $userId = Auth::id();
-        $trips = Trip::where('user_id', $userId)->get();
+        $books = Book::where('user_id', $userId)->get();
 
         return view('mypage', [
-            'trips' => $trips,
+            'books' => $books,
         ]);
     }
 }

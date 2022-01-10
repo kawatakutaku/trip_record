@@ -27,7 +27,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/mypage', MyPageController::class)->name('mypage');
 
-Route::resource('trips', TripController::class)->only([
+Route::resource('books', TripController::class)->only([
     'index',
     'create',
     'store',
