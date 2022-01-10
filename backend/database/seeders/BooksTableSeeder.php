@@ -17,7 +17,8 @@ class BooksTableSeeder extends Seeder
     public function run()
     {
         $user = DB::table('users')->first();
-        $book = Book::factory()->raw('user_id', $user->id);
+        // dd($user->id);
+        $book = Book::factory()->raw(['user_id', $user->id]);
 
         for ($i=0; $i<10; $i++) {
             Book::upsert($book, 'id');

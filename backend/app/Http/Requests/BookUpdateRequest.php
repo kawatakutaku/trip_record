@@ -13,7 +13,7 @@ class BookUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,6 +22,15 @@ class BookUpdateRequest extends FormRequest
      * @return array
      */
     public function rules()
+    {
+        return [
+            'title' => 'required|max:50',
+            'description' => 'string',
+            'img' => 'string|url',
+        ];
+    }
+
+    public function attributes()
     {
         return [
             'title' => 'required|max:50',

@@ -15,14 +15,6 @@ class BookController extends Controller
     /**
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         // 旅行作成の入力画面を表示する処理
@@ -42,7 +34,6 @@ class BookController extends Controller
         // TODO userIdはconstructorなどで、取得できないか検討(以前はできなかった->nullが返ってくる)
         $userId = Auth::id();
 
-        // TODO imgの定義を検討する
         // requestから渡ってきた値をモデルのインスタンスに登録している
         $book->title = $request->input('title');
         $book->description = $request->input('description');
@@ -89,7 +80,6 @@ class BookController extends Controller
         $book = Book::find($id);
         $userId = Auth::id();
 
-        // TODO imgの定義を検討する
         // requestから渡ってきた値をモデルのインスタンスに登録している
         $book->title = $request->input('title');
         $book->description = $request->input('description');

@@ -29,4 +29,13 @@ class BookStoreRequest extends FormRequest
             'img' => 'string|url',
         ];
     }
+
+    public function attributes()
+    {
+        return [
+            'title' => 'required|max:50',
+            'description' => 'string',
+            'img' => 'string|url',
+        ];
+    }
 }
