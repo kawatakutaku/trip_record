@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TripUpdateRequest extends FormRequest
+class BookUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,18 +24,18 @@ class TripUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'trip_name' => 'required|string|max:50',
-            'start_day' => 'required|date',
-            'end_day' => 'required|date',
+            'title' => 'required|max:50',
+            'description' => 'string',
+            'img' => 'string|url',
         ];
     }
 
     public function attributes()
     {
         return [
-            'trip_name' => '旅行タイトル',
-            'start_day' => '出発日',
-            'end_day' => '帰宅日',
+            'title' => 'required|max:50',
+            'description' => 'string',
+            'img' => 'string|url',
         ];
     }
 }
