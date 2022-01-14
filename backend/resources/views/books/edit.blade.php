@@ -14,19 +14,19 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('trips.update', ['trip' => $trip->id]) }}" method="post">
+                    <form action="{{ route('books.update', ['book' => $trip->id]) }}" method="post">
                         @method('put')
                         @csrf
                         <div class="mb-4">
-                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="trip_name" id="trip_name" value="{{ old('trip_name') ?? $trip->trip_name }}">
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="title" id="title" value="{{ old('title') ?? $trip->trip_name }}">
                         </div>
                         <!-- TODO カレンダーを使った入力方法を採用する-->
                         <div class="mb-4">
-                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="start_day" id="start_day" value="{{ old('start_day') ?? $trip->start_day }}">
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="description" id="description" value="{{ old('description') ?? $trip->start_day }}">
                         </div>
                         <!-- TODO カレンダーを使った入力方法を採用する-->
                         <div class="mb-4">
-                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="end_day" id="end_day" value="{{ old('end_day') ?? $trip->end_day }}">
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="book_img" id="book_img" value="{{ old('book_img') ?? $trip->end_day }}">
                         </div>
                         <!-- TODO 背景色が反映されない-->
                         <div class="flex items-center justify-between">
@@ -39,6 +39,7 @@
     </div>
 
     <script>
+        // TODO trip用のjsからbook用のjsに変更する必要がある
         $(function(){
             $.datetimepicker.setLocale('ja');
             $('.bigDate').datetimepicker({

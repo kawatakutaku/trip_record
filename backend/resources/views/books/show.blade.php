@@ -12,11 +12,11 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     @csrf
                     <!-- TODO タイトル 値みたいな表示の方法を採用する   -->
-                    <p name="trip_name" id="trip_name" class="text-black pb-5">{{ $trip->trip_name }}</p>
-                    <p name="start_day" id="start_day" class="text-black pb-5">{{ $trip->start_day }}</p>
-                    <p name="end_day" id="end_day" class="text-black pb-5">{{ $trip->end_day }}</p>
-                    <a name="trips_edit" id="trips_edit" href="{{ route("trips.edit", ["trip" => $trip->id]) }}" role="button">変更する</a>
-                    <form action="{{ route('trips.destroy', $trip->id) }}" method="post">
+                    <p name="title" id="title" class="text-black pb-5">{{ $book->title }}</p>
+                    <p name="description" id="description" class="text-black pb-5">{{ $book->description }}</p>
+                    <p name="book_img" id="book_img" class="text-black pb-5">{{ $book->book_img }}</p>
+                    <a name="books_edit" id="books_edit" href="{{ route("books.edit", ["book" => $book->id]) }}" role="button">変更する</a>
+                    <form action="{{ route('books.destroy', $book->id) }}" method="post">
                         @csrf
                         @method('delete')
                         <button type="submit" class="py-4">削除する</button>

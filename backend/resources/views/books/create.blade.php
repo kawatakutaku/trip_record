@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <!-- TODO Dashboardのように言語ファイルを使用する-->
-            旅行作成
+            本の投稿
         </h2>
     </x-slot>
 
@@ -14,26 +14,25 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('trips.store') }}" method="post">
+                    <form action="{{ route('books.store') }}" method="post">
                         @csrf
                         <div class="row p-2 justify-content-center">
                             <div class="col-6">
-                                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="trip_name" id="trip_name" value="{{ old('trip_name') }}" placeholder="旅行のタイトル">
+                                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="title" id="title" value="{{ old('title') }}" placeholder="タイトル">
                             </div>
                         </div>
                         <div class="row p-2 mt-3 justify-content-center">
                             <div class="col-6" id="start">
                                 <!-- TODO カレンダーを使った入力方法を採用する-->
-                                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="start_day" id="start_day" value="{{ old('start_day') }}" placeholder="出発日">
+                                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="description" id="description" value="{{ old('description') }}" placeholder="説明">
                             </div>
                         </div>
                         <div class="row p-2 mt-3 justify-content-center">
                             <div class="col-6" id="end">
                                 <!-- TODO カレンダーを使った入力方法を採用する-->
-                                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="end_day" id="end_day" value="{{ old('end_day') }}" placeholder="帰宅日">
+                                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="book_img" id="book_img" value="{{ old('book_img') }}" placeholder="画像">
                             </div>
                         </div>
-                        <!-- TODO 背景色が反映されない-->
                         <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
                             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"> 次へ</button>
                         </div>
@@ -44,6 +43,7 @@
     </div>
 
     <script>
+        // TODO trip用のjsからbook用のjsに変更する必要がある
         $(function(){
             $.datetimepicker.setLocale('ja');
             $('.bigDate').datetimepicker({
