@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             <!-- TODO Dashboardのように言語ファイルを使用する-->
-            旅行作成
+            本の投稿
         </h2>
     </x-slot>
 
