@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Goods;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateFriendRequest extends FormRequest
+class StoreGoodRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
