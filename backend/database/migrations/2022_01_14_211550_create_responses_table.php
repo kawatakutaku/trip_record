@@ -15,6 +15,9 @@ class CreateResponsesTable extends Migration
     {
         Schema::create('responses', function (Blueprint $table) {
             $table->id();
+            $table->longText('message', 200);
+            $table->foreignId('user_id');
+            $table->foreignId('book_id');
             $table->timestamps();
         });
     }

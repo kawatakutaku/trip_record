@@ -14,7 +14,8 @@ class GroupFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'title' => $this->faker->title(),
+            'member_num' => $this->faker->randomDigit(),
         ];
     }
 }
