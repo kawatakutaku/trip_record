@@ -12,7 +12,7 @@ class GroupFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->title(),
+            'title' => $this->faker->company,
             'member_num' => $this->faker->randomDigit(),
         ];
     }
