@@ -18,6 +18,8 @@ class BookFactory extends Factory
             'title' => $this->faker->title(),
             'description' => $this->faker->text(),
             'img' => $this->faker->image(),
+            'created_at' => $this->faker->dateTimeThisCentury(),
+            'updated_at' => $this->faker->dateTimeThisCentury(),
         ];
     }
 }

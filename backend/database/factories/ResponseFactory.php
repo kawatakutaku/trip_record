@@ -14,7 +14,9 @@ class ResponseFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'message' => $this->faker->realText(),
+            'created_at' => $this->faker->dateTimeThisCentury(),
+            'updated_at' => $this->faker->dateTimeThisCentury(),
         ];
     }
 }
