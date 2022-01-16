@@ -2,29 +2,28 @@
 
 namespace Database\Seeders;
 
-use App\Models\Good;
+use App\Models\Book;
 use Illuminate\Database\Seeder;
 
-class GoodSeeder extends Seeder
+class BookSeeder extends Seeder
 {
-    const ID = 400;
+    const ID = 100;
     /**
      * @return void
      */
     public function run(): void
     {
         for ($i=0; $i<DatabaseSeeder::RECORD_NUM; $i++) {
-            $good_id = static::ID . $i;
+            $book_id = static::ID . $i;
             $user_id = UserSeeder::ID . $i;
-            $book_id = BookSeeder::ID . $i;
+            $genre_id = GenreSeeder::ID . $i;
 
-            $goods = Good::factory()->raw([
-                'id' => $good_id,
+            $books = Book::factory()->raw([
+                'id' => $book_id,
                 'user_id' => $user_id,
-                'book_id' => $book_id,
+                'genre_id' => $genre_id,
             ]);
-
-            Good::upsert($goods, ['id']);
+            Book::upsert($books, ['id']);
         }
     }
 }

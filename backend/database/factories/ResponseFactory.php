@@ -7,16 +7,14 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class ResponseFactory extends Factory
 {
     /**
-     * Define the model's default state.
-     *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'message' => $this->faker->realText(),
-            'created_at' => $this->faker->dateTimeThisCentury(),
-            'updated_at' => $this->faker->dateTimeThisCentury(),
+            'created_at' => $this->faker->dateTimeThisDecade(),
+            'updated_at' => $this->faker->dateTimeThisDecade(),
         ];
     }
 }
