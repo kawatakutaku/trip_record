@@ -14,6 +14,7 @@ class GenreSeeder extends Seeder
      */
     public function run(): void
     {
+        // TODO genreのタイトルは英語とかでは無くて相応しい(哲学とか)名前に変更する
         for ($i=0; $i<DatabaseSeeder::RECORD_NUM; $i++) {
             $genre_id = static::ID . $i;
 
