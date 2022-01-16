@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\BookStoreRequest;
-use App\Http\Requests\BookUpdateRequest;
+use App\Http\Requests\Books\StoreBookRequest;
+use App\Http\Requests\Books\UpdateBookRequest;
 use App\Models\Book;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +25,7 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BookStoreRequest $request)
+    public function store(StoreBookRequest $request)
     {
         // Bookモデルのインスタンスを作成する
         $book = new Book();
@@ -39,7 +39,7 @@ class BookController extends Controller
         $book->description = $request->input('description');
         $book->book_img = $request->input('book_img');
         $book->user_id = $userId;
-        // TODO genre_idを取得する方法を検討する
+        // TODO genre_idを取得する方法を検討する(select-boxなどからgenreを選択するようにしたい)
         $book->genre_id = $userId;
 
         // DBに保存している
@@ -75,7 +75,7 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(BookUpdateRequest $request, $id)
+    public function update(UpdateBookRequest $request, $id)
     {
         $book = Book::find($id);
         $userId = Auth::id();
