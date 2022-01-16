@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Book;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class BookSeeder extends Seeder
 {
@@ -24,7 +23,7 @@ class BookSeeder extends Seeder
                 'user_id' => $user_id,
                 'genre_id' => $genre_id,
             ]);
+            Book::upsert($books, ['id']);
         }
-        Book::upsert($books, ['id']);
     }
 }

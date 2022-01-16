@@ -19,7 +19,7 @@ class FriendSeeder extends Seeder
             $id = static::ID . $i;
             $owner_id = UserSeeder::ID . $i;
 
-            // TODO friend_idとowner_idをランダムに設定できるようにしたい
+            // TODO friend_idとowner_idをランダムに設定できるようにしたい(後から設定する)
             $friends = Friend::factory()->raw([
                 'id' => $id,
                 'owner_id' => $owner_id,

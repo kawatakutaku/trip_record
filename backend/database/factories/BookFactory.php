@@ -14,9 +14,9 @@ class BookFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'description' => $this->faker->realText(),
-            'img' => $this->faker->image(),
-            'created_at' => $this->faker->dateTimeThisCentury(),
-            'updated_at' => $this->faker->dateTimeThisCentury(),
+            'book_img' => $this->faker->image(),
+            'created_at' => $this->faker->dateTimeThisDecade(),
+            'updated_at' => $this->faker->dateTimeThisDecade(),
         ];
     }
 }

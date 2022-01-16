@@ -13,8 +13,8 @@ class ResponseFactory extends Factory
     {
         return [
             'message' => $this->faker->realText(),
-            'created_at' => $this->faker->dateTimeThisCentury(),
-            'updated_at' => $this->faker->dateTimeThisCentury(),
+            'created_at' => $this->faker->dateTimeThisDecade(),
+            'updated_at' => $this->faker->dateTimeThisDecade(),
         ];
     }
 }

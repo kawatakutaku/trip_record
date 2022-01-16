@@ -9,4 +9,6 @@ class Book extends Model
 {
     // TODO Model内で何をしているのかを調べる必要あり
     use HasFactory;
+
+    protected $table = 'books';
 }

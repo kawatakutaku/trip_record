@@ -14,7 +14,6 @@ class GenreSeeder extends Seeder
      */
     public function run(): void
     {
-        // TODO created_atとupdated_atのカラムがないっていうエラーがseedのときに出る
         for ($i=0; $i<DatabaseSeeder::RECORD_NUM; $i++) {
             $genre_id = static::ID . $i;
 
@@ -22,8 +21,7 @@ class GenreSeeder extends Seeder
                 'id' => $genre_id,
             ]);
 
+            Genre::upsert($genres, ['id']);
         }
-        // dd($genres);
-        Genre::upsert($genres, ['id']);
     }
 }
