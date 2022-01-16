@@ -39,7 +39,7 @@ class BookController extends Controller
         $book->description = $request->input('description');
         $book->book_img = $request->input('book_img');
         $book->user_id = $userId;
-        // TODO genre_idを取得する方法を検討する(select-boxから選択するようにする)
+        // TODO genre_idを取得する方法を検討する(select-boxなどからgenreを選択するようにしたい)
         $book->genre_id = $userId;
 
         // DBに保存している
