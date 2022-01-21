@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class GroupFactory extends Factory
+class LocationFactory extends Factory
 {
     /**
      * @return array
@@ -12,8 +12,8 @@ class GroupFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->company,
-            'member_num' => $this->faker->randomDigit(),
+            'name' => $this->faker->country(),
+            'follower' => $this->faker->randomDigit(),
         ];
     }
 }
