@@ -1,8 +1,0 @@
-.tabs-and-actions-container > .monaco-scrollable-element {
-    height: auto !important;
-  }
-  
-  .tabs-and-actions-container > .monaco-scrollable-element > .tabs-container {
-    height: auto !important;
-    flex-wrap: wrap;
-  }

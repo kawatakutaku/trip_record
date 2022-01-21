@@ -15,10 +15,12 @@ class CreateTripsTable extends Migration
     {
         Schema::create('trips', function (Blueprint $table) {
             $table->id();
-            $table->string('spot', 20);
-            $table->timestamp('start_day');
-            $table->timestamp('end_day');
+            $table->foreignId('user_id');
+            $table->foreignId('location_id');
+            $table->text('message', 255);
+            $table->string('img')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

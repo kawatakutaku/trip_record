@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DropImgColumnOnBooks extends Migration
+class CreateGoodsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class DropImgColumnOnBooks extends Migration
      */
     public function up()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->dropColumn('img');
+        Schema::create('goods', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('trip_id');
         });
     }
 
@@ -25,8 +27,6 @@ class DropImgColumnOnBooks extends Migration
      */
     public function down()
     {
-        Schema::table('books', function (Blueprint $table) {
-            $table->string('img');
-        });
+        Schema::dropIfExists('goods');
     }
 }

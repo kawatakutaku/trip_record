@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeTitleOnGenreTable extends Migration
+class CreateQuestionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class ChangeTitleOnGenreTable extends Migration
      */
     public function up()
     {
-        Schema::table('genres', function (Blueprint $table) {
-            $table->string('title', 100)->change();
+        Schema::create('questions', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id');
+            $table->text('message', 255);
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -25,8 +29,6 @@ class ChangeTitleOnGenreTable extends Migration
      */
     public function down()
     {
-        Schema::table('genres', function (Blueprint $table) {
-            $table->string('title', 50)->change();
-        });
+        Schema::dropIfExists('questions');
     }
 }

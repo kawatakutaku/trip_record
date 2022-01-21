@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserIdToTrips extends Migration
+class AddColumnUsersTalbe extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class AddUserIdToTrips extends Migration
      */
     public function up()
     {
-        Schema::table('trips', function (Blueprint $table) {
-            $table->unsignedBigInteger('user_id');
-
-            // 外部キーを設定する
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -28,8 +25,8 @@ class AddUserIdToTrips extends Migration
      */
     public function down()
     {
-        Schema::table('trips', function (Blueprint $table) {
-            $table->dropColumn('user_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropSoftDeletes();
         });
     }
 }
