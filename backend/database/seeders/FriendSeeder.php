@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class FriendSeeder extends Seeder
 {
-    const ID = 200;
+    const ID = 100;
 
     /**
      * @return void

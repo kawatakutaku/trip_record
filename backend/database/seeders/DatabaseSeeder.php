@@ -13,13 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        $this->call(GenreSeeder::class);
-        $this->call(GroupSeeder::class);
+        // TODO configらへんを日本語にして、seederで作成されるデータを日本語にする
+        $this->call(LocationSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(BookSeeder::class);
+        $this->call(TripSeeder::class);
         $this->call(FriendSeeder::class);
         $this->call(ResponseSeeder::class);
         $this->call(GoodSeeder::class);
+        $this->call(QuestionSeeder::class);
     }
 }
