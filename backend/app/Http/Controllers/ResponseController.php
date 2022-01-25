@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreResponseRequest;
-use App\Http\Requests\UpdateResponseRequest;
+use App\Http\Requests\Responses\StoreResponseRequest;
+use App\Http\Requests\Responses\UpdateResponseRequest;
 use App\Models\Response;
 
 class ResponseController extends Controller
