@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Hitchhikes\Doings;
 
-use App\Http\Requests\StoreHitchhikeResponseRequest;
-use App\Http\Requests\UpdateHitchhikeResponseRequest;
-use App\Models\HitchhikeResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreSuccessRequest;
+use App\Http\Requests\UpdateSuccessRequest;
+use App\Models\Success;
 
-class HitchhikeResponseController extends Controller
+class SuccessController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class HitchhikeResponseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreHitchhikeResponseRequest  $request
+     * @param  \App\Http\Requests\StoreSuccessRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreHitchhikeResponseRequest $request)
+    public function store(StoreSuccessRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class HitchhikeResponseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HitchhikeResponse  $hitchhikeResponse
+     * @param  \App\Models\Success  $success
      * @return \Illuminate\Http\Response
      */
-    public function show(HitchhikeResponse $hitchhikeResponse)
+    public function show(Success $success)
     {
         //
     }
@@ -53,10 +54,10 @@ class HitchhikeResponseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\HitchhikeResponse  $hitchhikeResponse
+     * @param  \App\Models\Success  $success
      * @return \Illuminate\Http\Response
      */
-    public function edit(HitchhikeResponse $hitchhikeResponse)
+    public function edit(Success $success)
     {
         //
     }
@@ -64,11 +65,11 @@ class HitchhikeResponseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateHitchhikeResponseRequest  $request
-     * @param  \App\Models\HitchhikeResponse  $hitchhikeResponse
+     * @param  \App\Http\Requests\UpdateSuccessRequest  $request
+     * @param  \App\Models\Success  $success
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateHitchhikeResponseRequest $request, HitchhikeResponse $hitchhikeResponse)
+    public function update(UpdateSuccessRequest $request, Success $success)
     {
         //
     }
@@ -76,10 +77,10 @@ class HitchhikeResponseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HitchhikeResponse  $hitchhikeResponse
+     * @param  \App\Models\Success  $success
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HitchhikeResponse $hitchhikeResponse)
+    public function destroy(Success $success)
     {
         //
     }

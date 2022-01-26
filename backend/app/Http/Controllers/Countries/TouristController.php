@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Countries;
 
-use App\Http\Requests\StoreMemoGoodRequest;
-use App\Http\Requests\UpdateMemoGoodRequest;
-use App\Models\MemoGood;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTouristRequest;
+use App\Http\Requests\UpdateTouristRequest;
+use App\Models\Tourist;
 
-class MemoGoodController extends Controller
+class TouristController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class MemoGoodController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMemoGoodRequest  $request
+     * @param  \App\Http\Requests\StoreTouristRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMemoGoodRequest $request)
+    public function store(StoreTouristRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class MemoGoodController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MemoGood  $memoGood
+     * @param  \App\Models\Tourist  $tourist
      * @return \Illuminate\Http\Response
      */
-    public function show(MemoGood $memoGood)
+    public function show(Tourist $tourist)
     {
         //
     }
@@ -53,10 +54,10 @@ class MemoGoodController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MemoGood  $memoGood
+     * @param  \App\Models\Tourist  $tourist
      * @return \Illuminate\Http\Response
      */
-    public function edit(MemoGood $memoGood)
+    public function edit(Tourist $tourist)
     {
         //
     }
@@ -64,11 +65,11 @@ class MemoGoodController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMemoGoodRequest  $request
-     * @param  \App\Models\MemoGood  $memoGood
+     * @param  \App\Http\Requests\UpdateTouristRequest  $request
+     * @param  \App\Models\Tourist  $tourist
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMemoGoodRequest $request, MemoGood $memoGood)
+    public function update(UpdateTouristRequest $request, Tourist $tourist)
     {
         //
     }
@@ -76,10 +77,10 @@ class MemoGoodController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MemoGood  $memoGood
+     * @param  \App\Models\Tourist  $tourist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MemoGood $memoGood)
+    public function destroy(Tourist $tourist)
     {
         //
     }

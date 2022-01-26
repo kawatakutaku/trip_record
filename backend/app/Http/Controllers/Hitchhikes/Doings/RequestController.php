@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Hitchhikes\Doings;
 
-use App\Http\Requests\StorePickUpRequest;
-use App\Http\Requests\UpdatePickUpRequest;
-use App\Models\PickUp;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreRequestRequest;
+use App\Http\Requests\UpdateRequestRequest;
+use App\Models\Request;
 
-class PickUpController extends Controller
+class RequestController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class PickUpController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorePickUpRequest  $request
+     * @param  \App\Http\Requests\StoreRequestRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorePickUpRequest $request)
+    public function store(StoreRequestRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class PickUpController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PickUp  $pickUp
+     * @param  \App\Models\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show(PickUp $pickUp)
+    public function show(Request $request)
     {
         //
     }
@@ -53,10 +54,10 @@ class PickUpController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PickUp  $pickUp
+     * @param  \App\Models\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function edit(PickUp $pickUp)
+    public function edit(Request $request)
     {
         //
     }
@@ -64,11 +65,11 @@ class PickUpController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatePickUpRequest  $request
-     * @param  \App\Models\PickUp  $pickUp
+     * @param  \App\Http\Requests\UpdateRequestRequest  $request
+     * @param  \App\Models\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatePickUpRequest $request, PickUp $pickUp)
+    public function update(UpdateRequestRequest $request, Request $request)
     {
         //
     }
@@ -76,10 +77,10 @@ class PickUpController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\PickUp  $pickUp
+     * @param  \App\Models\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PickUp $pickUp)
+    public function destroy(Request $request)
     {
         //
     }

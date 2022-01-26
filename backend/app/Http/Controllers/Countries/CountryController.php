@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Countries;
 
-use App\Http\Requests\StoreBlogResponseGoodRequest;
-use App\Http\Requests\UpdateBlogResponseGoodRequest;
-use App\Models\BlogResponseGood;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCountryRequest;
+use App\Http\Requests\UpdateCountryRequest;
+use App\Models\Country;
 
-class BlogResponseGoodController extends Controller
+class CountryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class BlogResponseGoodController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBlogResponseGoodRequest  $request
+     * @param  \App\Http\Requests\StoreCountryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBlogResponseGoodRequest $request)
+    public function store(StoreCountryRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class BlogResponseGoodController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\BlogResponseGood  $blogResponseGood
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function show(BlogResponseGood $blogResponseGood)
+    public function show(Country $country)
     {
         //
     }
@@ -53,10 +54,10 @@ class BlogResponseGoodController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\BlogResponseGood  $blogResponseGood
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function edit(BlogResponseGood $blogResponseGood)
+    public function edit(Country $country)
     {
         //
     }
@@ -64,11 +65,11 @@ class BlogResponseGoodController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBlogResponseGoodRequest  $request
-     * @param  \App\Models\BlogResponseGood  $blogResponseGood
+     * @param  \App\Http\Requests\UpdateCountryRequest  $request
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBlogResponseGoodRequest $request, BlogResponseGood $blogResponseGood)
+    public function update(UpdateCountryRequest $request, Country $country)
     {
         //
     }
@@ -76,10 +77,10 @@ class BlogResponseGoodController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BlogResponseGood  $blogResponseGood
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BlogResponseGood $blogResponseGood)
+    public function destroy(Country $country)
     {
         //
     }

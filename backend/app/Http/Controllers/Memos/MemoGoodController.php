@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Memos;
 
-use App\Http\Requests\StoreRequestRequest;
-use App\Http\Requests\UpdateRequestRequest;
-use App\Models\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreMemoGoodRequest;
+use App\Http\Requests\UpdateMemoGoodRequest;
+use App\Models\MemoGood;
 
-class RequestController extends Controller
+class MemoGoodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class RequestController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreRequestRequest  $request
+     * @param  \App\Http\Requests\StoreMemoGoodRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreRequestRequest $request)
+    public function store(StoreMemoGoodRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class RequestController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Request  $request
+     * @param  \App\Models\MemoGood  $memoGood
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(MemoGood $memoGood)
     {
         //
     }
@@ -53,10 +54,10 @@ class RequestController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Request  $request
+     * @param  \App\Models\MemoGood  $memoGood
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request)
+    public function edit(MemoGood $memoGood)
     {
         //
     }
@@ -64,11 +65,11 @@ class RequestController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateRequestRequest  $request
-     * @param  \App\Models\Request  $request
+     * @param  \App\Http\Requests\UpdateMemoGoodRequest  $request
+     * @param  \App\Models\MemoGood  $memoGood
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateRequestRequest $request, Request $request)
+    public function update(UpdateMemoGoodRequest $request, MemoGood $memoGood)
     {
         //
     }
@@ -76,10 +77,10 @@ class RequestController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Request  $request
+     * @param  \App\Models\MemoGood  $memoGood
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy(MemoGood $memoGood)
     {
         //
     }

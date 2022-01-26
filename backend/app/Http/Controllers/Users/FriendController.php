@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Users;
 
-use App\Http\Requests\StoreHikerReviewRequest;
-use App\Http\Requests\UpdateHikerReviewRequest;
-use App\Models\HikerReview;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreFriendRequest;
+use App\Http\Requests\UpdateFriendRequest;
+use App\Models\Friend;
 
-class HikerReviewController extends Controller
+class FriendController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class HikerReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreHikerReviewRequest  $request
+     * @param  \App\Http\Requests\StoreFriendRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreHikerReviewRequest $request)
+    public function store(StoreFriendRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class HikerReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HikerReview  $hikerReview
+     * @param  \App\Models\Friend  $friend
      * @return \Illuminate\Http\Response
      */
-    public function show(HikerReview $hikerReview)
+    public function show(Friend $friend)
     {
         //
     }
@@ -53,10 +54,10 @@ class HikerReviewController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\HikerReview  $hikerReview
+     * @param  \App\Models\Friend  $friend
      * @return \Illuminate\Http\Response
      */
-    public function edit(HikerReview $hikerReview)
+    public function edit(Friend $friend)
     {
         //
     }
@@ -64,11 +65,11 @@ class HikerReviewController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateHikerReviewRequest  $request
-     * @param  \App\Models\HikerReview  $hikerReview
+     * @param  \App\Http\Requests\UpdateFriendRequest  $request
+     * @param  \App\Models\Friend  $friend
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateHikerReviewRequest $request, HikerReview $hikerReview)
+    public function update(UpdateFriendRequest $request, Friend $friend)
     {
         //
     }
@@ -76,10 +77,10 @@ class HikerReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HikerReview  $hikerReview
+     * @param  \App\Models\Friend  $friend
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HikerReview $hikerReview)
+    public function destroy(Friend $friend)
     {
         //
     }

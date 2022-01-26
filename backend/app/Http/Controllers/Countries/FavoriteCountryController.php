@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Countries;
 
-use App\Http\Requests\StoreBlogResponseRequest;
-use App\Http\Requests\UpdateBlogResponseRequest;
-use App\Models\BlogResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreFavoriteCountryRequest;
+use App\Http\Requests\UpdateFavoriteCountryRequest;
+use App\Models\FavoriteCountry;
 
-class BlogResponseController extends Controller
+class FavoriteCountryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class BlogResponseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBlogResponseRequest  $request
+     * @param  \App\Http\Requests\StoreFavoriteCountryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBlogResponseRequest $request)
+    public function store(StoreFavoriteCountryRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class BlogResponseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\BlogResponse  $blogResponse
+     * @param  \App\Models\FavoriteCountry  $favoriteCountry
      * @return \Illuminate\Http\Response
      */
-    public function show(BlogResponse $blogResponse)
+    public function show(FavoriteCountry $favoriteCountry)
     {
         //
     }
@@ -53,10 +54,10 @@ class BlogResponseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\BlogResponse  $blogResponse
+     * @param  \App\Models\FavoriteCountry  $favoriteCountry
      * @return \Illuminate\Http\Response
      */
-    public function edit(BlogResponse $blogResponse)
+    public function edit(FavoriteCountry $favoriteCountry)
     {
         //
     }
@@ -64,11 +65,11 @@ class BlogResponseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBlogResponseRequest  $request
-     * @param  \App\Models\BlogResponse  $blogResponse
+     * @param  \App\Http\Requests\UpdateFavoriteCountryRequest  $request
+     * @param  \App\Models\FavoriteCountry  $favoriteCountry
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBlogResponseRequest $request, BlogResponse $blogResponse)
+    public function update(UpdateFavoriteCountryRequest $request, FavoriteCountry $favoriteCountry)
     {
         //
     }
@@ -76,10 +77,10 @@ class BlogResponseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BlogResponse  $blogResponse
+     * @param  \App\Models\FavoriteCountry  $favoriteCountry
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BlogResponse $blogResponse)
+    public function destroy(FavoriteCountry $favoriteCountry)
     {
         //
     }

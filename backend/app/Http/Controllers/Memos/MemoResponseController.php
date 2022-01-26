@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Memos;
 
-use App\Http\Requests\StoreBlogGoodRequest;
-use App\Http\Requests\UpdateBlogGoodRequest;
-use App\Models\BlogGood;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreMemoResponseRequest;
+use App\Http\Requests\UpdateMemoResponseRequest;
+use App\Models\MemoResponse;
 
-class BlogGoodController extends Controller
+class MemoResponseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class BlogGoodController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBlogGoodRequest  $request
+     * @param  \App\Http\Requests\StoreMemoResponseRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBlogGoodRequest $request)
+    public function store(StoreMemoResponseRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class BlogGoodController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\BlogGood  $blogGood
+     * @param  \App\Models\MemoResponse  $memoResponse
      * @return \Illuminate\Http\Response
      */
-    public function show(BlogGood $blogGood)
+    public function show(MemoResponse $memoResponse)
     {
         //
     }
@@ -53,10 +54,10 @@ class BlogGoodController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\BlogGood  $blogGood
+     * @param  \App\Models\MemoResponse  $memoResponse
      * @return \Illuminate\Http\Response
      */
-    public function edit(BlogGood $blogGood)
+    public function edit(MemoResponse $memoResponse)
     {
         //
     }
@@ -64,11 +65,11 @@ class BlogGoodController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBlogGoodRequest  $request
-     * @param  \App\Models\BlogGood  $blogGood
+     * @param  \App\Http\Requests\UpdateMemoResponseRequest  $request
+     * @param  \App\Models\MemoResponse  $memoResponse
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBlogGoodRequest $request, BlogGood $blogGood)
+    public function update(UpdateMemoResponseRequest $request, MemoResponse $memoResponse)
     {
         //
     }
@@ -76,10 +77,10 @@ class BlogGoodController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BlogGood  $blogGood
+     * @param  \App\Models\MemoResponse  $memoResponse
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BlogGood $blogGood)
+    public function destroy(MemoResponse $memoResponse)
     {
         //
     }

@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Hitchhikes\Spots;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreHitchhikeRequest;
 use App\Http\Requests\UpdateHitchhikeRequest;
 use App\Models\Hitchhike;

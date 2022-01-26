@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Blogs;
 
-use App\Http\Requests\StoreTouristRequest;
-use App\Http\Requests\UpdateTouristRequest;
-use App\Models\Tourist;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreBlogRequest;
+use App\Http\Requests\UpdateBlogRequest;
+use App\Models\Blog;
 
-class TouristController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class TouristController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTouristRequest  $request
+     * @param  \App\Http\Requests\StoreBlogRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTouristRequest $request)
+    public function store(StoreBlogRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class TouristController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tourist  $tourist
+     * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(Tourist $tourist)
+    public function show(Blog $blog)
     {
         //
     }
@@ -53,10 +54,10 @@ class TouristController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tourist  $tourist
+     * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tourist $tourist)
+    public function edit(Blog $blog)
     {
         //
     }
@@ -64,11 +65,11 @@ class TouristController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTouristRequest  $request
-     * @param  \App\Models\Tourist  $tourist
+     * @param  \App\Http\Requests\UpdateBlogRequest  $request
+     * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTouristRequest $request, Tourist $tourist)
+    public function update(UpdateBlogRequest $request, Blog $blog)
     {
         //
     }
@@ -76,10 +77,10 @@ class TouristController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tourist  $tourist
+     * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tourist $tourist)
+    public function destroy(Blog $blog)
     {
         //
     }

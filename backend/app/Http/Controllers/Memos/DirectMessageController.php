@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Memos;
 
-use App\Http\Requests\StoreMemoResponseRequest;
-use App\Http\Requests\UpdateMemoResponseRequest;
-use App\Models\MemoResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreDirectMessageRequest;
+use App\Http\Requests\UpdateDirectMessageRequest;
+use App\Models\DirectMessage;
 
-class MemoResponseController extends Controller
+class DirectMessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class MemoResponseController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreMemoResponseRequest  $request
+     * @param  \App\Http\Requests\StoreDirectMessageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMemoResponseRequest $request)
+    public function store(StoreDirectMessageRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class MemoResponseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MemoResponse  $memoResponse
+     * @param  \App\Models\DirectMessage  $directMessage
      * @return \Illuminate\Http\Response
      */
-    public function show(MemoResponse $memoResponse)
+    public function show(DirectMessage $directMessage)
     {
         //
     }
@@ -53,10 +54,10 @@ class MemoResponseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MemoResponse  $memoResponse
+     * @param  \App\Models\DirectMessage  $directMessage
      * @return \Illuminate\Http\Response
      */
-    public function edit(MemoResponse $memoResponse)
+    public function edit(DirectMessage $directMessage)
     {
         //
     }
@@ -64,11 +65,11 @@ class MemoResponseController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateMemoResponseRequest  $request
-     * @param  \App\Models\MemoResponse  $memoResponse
+     * @param  \App\Http\Requests\UpdateDirectMessageRequest  $request
+     * @param  \App\Models\DirectMessage  $directMessage
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateMemoResponseRequest $request, MemoResponse $memoResponse)
+    public function update(UpdateDirectMessageRequest $request, DirectMessage $directMessage)
     {
         //
     }
@@ -76,10 +77,10 @@ class MemoResponseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MemoResponse  $memoResponse
+     * @param  \App\Models\DirectMessage  $directMessage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MemoResponse $memoResponse)
+    public function destroy(DirectMessage $directMessage)
     {
         //
     }

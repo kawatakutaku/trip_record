@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Memos;
 
-use App\Http\Requests\StoreSuccessRequest;
-use App\Http\Requests\UpdateSuccessRequest;
-use App\Models\Success;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreMemoResponseGoodRequest;
+use App\Http\Requests\UpdateMemoResponseGoodRequest;
+use App\Models\MemoResponseGood;
 
-class SuccessController extends Controller
+class MemoResponseGoodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class SuccessController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreSuccessRequest  $request
+     * @param  \App\Http\Requests\StoreMemoResponseGoodRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreSuccessRequest $request)
+    public function store(StoreMemoResponseGoodRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class SuccessController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Success  $success
+     * @param  \App\Models\MemoResponseGood  $memoResponseGood
      * @return \Illuminate\Http\Response
      */
-    public function show(Success $success)
+    public function show(MemoResponseGood $memoResponseGood)
     {
         //
     }
@@ -53,10 +54,10 @@ class SuccessController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Success  $success
+     * @param  \App\Models\MemoResponseGood  $memoResponseGood
      * @return \Illuminate\Http\Response
      */
-    public function edit(Success $success)
+    public function edit(MemoResponseGood $memoResponseGood)
     {
         //
     }
@@ -64,11 +65,11 @@ class SuccessController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateSuccessRequest  $request
-     * @param  \App\Models\Success  $success
+     * @param  \App\Http\Requests\UpdateMemoResponseGoodRequest  $request
+     * @param  \App\Models\MemoResponseGood  $memoResponseGood
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateSuccessRequest $request, Success $success)
+    public function update(UpdateMemoResponseGoodRequest $request, MemoResponseGood $memoResponseGood)
     {
         //
     }
@@ -76,10 +77,10 @@ class SuccessController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Success  $success
+     * @param  \App\Models\MemoResponseGood  $memoResponseGood
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Success $success)
+    public function destroy(MemoResponseGood $memoResponseGood)
     {
         //
     }

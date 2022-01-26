@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Memos;
 
-use App\Http\Requests\StoreHitchhikeGoodRequest;
-use App\Http\Requests\UpdateHitchhikeGoodRequest;
-use App\Models\HitchhikeGood;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreMemoRequest;
+use App\Http\Requests\UpdateMemoRequest;
+use App\Models\Memo;
 
-class HitchhikeGoodController extends Controller
+class MemoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class HitchhikeGoodController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreHitchhikeGoodRequest  $request
+     * @param  \App\Http\Requests\StoreMemoRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreHitchhikeGoodRequest $request)
+    public function store(StoreMemoRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class HitchhikeGoodController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\HitchhikeGood  $hitchhikeGood
+     * @param  \App\Models\Memo  $memo
      * @return \Illuminate\Http\Response
      */
-    public function show(HitchhikeGood $hitchhikeGood)
+    public function show(Memo $memo)
     {
         //
     }
@@ -53,10 +54,10 @@ class HitchhikeGoodController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\HitchhikeGood  $hitchhikeGood
+     * @param  \App\Models\Memo  $memo
      * @return \Illuminate\Http\Response
      */
-    public function edit(HitchhikeGood $hitchhikeGood)
+    public function edit(Memo $memo)
     {
         //
     }
@@ -64,11 +65,11 @@ class HitchhikeGoodController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateHitchhikeGoodRequest  $request
-     * @param  \App\Models\HitchhikeGood  $hitchhikeGood
+     * @param  \App\Http\Requests\UpdateMemoRequest  $request
+     * @param  \App\Models\Memo  $memo
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateHitchhikeGoodRequest $request, HitchhikeGood $hitchhikeGood)
+    public function update(UpdateMemoRequest $request, Memo $memo)
     {
         //
     }
@@ -76,10 +77,10 @@ class HitchhikeGoodController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\HitchhikeGood  $hitchhikeGood
+     * @param  \App\Models\Memo  $memo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HitchhikeGood $hitchhikeGood)
+    public function destroy(Memo $memo)
     {
         //
     }

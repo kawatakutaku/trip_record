@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Hitchhikes\Doings;
 
-use App\Http\Requests\StoreDriverReviewRequest;
-use App\Http\Requests\UpdateDriverReviewRequest;
-use App\Models\DriverReview;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePickUpRequest;
+use App\Http\Requests\UpdatePickUpRequest;
+use App\Models\PickUp;
 
-class DriverReviewController extends Controller
+class PickUpController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class DriverReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreDriverReviewRequest  $request
+     * @param  \App\Http\Requests\StorePickUpRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDriverReviewRequest $request)
+    public function store(StorePickUpRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class DriverReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DriverReview  $driverReview
+     * @param  \App\Models\PickUp  $pickUp
      * @return \Illuminate\Http\Response
      */
-    public function show(DriverReview $driverReview)
+    public function show(PickUp $pickUp)
     {
         //
     }
@@ -53,10 +54,10 @@ class DriverReviewController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DriverReview  $driverReview
+     * @param  \App\Models\PickUp  $pickUp
      * @return \Illuminate\Http\Response
      */
-    public function edit(DriverReview $driverReview)
+    public function edit(PickUp $pickUp)
     {
         //
     }
@@ -64,11 +65,11 @@ class DriverReviewController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateDriverReviewRequest  $request
-     * @param  \App\Models\DriverReview  $driverReview
+     * @param  \App\Http\Requests\UpdatePickUpRequest  $request
+     * @param  \App\Models\PickUp  $pickUp
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDriverReviewRequest $request, DriverReview $driverReview)
+    public function update(UpdatePickUpRequest $request, PickUp $pickUp)
     {
         //
     }
@@ -76,10 +77,10 @@ class DriverReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DriverReview  $driverReview
+     * @param  \App\Models\PickUp  $pickUp
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DriverReview $driverReview)
+    public function destroy(PickUp $pickUp)
     {
         //
     }

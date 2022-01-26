@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Hitchhikes\Doings;
 
-use App\Http\Requests\StoreDirectMessageRequest;
-use App\Http\Requests\UpdateDirectMessageRequest;
-use App\Models\DirectMessage;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreHikerReviewRequest;
+use App\Http\Requests\UpdateHikerReviewRequest;
+use App\Models\HikerReview;
 
-class DirectMessageController extends Controller
+class HikerReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class DirectMessageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreDirectMessageRequest  $request
+     * @param  \App\Http\Requests\StoreHikerReviewRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDirectMessageRequest $request)
+    public function store(StoreHikerReviewRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class DirectMessageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\DirectMessage  $directMessage
+     * @param  \App\Models\HikerReview  $hikerReview
      * @return \Illuminate\Http\Response
      */
-    public function show(DirectMessage $directMessage)
+    public function show(HikerReview $hikerReview)
     {
         //
     }
@@ -53,10 +54,10 @@ class DirectMessageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\DirectMessage  $directMessage
+     * @param  \App\Models\HikerReview  $hikerReview
      * @return \Illuminate\Http\Response
      */
-    public function edit(DirectMessage $directMessage)
+    public function edit(HikerReview $hikerReview)
     {
         //
     }
@@ -64,11 +65,11 @@ class DirectMessageController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateDirectMessageRequest  $request
-     * @param  \App\Models\DirectMessage  $directMessage
+     * @param  \App\Http\Requests\UpdateHikerReviewRequest  $request
+     * @param  \App\Models\HikerReview  $hikerReview
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDirectMessageRequest $request, DirectMessage $directMessage)
+    public function update(UpdateHikerReviewRequest $request, HikerReview $hikerReview)
     {
         //
     }
@@ -76,10 +77,10 @@ class DirectMessageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\DirectMessage  $directMessage
+     * @param  \App\Models\HikerReview  $hikerReview
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DirectMessage $directMessage)
+    public function destroy(HikerReview $hikerReview)
     {
         //
     }

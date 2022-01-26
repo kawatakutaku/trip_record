@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Hitchhikes\Spots;
 
-use App\Http\Requests\StoreFavoriteCountryRequest;
-use App\Http\Requests\UpdateFavoriteCountryRequest;
-use App\Models\FavoriteCountry;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreHitchhikeGoodRequest;
+use App\Http\Requests\UpdateHitchhikeGoodRequest;
+use App\Models\HitchhikeGood;
 
-class FavoriteCountryController extends Controller
+class HitchhikeGoodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -31,10 +32,10 @@ class FavoriteCountryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreFavoriteCountryRequest  $request
+     * @param  \App\Http\Requests\StoreHitchhikeGoodRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFavoriteCountryRequest $request)
+    public function store(StoreHitchhikeGoodRequest $request)
     {
         //
     }
@@ -42,10 +43,10 @@ class FavoriteCountryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\FavoriteCountry  $favoriteCountry
+     * @param  \App\Models\HitchhikeGood  $hitchhikeGood
      * @return \Illuminate\Http\Response
      */
-    public function show(FavoriteCountry $favoriteCountry)
+    public function show(HitchhikeGood $hitchhikeGood)
     {
         //
     }
@@ -53,10 +54,10 @@ class FavoriteCountryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\FavoriteCountry  $favoriteCountry
+     * @param  \App\Models\HitchhikeGood  $hitchhikeGood
      * @return \Illuminate\Http\Response
      */
-    public function edit(FavoriteCountry $favoriteCountry)
+    public function edit(HitchhikeGood $hitchhikeGood)
     {
         //
     }
@@ -64,11 +65,11 @@ class FavoriteCountryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateFavoriteCountryRequest  $request
-     * @param  \App\Models\FavoriteCountry  $favoriteCountry
+     * @param  \App\Http\Requests\UpdateHitchhikeGoodRequest  $request
+     * @param  \App\Models\HitchhikeGood  $hitchhikeGood
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFavoriteCountryRequest $request, FavoriteCountry $favoriteCountry)
+    public function update(UpdateHitchhikeGoodRequest $request, HitchhikeGood $hitchhikeGood)
     {
         //
     }
@@ -76,10 +77,10 @@ class FavoriteCountryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\FavoriteCountry  $favoriteCountry
+     * @param  \App\Models\HitchhikeGood  $hitchhikeGood
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FavoriteCountry $favoriteCountry)
+    public function destroy(HitchhikeGood $hitchhikeGood)
     {
         //
     }
