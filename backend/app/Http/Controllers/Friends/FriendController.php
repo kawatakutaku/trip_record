@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Users;
+namespace App\Http\Controllers\Friends;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFriendRequest;
