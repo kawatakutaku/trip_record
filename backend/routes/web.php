@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\TripController;
+use App\Http\Controllers\Users\MyPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
