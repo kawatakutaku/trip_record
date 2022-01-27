@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\Users;
+namespace Database\Seeders\Friends;
 
 use App\Models\Friend;
 use App\Models\User;
