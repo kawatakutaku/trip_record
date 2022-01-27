@@ -1,15 +1,17 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Memos;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class FriendFactory extends Factory
+class MemoFactory extends Factory
 {
     /**
+     * Define the model's default state.
+     *
      * @return array
      */
-    public function definition(): array
+    public function definition()
     {
         return [
             //

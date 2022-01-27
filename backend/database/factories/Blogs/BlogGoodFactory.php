@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Blogs;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SuccessFactory extends Factory
+class BlogGoodFactory extends Factory
 {
     /**
      * Define the model's default state.

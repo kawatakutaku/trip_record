@@ -1,17 +1,15 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Friends;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BlogGoodFactory extends Factory
+class FriendFactory extends Factory
 {
     /**
-     * Define the model's default state.
-     *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             //

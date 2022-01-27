@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Memos;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MemoResponseGoodFactory extends Factory
+class DirectMessageFactory extends Factory
 {
     /**
      * Define the model's default state.
