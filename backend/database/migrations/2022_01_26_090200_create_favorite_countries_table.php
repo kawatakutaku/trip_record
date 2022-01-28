@@ -15,7 +15,10 @@ class CreateFavoriteCountriesTable extends Migration
     {
         Schema::create('favorite_countries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('country_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

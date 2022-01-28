@@ -15,7 +15,11 @@ class CreateDirectMessagesTable extends Migration
     {
         Schema::create('direct_messages', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('partner_id');
+            $table->string('message');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

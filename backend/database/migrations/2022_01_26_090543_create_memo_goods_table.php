@@ -15,7 +15,10 @@ class CreateMemoGoodsTable extends Migration
     {
         Schema::create('memo_goods', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('memo_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

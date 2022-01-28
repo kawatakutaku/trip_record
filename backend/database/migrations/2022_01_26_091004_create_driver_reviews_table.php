@@ -15,7 +15,11 @@ class CreateDriverReviewsTable extends Migration
     {
         Schema::create('driver_reviews', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('driver_id');
+            $table->foreignId('hitchhiker_id');
+            $table->string('message');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
