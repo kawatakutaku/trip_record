@@ -15,7 +15,11 @@ class CreateMemoResponsesTable extends Migration
     {
         Schema::create('memo_responses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('memo_id');
+            $table->string('message');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

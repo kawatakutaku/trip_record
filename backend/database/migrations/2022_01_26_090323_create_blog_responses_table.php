@@ -15,7 +15,11 @@ class CreateBlogResponsesTable extends Migration
     {
         Schema::create('blog_responses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('blog_id');
+            $table->text('message');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

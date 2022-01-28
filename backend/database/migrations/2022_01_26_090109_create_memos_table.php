@@ -15,7 +15,12 @@ class CreateMemosTable extends Migration
     {
         Schema::create('memos', function (Blueprint $table) {
             $table->id();
+            $table->string('memo');
+            $table->string('img');
+            $table->foreignId('user_id');
+            $table->foreignId('country_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

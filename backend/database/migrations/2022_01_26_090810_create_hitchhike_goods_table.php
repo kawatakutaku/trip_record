@@ -15,7 +15,10 @@ class CreateHitchhikeGoodsTable extends Migration
     {
         Schema::create('hitchhike_goods', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('hitchhike_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

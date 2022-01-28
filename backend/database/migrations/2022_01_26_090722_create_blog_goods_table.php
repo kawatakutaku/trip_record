@@ -15,7 +15,10 @@ class CreateBlogGoodsTable extends Migration
     {
         Schema::create('blog_goods', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('blog_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
