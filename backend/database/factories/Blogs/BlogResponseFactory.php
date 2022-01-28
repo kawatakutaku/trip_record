@@ -14,7 +14,9 @@ class BlogResponseFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'message' => $this->faker->paragraphs(),
+            'created_at' => $this->faker->dateTimeThisDecade(),
+            'updated_at' => $this->faker->dateTimeThisDecade(),
         ];
     }
 }

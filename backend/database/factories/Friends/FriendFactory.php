@@ -12,7 +12,7 @@ class FriendFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            // TODO: created_atとupdated_atを指定する必要があるかも
         ];
     }
 }

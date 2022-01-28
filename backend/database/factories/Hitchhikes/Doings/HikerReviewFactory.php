@@ -14,7 +14,9 @@ class HikerReviewFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'message' => $this->faker->realText(),
+            'created_at' => $this->faker->dateTimeThisDecade(),
+            'updated_at' => $this->faker->dateTimeThisDecade(),
         ];
     }
 }

@@ -14,7 +14,10 @@ class MemoFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'message' => $this->faker->realText(),
+            'img' => $this->faker->imageUrl(),
+            'created_at' => $this->faker->dateTimeThisDecade(),
+            'updated_at' => $this->faker->dateTimeThisDecade(),
         ];
     }
 }

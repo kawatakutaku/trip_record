@@ -14,7 +14,8 @@ class HitchhikeGoodFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'created_at' => $this->faker->dateTimeThisDecade(),
+            'updated_at' => $this->faker->dateTimeThisDecade(),
         ];
     }
 }

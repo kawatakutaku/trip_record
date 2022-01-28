@@ -13,8 +13,9 @@ class CountryFactory extends Factory
      */
     public function definition()
     {
+        // TODO: countryかcityかどっちかに統一する
         return [
-            //
+            'name' => $this->faker->country(),
         ];
     }
 }

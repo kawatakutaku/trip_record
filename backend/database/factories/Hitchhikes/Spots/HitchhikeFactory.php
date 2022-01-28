@@ -14,7 +14,11 @@ class HitchhikeFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'message' => $this->faker->realText(),
+            'spot_address' => $this->faker->address(),
+            'recommended_spot' => $this->faker->city(),
+            'created_at' => $this->faker->dateTimeThisDecade(),
+            'updated_at' => $this->faker->dateTimeThisDecade(),
         ];
     }
 }

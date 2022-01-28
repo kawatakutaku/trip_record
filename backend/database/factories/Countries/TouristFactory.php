@@ -14,7 +14,9 @@ class TouristFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'spot' => $this->faker->city(),
+            'created_at' => $this->faker->dateTimeThisDecade(),
+            'updated_at' => $this->faker->dateTimeThisDecade(),
         ];
     }
 }
