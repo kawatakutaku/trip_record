@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Countries;
+namespace App\Http\Controllers\Cities;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreFavoriteCountryRequest;
-use App\Http\Requests\UpdateFavoriteCountryRequest;
-use App\Models\FavoriteCountry;
+use App\Http\Requests\StoreTouristRequest;
+use App\Http\Requests\UpdateTouristRequest;
+use App\Models\Tourist;
 
-class FavoriteCountryController extends Controller
+class TouristController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,10 +32,10 @@ class FavoriteCountryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreFavoriteCountryRequest  $request
+     * @param  \App\Http\Requests\StoreTouristRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFavoriteCountryRequest $request)
+    public function store(StoreTouristRequest $request)
     {
         //
     }
@@ -43,10 +43,10 @@ class FavoriteCountryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\FavoriteCountry  $favoriteCountry
+     * @param  \App\Models\Tourist  $tourist
      * @return \Illuminate\Http\Response
      */
-    public function show(FavoriteCountry $favoriteCountry)
+    public function show(Tourist $tourist)
     {
         //
     }
@@ -54,10 +54,10 @@ class FavoriteCountryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\FavoriteCountry  $favoriteCountry
+     * @param  \App\Models\Tourist  $tourist
      * @return \Illuminate\Http\Response
      */
-    public function edit(FavoriteCountry $favoriteCountry)
+    public function edit(Tourist $tourist)
     {
         //
     }
@@ -65,11 +65,11 @@ class FavoriteCountryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateFavoriteCountryRequest  $request
-     * @param  \App\Models\FavoriteCountry  $favoriteCountry
+     * @param  \App\Http\Requests\UpdateTouristRequest  $request
+     * @param  \App\Models\Tourist  $tourist
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFavoriteCountryRequest $request, FavoriteCountry $favoriteCountry)
+    public function update(UpdateTouristRequest $request, Tourist $tourist)
     {
         //
     }
@@ -77,10 +77,10 @@ class FavoriteCountryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\FavoriteCountry  $favoriteCountry
+     * @param  \App\Models\Tourist  $tourist
      * @return \Illuminate\Http\Response
      */
-    public function destroy(FavoriteCountry $favoriteCountry)
+    public function destroy(Tourist $tourist)
     {
         //
     }
