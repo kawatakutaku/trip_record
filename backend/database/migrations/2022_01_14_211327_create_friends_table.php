@@ -17,6 +17,7 @@ class CreateFriendsTable extends Migration
             $table->id();
             $table->foreignId('owner_id');
             $table->foreignId('friend_id');
+            $table->timestamps();
         });
     }
 

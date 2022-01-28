@@ -13,9 +13,9 @@ class CreateHitchhikeMessagesTable extends Migration
      */
     public function up()
     {
-        // TODO: messageテーブルを作成する
         Schema::create('hitchhike_messages', function (Blueprint $table) {
             $table->id();
+            $table->string('message');
             $table->foreignId('driver_id');
             $table->foreignId('hitchhiker_id');
             $table->timestamps();
