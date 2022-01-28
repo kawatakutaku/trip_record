@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 
 class TouristSeeder extends Seeder
 {
+    const TOURIST_ID = 700;
+
     /**
      * Run the database seeds.
      *

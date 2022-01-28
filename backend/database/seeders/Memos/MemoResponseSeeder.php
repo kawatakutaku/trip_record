@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 
 class MemoResponseSeeder extends Seeder
 {
+    const MEMO_RESPONSE_ID = 40000;
+
     /**
      * Run the database seeds.
      *

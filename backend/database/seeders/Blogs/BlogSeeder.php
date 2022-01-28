@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 
 class BlogSeeder extends Seeder
 {
+    const BLOG_ID = 400;
+
     /**
      * Run the database seeds.
      *

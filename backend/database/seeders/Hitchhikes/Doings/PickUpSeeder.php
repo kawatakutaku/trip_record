@@ -6,6 +6,8 @@ use Illuminate\Database\Seeder;
 
 class PickUpSeeder extends Seeder
 {
+    const PICK_UP_ID = 3000;
+
     /**
      * Run the database seeds.
      *

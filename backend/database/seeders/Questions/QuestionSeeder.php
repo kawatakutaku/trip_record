@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 
 class QuestionSeeder extends Seeder
 {
+    const QUESTION_ID = 60000;
     /**
      * Run the database seeds.
      *
