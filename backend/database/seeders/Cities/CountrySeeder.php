@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Seeders\Countries;
+namespace Database\Seeders\Cities;
 
 use Illuminate\Database\Seeder;
 
-class CountrySeeder extends Seeder
+class CitySeeder extends Seeder
 {
     /**
      * Run the database seeds.

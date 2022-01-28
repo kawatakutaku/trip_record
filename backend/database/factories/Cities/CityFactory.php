@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories\Countries;
+namespace Database\Factories\Cities;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CountryFactory extends Factory
+class CityFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,7 +14,7 @@ class CountryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->city(),
         ];
     }
 }

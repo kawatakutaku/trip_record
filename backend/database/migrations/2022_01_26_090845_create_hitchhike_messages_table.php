@@ -15,6 +15,7 @@ class CreateHitchhikeMessagesTable extends Migration
     {
         Schema::create('hitchhike_messages', function (Blueprint $table) {
             $table->id();
+            $table->string('message');
             $table->foreignId('driver_id');
             $table->foreignId('hitchhiker_id');
             $table->timestamps();

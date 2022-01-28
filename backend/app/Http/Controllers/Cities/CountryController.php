@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Countries;
+namespace App\Http\Controllers\Cities;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTouristRequest;
-use App\Http\Requests\UpdateTouristRequest;
-use App\Models\Tourist;
+use App\Http\Requests\StoreCountryRequest;
+use App\Http\Requests\UpdateCountryRequest;
+use App\Models\Country;
 
-class TouristController extends Controller
+class CityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,10 +32,10 @@ class TouristController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTouristRequest  $request
+     * @param  \App\Http\Requests\StoreCountryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTouristRequest $request)
+    public function store(StoreCountryRequest $request)
     {
         //
     }
@@ -43,10 +43,10 @@ class TouristController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Tourist  $tourist
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function show(Tourist $tourist)
+    public function show(Country $country)
     {
         //
     }
@@ -54,10 +54,10 @@ class TouristController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Tourist  $tourist
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tourist $tourist)
+    public function edit(Country $country)
     {
         //
     }
@@ -65,11 +65,11 @@ class TouristController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTouristRequest  $request
-     * @param  \App\Models\Tourist  $tourist
+     * @param  \App\Http\Requests\UpdateCountryRequest  $request
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTouristRequest $request, Tourist $tourist)
+    public function update(UpdateCountryRequest $request, Country $country)
     {
         //
     }
@@ -77,10 +77,10 @@ class TouristController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Tourist  $tourist
+     * @param  \App\Models\Country  $country
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tourist $tourist)
+    public function destroy(Country $country)
     {
         //
     }

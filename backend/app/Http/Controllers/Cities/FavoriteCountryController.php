@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Countries;
+namespace App\Http\Controllers\Cities;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreCountryRequest;
-use App\Http\Requests\UpdateCountryRequest;
-use App\Models\Country;
+use App\Http\Requests\StoreFavoriteCountryRequest;
+use App\Http\Requests\UpdateFavoriteCountryRequest;
+use App\Models\FavoriteCountry;
 
-class CountryController extends Controller
+class FavoriteCityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -32,10 +32,10 @@ class CountryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCountryRequest  $request
+     * @param  \App\Http\Requests\StoreFavoriteCountryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCountryRequest $request)
+    public function store(StoreFavoriteCountryRequest $request)
     {
         //
     }
@@ -43,10 +43,10 @@ class CountryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\FavoriteCountry  $favoriteCountry
      * @return \Illuminate\Http\Response
      */
-    public function show(Country $country)
+    public function show(FavoriteCountry $favoriteCountry)
     {
         //
     }
@@ -54,10 +54,10 @@ class CountryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\FavoriteCountry  $favoriteCountry
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit(FavoriteCountry $favoriteCountry)
     {
         //
     }
@@ -65,11 +65,11 @@ class CountryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCountryRequest  $request
-     * @param  \App\Models\Country  $country
+     * @param  \App\Http\Requests\UpdateFavoriteCountryRequest  $request
+     * @param  \App\Models\FavoriteCountry  $favoriteCountry
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCountryRequest $request, Country $country)
+    public function update(UpdateFavoriteCountryRequest $request, FavoriteCountry $favoriteCountry)
     {
         //
     }
@@ -77,10 +77,10 @@ class CountryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Country  $country
+     * @param  \App\Models\FavoriteCountry  $favoriteCountry
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy(FavoriteCountry $favoriteCountry)
     {
         //
     }
