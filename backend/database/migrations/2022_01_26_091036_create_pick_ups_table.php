@@ -15,7 +15,10 @@ class CreatePickUpsTable extends Migration
     {
         Schema::create('pick_ups', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('hitchhiker_id');
+            $table->foreignId('driver_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

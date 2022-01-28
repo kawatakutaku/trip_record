@@ -15,7 +15,11 @@ class CreateTouristsTable extends Migration
     {
         Schema::create('tourists', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('spot');
+            $table->text('information');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

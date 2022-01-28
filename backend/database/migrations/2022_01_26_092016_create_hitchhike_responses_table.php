@@ -15,7 +15,11 @@ class CreateHitchhikeResponsesTable extends Migration
     {
         Schema::create('hitchhike_responses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('hitchhike_id');
+            $table->text('message');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

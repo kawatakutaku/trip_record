@@ -15,7 +15,12 @@ class CreateHitchhikesTable extends Migration
     {
         Schema::create('hitchhikes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('recommended_spot');
+            $table->string('message');
+            $table->string('spot_address');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

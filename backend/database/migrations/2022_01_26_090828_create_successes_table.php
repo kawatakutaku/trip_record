@@ -15,7 +15,10 @@ class CreateSuccessesTable extends Migration
     {
         Schema::create('successes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('hitchhike_id');
+            $table->foreignId('user_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
