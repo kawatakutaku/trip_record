@@ -17,7 +17,7 @@ class CreateBlogsTable extends Migration
             $table->id();
             $table->string('message');
             $table->foreignId('user_id');
-            $table->foreignId('country_id');
+            $table->foreignId('city_id');
             $table->timestamps();
             $table->softDeletes();
         });

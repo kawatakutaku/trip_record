@@ -17,6 +17,7 @@ class AddColumnUsersTalbe extends Migration
             $table->softDeletes();
             $table->string('profile');
             $table->string('img');
+            $table->string('sex');
             $table->string('password_reset_token');
             $table->string('register_token');
         });
