@@ -15,6 +15,11 @@ class AddColumnUsersTalbe extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->softDeletes();
+            $table->string('profile');
+            $table->string('img');
+            $table->string('sex');
+            $table->string('password_reset_token');
+            $table->string('register_token');
         });
     }
 
@@ -27,6 +32,10 @@ class AddColumnUsersTalbe extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropSoftDeletes();
+            $table->dropColumn('profile');
+            $table->dropColumn('img');
+            $table->dropColumn('password_reset_token');
+            $table->dropColumn('register_token');
         });
     }
 }

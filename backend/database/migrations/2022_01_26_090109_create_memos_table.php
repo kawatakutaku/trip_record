@@ -18,7 +18,7 @@ class CreateMemosTable extends Migration
             $table->string('memo');
             $table->string('img');
             $table->foreignId('user_id');
-            $table->foreignId('country_id');
+            $table->foreignId('city_id');
             $table->timestamps();
             $table->softDeletes();
         });

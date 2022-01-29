@@ -4,12 +4,14 @@ namespace Database\Seeders\Users;
 
 use App\Models\User;
 use Carbon\Carbon;
+use Database\Seeders\BaseDatabaseSeeder;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class UserSeeder extends Seeder
+class UserSeeder extends BaseDatabaseSeeder
 {
-    const ID = 700;
+    const USER_ID = 70000;
     const AccountPassword = 'password';
 
     /**
@@ -19,14 +21,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i<DatabaseSeeder::RECORD_NUM; $i++) {
-            $user_id = static::ID . $i;
-            $group_id = GroupSeeder::ID . $i;
+        for ($i=0; $i<DatabaseSeeder::RECORD_NUM; $i++)
+        {
+            $userId = static::USER_ID . $i;
 
             $users = User::factory()->raw([
-                'id' => $user_id,
+                'id' => $userId,
                 'password' => Hash::make(static::AccountPassword),
-                'group_id' => $group_id
             ]);
             User::upsert($users, ['id']);
         }

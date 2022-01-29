@@ -17,6 +17,7 @@ class CreateBlogGoodsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('blog_id');
+            $table->foreignId('city_id');
             $table->timestamps();
             $table->softDeletes();
         });
