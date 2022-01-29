@@ -3,12 +3,13 @@
 namespace Database\Seeders\Blogs;
 
 use App\Models\Blog;
+use Database\Seeders\BaseDatabaseSeeder;
 use Database\Seeders\Cities\CitySeeder;
 use Database\Seeders\DatabaseSeeder;
 use Database\Seeders\Users\UserSeeder;
 use Illuminate\Database\Seeder;
 
-class BlogSeeder extends Seeder
+class BlogSeeder extends BaseDatabaseSeeder
 {
     const BLOG_ID = 400;
 
@@ -21,9 +22,9 @@ class BlogSeeder extends Seeder
     {
         for ($i=0; $i<DatabaseSeeder::RECORD_NUM; $i++)
         {
-            $blogId = static::BLOG_ID;
-            $userId = UserSeeder::USER_ID;
-            $cityId = CitySeeder::CITY_ID;
+            $blogId = static::BLOG_ID . $i;
+            $userId = UserSeeder::USER_ID . $i;
+            $cityId = CitySeeder::CITY_ID . $i;
 
             $blogs = Blog::factory()->raw([
                 'id' => $blogId,

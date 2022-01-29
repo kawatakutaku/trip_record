@@ -3,11 +3,12 @@
 namespace Database\Seeders\Countries;
 
 use App\Models\Tourist;
+use Database\Seeders\BaseDatabaseSeeder;
 use Database\Seeders\DatabaseSeeder;
 use Database\Seeders\Users\UserSeeder;
 use Illuminate\Database\Seeder;
 
-class TouristSeeder extends Seeder
+class TouristSeeder extends BaseDatabaseSeeder
 {
     const TOURIST_ID = 700;
 

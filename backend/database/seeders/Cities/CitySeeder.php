@@ -3,10 +3,11 @@
 namespace Database\Seeders\Cities;
 
 use App\Models\City;
+use Database\Seeders\BaseDatabaseSeeder;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Database\Seeder;
 
-class CitySeeder extends Seeder
+class CitySeeder extends BaseDatabaseSeeder
 {
     const CITY_ID = 500;
 

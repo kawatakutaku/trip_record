@@ -4,12 +4,13 @@ namespace Database\Seeders\Blogs;
 
 use App\Models\Blog;
 use App\Models\BlogGood;
+use Database\Seeders\BaseDatabaseSeeder;
 use Database\Seeders\Cities\CitySeeder;
 use Database\Seeders\DatabaseSeeder;
 use Database\Seeders\Users\UserSeeder;
 use Illuminate\Database\Seeder;
 
-class BlogGoodSeeder extends Seeder
+class BlogGoodSeeder extends BaseDatabaseSeeder
 {
     const BLOG_GOOD_ID = 100;
 

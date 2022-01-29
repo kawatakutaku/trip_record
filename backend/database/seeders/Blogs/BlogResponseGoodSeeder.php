@@ -4,11 +4,12 @@ namespace Database\Seeders\Blogs;
 
 use App\Models\BlogResponse;
 use App\Models\BlogResponseGood;
+use Database\Seeders\BaseDatabaseSeeder;
 use Database\Seeders\DatabaseSeeder;
 use Database\Seeders\Users\UserSeeder;
 use Illuminate\Database\Seeder;
 
-class BlogResponseGoodSeeder extends Seeder
+class BlogResponseGoodSeeder extends BaseDatabaseSeeder
 {
     const BLOG_RESPONSE_GOOD_ID = 200;
 

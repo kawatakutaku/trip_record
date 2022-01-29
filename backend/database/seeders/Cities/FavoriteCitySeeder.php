@@ -3,11 +3,12 @@
 namespace Database\Seeders\Cities;
 
 use App\Models\FavoriteCity;
+use Database\Seeders\BaseDatabaseSeeder;
 use Database\Seeders\DatabaseSeeder;
 use Database\Seeders\Users\UserSeeder;
 use Illuminate\Database\Seeder;
 
-class FavoriteCitySeeder extends Seeder
+class FavoriteCitySeeder extends BaseDatabaseSeeder
 {
     const FAVORITE_CITY_ID = 600;
 

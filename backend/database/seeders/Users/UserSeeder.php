@@ -4,11 +4,12 @@ namespace Database\Seeders\Users;
 
 use App\Models\User;
 use Carbon\Carbon;
+use Database\Seeders\BaseDatabaseSeeder;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class UserSeeder extends Seeder
+class UserSeeder extends BaseDatabaseSeeder
 {
     const USER_ID = 70000;
     const AccountPassword = 'password';
