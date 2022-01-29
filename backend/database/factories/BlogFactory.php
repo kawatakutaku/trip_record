@@ -14,7 +14,7 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-            'message' => $this->faker->paragraph(),
+            'message' => $this->faker->realText(500),
         ];
     }
 }
