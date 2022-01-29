@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories\Cities;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class FavoriteCityFactory extends Factory
+class DirectMessageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +14,7 @@ class FavoriteCityFactory extends Factory
     public function definition()
     {
         return [
-            'created_at' => $this->faker->dateTimeThisDecade(),
-            'updated_at' => $this->faker->dateTimeThisDecade(),
+            'message' => $this->faker->realText(),
         ];
     }
 }

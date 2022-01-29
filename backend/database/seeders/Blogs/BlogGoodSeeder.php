@@ -23,14 +23,16 @@ class BlogGoodSeeder extends BaseDatabaseSeeder
     {
         for ($i=0; $i<DatabaseSeeder::RECORD_NUM; $i++)
         {
-            $blogId = static::BLOG_GOOD_ID . $i;
+            $blogGoodId = static::BLOG_GOOD_ID . $i;
             $userId = UserSeeder::USER_ID . $i;
-            $countryId = CitySeeder::CITY_ID . $i;
+            $cityId = CitySeeder::CITY_ID . $i;
+            $blogId = BlogSeeder::BLOG_ID . $i;
 
             $blogGoods = BlogGood::factory()->raw([
-                'id' => $blogId,
+                'id' => $blogGoodId,
                 'user_id' => $userId,
-                'country_id' => $countryId,
+                'city_id' => $cityId,
+                'blog_id' => $blogId,
             ]);
             BlogGood::upsert($blogGoods, ['id']);
         }

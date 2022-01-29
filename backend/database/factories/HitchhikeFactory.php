@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories\Hitchhikes\Doings;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class HikerReviewFactory extends Factory
+class HitchhikeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,8 +15,9 @@ class HikerReviewFactory extends Factory
     {
         return [
             'message' => $this->faker->realText(),
-            'created_at' => $this->faker->dateTimeThisDecade(),
-            'updated_at' => $this->faker->dateTimeThisDecade(),
+            'spot_address' => $this->faker->address(),
+            'recommended_spot' => $this->faker->city(),
+            
         ];
     }
 }

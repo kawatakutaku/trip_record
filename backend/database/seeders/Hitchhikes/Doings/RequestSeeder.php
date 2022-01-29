@@ -27,7 +27,7 @@ class RequestSeeder extends BaseDatabaseSeeder
             $requests = Request::factory()->raw([
                 'id' => $requestId,
                 'driver_id' => $driverId,
-                'hitchhikerId' => $hitchhikerId,
+                'hitchhiker_id' => $hitchhikerId,
             ]);
 
             Request::upsert($requests, ['id']);

@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories\Blogs;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class BlogGoodFactory extends Factory
+class CityFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +14,7 @@ class BlogGoodFactory extends Factory
     public function definition()
     {
         return [
-            'created_at' => $this->faker->dateTimeThisDecade(),
-            'updated_at' => $this->faker->dateTimeThisDecade(),
+            'name' => $this->faker->city(),
         ];
     }
 }

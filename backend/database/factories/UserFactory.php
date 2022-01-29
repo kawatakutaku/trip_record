@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories\Users;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -23,8 +23,7 @@ class UserFactory extends Factory
             'sex' => $this->faker->randomElement(['男性', '女性']),
             'img' => $this->faker->image(),
             'profile' => $this->faker->realText(30),
-            'created_at' => $this->faker->dateTimeThisDecade(),
-            'updated_at' => $this->faker->dateTimeThisDecade(),
+            
         ];
     }
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories\Hitchhikes\Doings;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PickUpFactory extends Factory
+class SuccessFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -14,8 +14,7 @@ class PickUpFactory extends Factory
     public function definition()
     {
         return [
-            'created_at' => $this->faker->dateTimeThisDecade(),
-            'updated_at' => $this->faker->dateTimeThisDecade(),
+            
         ];
     }
 }

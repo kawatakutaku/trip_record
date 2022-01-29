@@ -31,6 +31,8 @@ class BlogSeeder extends BaseDatabaseSeeder
                 'user_id' => $userId,
                 'city_id' => $cityId,
             ]);
+            // dd($blogs);
+
             Blog::upsert($blogs, ['id']);
         }
 

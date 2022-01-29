@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories\Blogs;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -14,9 +14,7 @@ class BlogFactory extends Factory
     public function definition()
     {
         return [
-            'message' => $this->faker->paragraphs(),
-            'created_at' => $this->faker->dateTimeThisDecade(),
-            'updated_at' => $this->faker->dateTimeThisDecade(),
+            'message' => $this->faker->paragraph(),
         ];
     }
 }

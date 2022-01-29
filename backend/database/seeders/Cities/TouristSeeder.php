@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\Countries;
+namespace Database\Seeders\Cities;
 
 use App\Models\Tourist;
 use Database\Seeders\BaseDatabaseSeeder;

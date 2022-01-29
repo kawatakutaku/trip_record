@@ -25,7 +25,7 @@ class QuestionSeeder extends BaseDatabaseSeeder
 
             $questions = Question::factory()->raw([
                 'id' => $questionId,
-                'userId' => $userId,
+                'user_id' => $userId,
             ]);
 
             Question::upsert($questions, ['id']);

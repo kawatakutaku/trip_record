@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories\Memos;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MemoFactory extends Factory
+class QuestionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,9 +15,7 @@ class MemoFactory extends Factory
     {
         return [
             'message' => $this->faker->realText(),
-            'img' => $this->faker->imageUrl(),
-            'created_at' => $this->faker->dateTimeThisDecade(),
-            'updated_at' => $this->faker->dateTimeThisDecade(),
+            
         ];
     }
 }

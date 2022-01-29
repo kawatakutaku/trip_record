@@ -8,7 +8,7 @@ use Database\Seeders\Blogs\BlogResponseSeeder;
 use Database\Seeders\Blogs\BlogSeeder;
 use Database\Seeders\Cities\CitySeeder;
 use Database\Seeders\Cities\FavoriteCitySeeder;
-use Database\Seeders\Countries\TouristSeeder;
+use Database\Seeders\Cities\TouristSeeder;
 use Database\Seeders\Friends\FriendSeeder;
 use Database\Seeders\Hitchhikes\Doings\DriverReviewSeeder;
 use Database\Seeders\Hitchhikes\Doings\HikerReviewSeeder;

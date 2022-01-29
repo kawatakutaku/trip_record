@@ -31,6 +31,8 @@ class BlogResponseSeeder extends BaseDatabaseSeeder
                 'user_id' => $userId,
                 'blog_id' => $blogId,
             ]);
+            // dd($blogResponses);
+
             BlogResponse::upsert($blogResponses, ['id']);
         }
     }

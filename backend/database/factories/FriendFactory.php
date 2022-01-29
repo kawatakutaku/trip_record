@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories\Friends;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -12,8 +12,7 @@ class FriendFactory extends Factory
     public function definition(): array
     {
         return [
-            'created_at' => $this->faker->dateTimeThisDecade(),
-            'updated_at' => $this->faker->dateTimeThisDecade(),
+            
         ];
     }
 }

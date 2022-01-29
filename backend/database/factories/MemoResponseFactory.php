@@ -1,10 +1,10 @@
 <?php
 
-namespace Database\Factories\Memos;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class DirectMessageFactory extends Factory
+class MemoResponseFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,8 +15,7 @@ class DirectMessageFactory extends Factory
     {
         return [
             'message' => $this->faker->realText(),
-            'created_at' => $this->faker->dateTimeThisDecade(),
-            'updated_at' => $this->faker->dateTimeThisDecade(),
+            
         ];
     }
 }

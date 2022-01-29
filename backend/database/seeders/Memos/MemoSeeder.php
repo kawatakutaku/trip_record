@@ -29,8 +29,9 @@ class MemoSeeder extends BaseDatabaseSeeder
             $memos = Memo::factory()->raw([
                 'id' => $memoId,
                 'user_id' => $userId,
-                'cityId' => $cityId,
+                'city_id' => $cityId,
             ]);
+            // dd($memos);
 
             Memo::upsert($memos, ['id']);
         }

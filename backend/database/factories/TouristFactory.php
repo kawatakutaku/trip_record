@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories\Countries;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -15,8 +15,7 @@ class TouristFactory extends Factory
     {
         return [
             'spot' => $this->faker->city(),
-            'created_at' => $this->faker->dateTimeThisDecade(),
-            'updated_at' => $this->faker->dateTimeThisDecade(),
+            'information' => $this->faker->realText(),
         ];
     }
 }

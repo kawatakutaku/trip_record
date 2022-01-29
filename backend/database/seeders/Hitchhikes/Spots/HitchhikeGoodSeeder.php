@@ -30,7 +30,7 @@ class HitchhikeGoodSeeder extends BaseDatabaseSeeder
             $hitchhikeGoods = HitchhikeGood::factory()->raw([
                 'id' => $hitchhikeGoodId,
                 'user_id' => $userId,
-                'hitchhikeId' => $hitchhikeId,
+                'hitchhike_id' => $hitchhikeId,
             ]);
 
             HitchhikeGood::upsert($hitchhikeGoods, ['id']);
