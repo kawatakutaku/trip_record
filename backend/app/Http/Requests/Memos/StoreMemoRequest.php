@@ -13,7 +13,8 @@ class StoreMemoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // TODO: 条件分岐しなてく良いのか検討
+        return true;
     }
 
     /**
@@ -21,10 +22,11 @@ class StoreMemoRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'memo' => 'required|255',
+            'img' => 'nullable',
         ];
     }
 }
