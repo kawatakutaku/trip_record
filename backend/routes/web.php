@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Memos\MemoController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\Users\MyPageController;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +28,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/mypage', MyPageController::class)->name('mypage');
 
-Route::resource('books', TripController::class)->only([
+Route::resource('memos', MemoController::class)->only([
     'index',
     'create',
     'store',
