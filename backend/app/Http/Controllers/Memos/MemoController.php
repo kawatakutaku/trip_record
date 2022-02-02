@@ -19,8 +19,8 @@ class MemoController extends Controller
     public function index()
     {
         $memos = Memo::all();
-        dd($memos);
-        return view(route('memos.index'), $memos);
+        // dd($memos);
+        return view(route("memos.index"), [ "memos" => $memos]);
     }
 
     /**
