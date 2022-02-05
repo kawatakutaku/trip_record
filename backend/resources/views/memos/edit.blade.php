@@ -14,23 +14,19 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('books.update', ['book' => $trip->id]) }}" method="post">
+                    <form action="{{ route('memos.update', ['memo' => $memo->id]) }}" method="post">
                         @method('put')
                         @csrf
                         <div class="mb-4">
-                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="title" id="title" value="{{ old('title') ?? $trip->trip_name }}">
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo" value="{{ old('memo') ?? $trip->trip_name }}">
                         </div>
                         <!-- TODO カレンダーを使った入力方法を採用する-->
                         <div class="mb-4">
-                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="description" id="description" value="{{ old('description') ?? $trip->start_day }}">
-                        </div>
-                        <!-- TODO カレンダーを使った入力方法を採用する-->
-                        <div class="mb-4">
-                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="book_img" id="book_img" value="{{ old('book_img') ?? $trip->end_day }}">
+                            <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="img" id="img" value="{{ old('img') ?? $trip->start_day }}">
                         </div>
                         <!-- TODO 背景色が反映されない-->
                         <div class="flex items-center justify-between">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">次へ </button>
+                            <button class="bg-blue-500 hover:bg-blue-700 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">変更する </button>
                         </div>
                     </form>
                 </div>
