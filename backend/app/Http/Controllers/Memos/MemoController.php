@@ -19,8 +19,7 @@ class MemoController extends Controller
     public function index()
     {
         $memos = Memo::all();
-        // dd($memos);
-        return view(route("memos.index"), [ "memos" => $memos]);
+        return view("memos.index", ["memos" => $memos]);
     }
 
     /**
@@ -30,7 +29,7 @@ class MemoController extends Controller
      */
     public function create()
     {
-        return view(route('memos.create'));
+        return view('memos.create');
     }
 
     /**
@@ -53,7 +52,7 @@ class MemoController extends Controller
         $memo->updated_at = Carbon::now();
         $memo->save();
 
-        return redirect(route('memos.index'));
+        return redirect('memos.index');
     }
 
     /**
@@ -64,8 +63,9 @@ class MemoController extends Controller
      */
     public function show(Memo $memo)
     {
-        // TODO: この書き方で良いかは不明
-        return view(route('memos.show', [ 'memo' => $memo ]));
+        $showMemo = Memo::find($memo);
+
+        return view(route('memos.show', [ 'memo' => $showMemo ]));
     }
 
     /**
@@ -76,7 +76,9 @@ class MemoController extends Controller
      */
     public function edit(Memo $memo)
     {
-        return view(route('memos.edit', [ 'memo' => $memo ]));
+        $editMemo = Memo::find($memo);
+
+        return view('memos.edit', [ 'memo' => $editMemo ]);
     }
 
     /**
@@ -100,7 +102,7 @@ class MemoController extends Controller
         $memo->updated_at = Carbon::now();
         $memo->save();
 
-        return redirect(route('memos.show', [ 'memo' => $memo ]));
+        return redirect('memos.show', [ 'memo' => $memo ]);
     }
 
     /**
@@ -114,6 +116,6 @@ class MemoController extends Controller
         $memo = Memo::find($memo);
         $memo->delete();
 
-        return redirect(route('memos.index'));
+        return redirect('memos.index');
     }
 }
