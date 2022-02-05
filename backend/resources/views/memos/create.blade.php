@@ -18,16 +18,16 @@
                         @csrf
                         <div class="row p-2 justify-content-center">
                             <div class="col-6">
-                                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo" value="{{ old('memo') }}" placeholder="メモ">
+                                <textarea type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo" value="{{ old('memo') }}" placeholder="メモ"></textarea>
                             </div>
                         </div>
                         <div class="row p-2 mt-3 justify-content-center">
                             <div class="col-6" id="img">
-                                <input type="text" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="img" id="img" value="{{ old('img') }}" placeholder="画像">
+                                <x-input type="file" name="img" id="img" value="{{ old('img') }}" placeholder="画像" />
                             </div>
                         </div>
                         <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
-                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button"> 次へ</button>
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">投稿する</button>
                         </div>
                     </form>
                 </div>
