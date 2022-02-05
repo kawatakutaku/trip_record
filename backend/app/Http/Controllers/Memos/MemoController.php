@@ -63,9 +63,7 @@ class MemoController extends Controller
      */
     public function show(Memo $memo)
     {
-        $showMemo = Memo::find($memo);
-
-        return view(route('memos.show', [ 'memo' => $showMemo ]));
+        return view('memos.show', [ "memo" => $memo ]);
     }
 
     /**
@@ -76,9 +74,7 @@ class MemoController extends Controller
      */
     public function edit(Memo $memo)
     {
-        $editMemo = Memo::find($memo);
-
-        return view('memos.edit', [ 'memo' => $editMemo ]);
+        return view('memos.edit', [ 'memo' => $memo ]);
     }
 
     /**
