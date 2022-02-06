@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-100 leading-tight">
             <!-- TODO: Dashboardのように言語ファイルを使用する-->
             メモの一覧
         </h2>
@@ -14,13 +14,13 @@
                     <!-- TODO: どのユーザーの投稿かもわかるようにしたい-->
                     <div class="row p-2 justify-content-center">
                         <div class="col-6">
-                            <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo">{{ $memo->memo }}</p>
-                        </div>
-                    </div>
-                    <div class="row p-2 mt-3 justify-content-center">
-                        <div class="col-6" id="img">
+                            <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo">{{ $memo->memo }}</p>
                             <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="img" id="img">{{ $memo->img }}</p>
                         </div>
+                        <x-linkbutton href="{{ route('memos.show', ['memo' => $memo->id]) }}">
+                            <i class="fas fa-lg fa-file-alt"></i>
+                            <i class="fas fa-lg fa-trash-alt"></i>
+                        </x-linkbutton>
                     </div>
                     @endforeach
                 </div>
