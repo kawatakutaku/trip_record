@@ -40,6 +40,8 @@ class MemoController extends Controller
      */
     public function store(StoreMemoRequest $request, string $cityId)
     {
+        // TODO: ログインと都市の選択をする機能を先に作らないとエラーが発生する
+
         $memo = new Memo();
 
         $memo->memo = $request->memo;
@@ -86,6 +88,7 @@ class MemoController extends Controller
      */
     public function update(UpdateMemoRequest $request, Memo $memo, string $cityId)
     {
+        // TODO: ログインと都市の選択をする機能を先に作らないとエラーが発生する
         $memo = Memo::find($memo);
 
         $memo->memo = $request->memo;
@@ -98,7 +101,7 @@ class MemoController extends Controller
         $memo->updated_at = Carbon::now();
         $memo->save();
 
-        return redirect('memos.show', [ 'memo' => $memo ]);
+        return redirect(route('memos.show', [ 'memo' => $memo ]));
     }
 
     /**
@@ -109,9 +112,8 @@ class MemoController extends Controller
      */
     public function destroy(Memo $memo)
     {
-        $memo = Memo::find($memo);
         $memo->delete();
 
-        return redirect('memos.index');
+        return redirect(route('memos.index'));
     }
 }

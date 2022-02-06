@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Memos;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreDirectMessageRequest;
-use App\Http\Requests\UpdateDirectMessageRequest;
+use App\Http\Requests\Memos\StoreDirectMessageRequest;
+use App\Http\Requests\Memos\UpdateDirectMessageRequest;
 use App\Models\DirectMessage;
 
 class DirectMessageController extends Controller
