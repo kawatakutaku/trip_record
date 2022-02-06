@@ -25,7 +25,7 @@ class UpdateMemoRequest extends FormRequest
     public function rules()
     {
         return [
-            'memo' => 'required|255',
+            'memo' => 'required|max:255',
             'img' => 'nullable',
         ];
     }

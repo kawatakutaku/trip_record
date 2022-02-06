@@ -25,7 +25,7 @@ class StoreMemoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'memo' => 'required|255',
+            'memo' => 'required|max:255',
             'img' => 'nullable',
         ];
     }
