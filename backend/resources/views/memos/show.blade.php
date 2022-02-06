@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-100 leading-tight">
             <!-- TODO: Dashboardのように言語ファイルを使用する-->
             詳細画面
         </h2>
