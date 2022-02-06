@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Blogs\BlogController;
+use App\Http\Controllers\Memos\DirectMessageController;
 use App\Http\Controllers\Memos\MemoController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\Users\MyPageController;
@@ -37,3 +39,27 @@ Route::resource('memos', MemoController::class)->only([
     'update',
     'destroy'
 ]);
+
+Route::resource('blogs', BlogController::class)->only([
+    'index',
+    'create',
+    'store',
+    'show',
+    'edit',
+    'update',
+    'destroy'
+]);
+
+Route::resource('direct_messages', DirectMessageController::class)->only([
+    'index',
+    'create',
+    'store',
+    'show',
+    'edit',
+    'update',
+    'destroy'
+]);
+
+Route::group(['prefix' => 'cities', 'as' => 'cities.'], function() {
+    Route::get('/');
+});
