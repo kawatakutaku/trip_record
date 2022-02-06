@@ -14,7 +14,7 @@
                     <!-- TODO: どのユーザーの投稿かもわかるようにしたい-->
                     <div class="row p-2 justify-content-center">
                         <div class="col-6">
-                            <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo">{{ $memo->memo }}</p>
+                            <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo">{{ $memo->memo }}</p>
                         </div>
                     </div>
                     <div class="row p-2 mt-3 justify-content-center">

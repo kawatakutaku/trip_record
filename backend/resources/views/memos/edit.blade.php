@@ -21,13 +21,11 @@
                             <!-- TODO: dbから取得したデータを初期値として登録できるようにする(component側の記述を変更する) -->
                             <x-textarea name="memo" id="memo" value="{{ old('memo') ?? $memo->memo }}" />
                         </div>
-                        <!-- TODO: カレンダーを使った入力方法を採用する-->
                         <div class="mb-4">
                             <x-input type="text" name="img" id="img" value="{{ old('img') ?? $memo->img }}" />
                         </div>
-                        <!-- TODO: 背景色が反映されない-->
                         <div class="flex items-center justify-between">
-                            <button class="bg-blue-500 hover:bg-blue-700 text-gray-700 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">変更する </button>
+                            <x-button><svg class="h-8 w-8 text-black"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <line x1="22" y1="2" x2="11" y2="13" />  <polygon points="22 2 15 22 11 13 2 9 22 2" /></svg></x-button>
                         </div>
                     </form>
                 </div>
