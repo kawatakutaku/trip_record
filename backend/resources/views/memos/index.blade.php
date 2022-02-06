@@ -17,10 +17,13 @@
                             <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo">{{ $memo->memo }}</p>
                             <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="img" id="img">{{ $memo->img }}</p>
                         </div>
+                        <x-linkbutton href="{{ route('memos.create') }}">
+                            <i class="fas fa-lg fa-pen"></i>
+                        </x-linkbutton>
                         <x-linkbutton href="{{ route('memos.show', ['memo' => $memo->id]) }}">
                             <i class="fas fa-lg fa-file-alt"></i>
-                            <i class="fas fa-lg fa-trash-alt"></i>
                         </x-linkbutton>
+                        <i class="fas fa-lg fa-trash-alt"></i>
                     </div>
                     @endforeach
                 </div>
