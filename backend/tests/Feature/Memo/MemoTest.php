@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
-class MemoIndexTest extends TestCase
+class MemoTest extends TestCase
 {
 
     protected function setUp(): void
