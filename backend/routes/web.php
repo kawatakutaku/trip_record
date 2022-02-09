@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Blogs\BlogController;
+use App\Http\Controllers\Memos\DirectMessageController;
+use App\Http\Controllers\Memos\MemoController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\Users\MyPageController;
 use Illuminate\Support\Facades\Route;
@@ -27,7 +30,7 @@ require __DIR__.'/auth.php';
 
 Route::get('/mypage', MyPageController::class)->name('mypage');
 
-Route::resource('books', TripController::class)->only([
+Route::resource('memos', MemoController::class)->only([
     'index',
     'create',
     'store',
@@ -36,3 +39,27 @@ Route::resource('books', TripController::class)->only([
     'update',
     'destroy'
 ]);
+
+Route::resource('blogs', BlogController::class)->only([
+    'index',
+    'create',
+    'store',
+    'show',
+    'edit',
+    'update',
+    'destroy'
+]);
+
+Route::resource('direct_messages', DirectMessageController::class)->only([
+    'index',
+    'create',
+    'store',
+    'show',
+    'edit',
+    'update',
+    'destroy'
+]);
+
+Route::group(['prefix' => 'cities', 'as' => 'cities.'], function() {
+    Route::get('/');
+});

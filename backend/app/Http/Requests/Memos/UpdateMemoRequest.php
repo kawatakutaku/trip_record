@@ -13,7 +13,8 @@ class UpdateMemoRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        // TODO: 条件分岐しなてく良いのか検討
+        return true;
     }
 
     /**
@@ -24,7 +25,8 @@ class UpdateMemoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'memo' => 'required|max:255',
+            'img' => 'nullable',
         ];
     }
 }
