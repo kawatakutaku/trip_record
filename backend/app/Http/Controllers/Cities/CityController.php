@@ -15,6 +15,7 @@ class CityController extends Controller
     public function __invoke()
     {
         // TODO: 都市の絞り込みだけを行うようにしたい
+        return view("cities.city");
     }
 
 }

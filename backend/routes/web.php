@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Blogs\BlogController;
+use App\Http\Controllers\Cities\CityController;
 use App\Http\Controllers\Memos\DirectMessageController;
 use App\Http\Controllers\Memos\MemoController;
 use App\Http\Controllers\TripController;
@@ -60,6 +61,8 @@ Route::resource('direct_messages', DirectMessageController::class)->only([
     'destroy'
 ]);
 
-Route::group(['prefix' => 'cities', 'as' => 'cities.'], function() {
-    Route::get('/');
-});
+Route::get('cities', CityController::class)->name('cities');
+
+// Route::group(['prefix' => 'cities', 'as' => 'cities.'], function() {
+//     Route::get('/', CityController::class);
+// });
