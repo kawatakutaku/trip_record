@@ -61,8 +61,10 @@ Route::resource('direct_messages', DirectMessageController::class)->only([
     'destroy'
 ]);
 
-Route::get('cities', CityController::class)->name('cities');
+// Route::get('cities', CityController::class)->name('cities.form');
+// Route::post('cities', CityController::class)->name('cities.post');
 
-// Route::group(['prefix' => 'cities', 'as' => 'cities.'], function() {
-//     Route::get('/', CityController::class);
-// });
+Route::group(['prefix' => 'cities', 'as' => 'cities.'], function() {
+    Route::get('/', [CityController::class, 'form'])->name('form');
+    Route::post('/', [CityController::class, 'post'])->name('post');
+});
