@@ -3,6 +3,7 @@
 namespace Database\Seeders\Blogs;
 
 use App\Models\Blog;
+use App\Models\City;
 use Database\Seeders\BaseDatabaseSeeder;
 use Database\Seeders\Cities\CitySeeder;
 use Database\Seeders\DatabaseSeeder;
@@ -24,7 +25,7 @@ class BlogSeeder extends BaseDatabaseSeeder
         {
             $blogId = static::BLOG_ID . $i;
             $userId = UserSeeder::USER_ID . $i;
-            $cityId = CitySeeder::CITY_ID . $i;
+            $cityId = City::inRandomOrder()->first()->id;
 
             $blogs = Blog::factory()->raw([
                 'id' => $blogId,
