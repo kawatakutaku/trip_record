@@ -67,7 +67,7 @@ class CitySeeder extends BaseDatabaseSeeder
      */
     public function run()
     {
-
+        // TODO: 後から都市に変更したい
         for ($i=0; $i<count($this->prefectures) ;$i++)
         {
             $data = [
