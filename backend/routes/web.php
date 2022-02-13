@@ -29,42 +29,45 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/mypage', MyPageController::class)->name('mypage');
+Route::group(['middleware' => 'auth'], function() {
 
-Route::resource('memos', MemoController::class)->only([
-    'index',
-    'create',
-    'store',
-    'show',
-    'edit',
-    'update',
-    'destroy'
-]);
+    Route::get('/mypage', MyPageController::class)->name('mypage');
 
-Route::resource('blogs', BlogController::class)->only([
-    'index',
-    'create',
-    'store',
-    'show',
-    'edit',
-    'update',
-    'destroy'
-]);
+    Route::resource('memos', MemoController::class)->only([
+        'index',
+        'create',
+        'store',
+        'show',
+        'edit',
+        'update',
+        'destroy'
+    ]);
 
-Route::resource('direct_messages', DirectMessageController::class)->only([
-    'index',
-    'create',
-    'store',
-    'show',
-    'edit',
-    'update',
-    'destroy'
-]);
+    Route::resource('blogs', BlogController::class)->only([
+        'index',
+        'create',
+        'store',
+        'show',
+        'edit',
+        'update',
+        'destroy'
+    ]);
 
-// Route::get('cities', CityController::class)->name('cities.form');
-// Route::post('cities', CityController::class)->name('cities.post');
+    Route::resource('direct_messages', DirectMessageController::class)->only([
+        'index',
+        'create',
+        'store',
+        'show',
+        'edit',
+        'update',
+        'destroy'
+    ]);
 
-Route::group(['prefix' => 'cities', 'as' => 'cities.'], function() {
-    Route::get('/', [CityController::class, 'form'])->name('form');
-    Route::post('/', [CityController::class, 'post'])->name('post');
+    // Route::get('cities', CityController::class)->name('cities.form');
+    // Route::post('cities', CityController::class)->name('cities.post');
+
+    Route::group(['prefix' => 'cities', 'as' => 'cities.'], function() {
+        Route::get('/', [CityController::class, 'form'])->name('form');
+        Route::post('/', [CityController::class, 'post'])->name('post');
+    });
 });
