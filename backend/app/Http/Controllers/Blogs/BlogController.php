@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Blogs;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreBlogRequest;
-use App\Http\Requests\UpdateBlogRequest;
+use App\Http\Requests\Blogs\StoreBlogRequest;
+use App\Http\Requests\Blogs\UpdateBlogRequest;
 use App\Models\Blog;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -16,7 +18,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $blogs = Blog::all();
+        return view("blogs.index", ["blogs" => $blogs]);
     }
 
     /**
@@ -26,7 +29,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view("blogs.create");
     }
 
     /**
@@ -35,9 +38,19 @@ class BlogController extends Controller
      * @param  \App\Http\Requests\StoreBlogRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBlogRequest $request)
+    public function store(StoreBlogRequest $request, string $cityId)
     {
-        //
+        $blog = new Blog();
+
+        $blog->message = $request->message;
+        $userId = Auth::id();
+        $blog->user_id = $userId;
+        $blog->city_id = $cityId;
+        $blog->created_at = Carbon::now();
+        $blog->updated_at = Carbon::now();
+        $blog->save();
+
+        return redirect("blogs.index");
     }
 
     /**
@@ -48,7 +61,7 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        //
+        return view("blogs.show", ["blog" => $blog]);
     }
 
     /**
@@ -59,7 +72,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return view("blogs.edit", ["blog" => $blog]);
     }
 
     /**
@@ -69,9 +82,19 @@ class BlogController extends Controller
      * @param  \App\Models\Blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBlogRequest $request, Blog $blog)
+    public function update(UpdateBlogRequest $request, Blog $blog, string $cityId)
     {
-        //
+        $blog = Blog::find($blog);
+
+        $blog->message = $request->message;
+        $userId = Auth::id();
+        $blog->user_id = $userId;
+        $blog->city_id = $cityId;
+        $blog->created_at = Carbon::now();
+        $blog->updated_at = Carbon::now();
+        $blog->save();
+
+        return redirect(route("blogs.show", ["blog" => $blog]));
     }
 
     /**
@@ -82,6 +105,8 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+
+        return redirect(route("blogs.index"));
     }
 }
