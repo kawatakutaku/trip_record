@@ -13,7 +13,7 @@ class UpdateMemoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        // TODO: 条件分岐しなてく良いのか検討
+        // TODO: 条件分岐しなくて良いのか検討
         return true;
     }
 
