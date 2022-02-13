@@ -11,9 +11,9 @@ class UpdateMemoRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        // TODO: 条件分岐しなてく良いのか検討
+        // TODO: 条件分岐しなくて良いのか検討
         return true;
     }
 
@@ -22,7 +22,7 @@ class UpdateMemoRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'memo' => 'required|max:255',

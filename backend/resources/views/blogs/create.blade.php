@@ -2,7 +2,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-100 leading-tight">
             <!-- TODO: Dashboardのように言語ファイルを使用する-->
-            編集中
+            ブログの作成画面
         </h2>
     </x-slot>
 
@@ -14,17 +14,14 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('memos.update', ['memo' => $memo->id]) }}" method="post">
-                        @method('put')
+                    <form action="{{ route('blogs.store') }}" method="post">
                         @csrf
-                        <div class="mb-4">
-                            <!-- TODO: dbから取得したデータを初期値として登録できるようにする(component側の記述を変更する) -->
-                            <x-textarea name="memo" id="memo">{{ old('memo') ?? $memo->memo }}</x-textarea>
+                        <div class="row p-2 justify-content-center">
+                            <div class="col-6">
+                                <x-textarea name="blog" id="blog" value="{{ old('blog') }}" placeholder="ブログ" />
+                            </div>
                         </div>
-                        <div class="mb-4">
-                            <x-input type="text" name="img" id="img" value="{{ old('img') ?? $memo->img }}" />
-                        </div>
-                        <div class="flex items-center justify-between">
+                        <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
                             <x-button>
                                 <i class="fas fa-2x fa-paper-plane"></i>
                             </x-button>
