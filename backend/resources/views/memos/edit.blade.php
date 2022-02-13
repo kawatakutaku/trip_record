@@ -19,7 +19,7 @@
                         @csrf
                         <div class="mb-4">
                             <!-- TODO: dbから取得したデータを初期値として登録できるようにする(component側の記述を変更する) -->
-                            <x-textarea name="memo" id="memo" value="{{ old('memo') ?? $memo->memo }}" />
+                            <x-textarea name="memo" id="memo">{{ old('memo') ?? $memo->memo }}</x-textarea>
                         </div>
                         <div class="mb-4">
                             <x-input type="text" name="img" id="img" value="{{ old('img') ?? $memo->img }}" />
