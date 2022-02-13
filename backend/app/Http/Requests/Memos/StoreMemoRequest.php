@@ -22,7 +22,7 @@ class StoreMemoRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(): array: array
+    public function rules(): array
     {
         return [
             'memo' => 'required|max:255',
