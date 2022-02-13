@@ -19,7 +19,7 @@
                         @csrf
                         <div class="mb-4">
                             <!-- TODO: dbから取得したデータを初期値として登録できるようにする(component側の記述を変更する) -->
-                            <x-textarea name="blog" id="blog">{{$blog->message}}</x-textarea>
+                            <x-textarea name="blog" id="blog">{{ old("blog") ?? $blog->message}}</x-textarea>
                         </div>
                         <div class="flex items-center justify-between">
                             <x-button>
