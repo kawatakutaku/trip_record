@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Memos;
 
+use App\Models\City;
 use App\Models\Memo;
 use Database\Seeders\BaseDatabaseSeeder;
 use Database\Seeders\Cities\CitySeeder;
@@ -24,14 +25,13 @@ class MemoSeeder extends BaseDatabaseSeeder
         {
             $memoId = static::MEMO_ID . $i;
             $userId = UserSeeder::USER_ID . $i;
-            $cityId = CitySeeder::CITY_ID . $i;
+            $cityId = City::inRandomOrder()->first()->id;
 
             $memos = Memo::factory()->raw([
                 'id' => $memoId,
                 'user_id' => $userId,
                 'city_id' => $cityId,
             ]);
-            // dd($memos);
 
             Memo::upsert($memos, ['id']);
         }

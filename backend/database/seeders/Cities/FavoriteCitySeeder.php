@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Cities;
 
+use App\Models\City;
 use App\Models\FavoriteCity;
 use Database\Seeders\BaseDatabaseSeeder;
 use Database\Seeders\DatabaseSeeder;
@@ -23,7 +24,7 @@ class FavoriteCitySeeder extends BaseDatabaseSeeder
         {
             $favoriteCityId = static::FAVORITE_CITY_ID . $i;
             $userId = UserSeeder::USER_ID . $i;
-            $cityId = CitySeeder::CITY_ID . $i;
+            $cityId = City::inRandomOrder()->first()->id;
 
             $favoriteCities = FavoriteCity::factory()->raw([
                 'id' => $favoriteCityId,
