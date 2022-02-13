@@ -11,7 +11,7 @@ class StoreMemoRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         // TODO: 条件分岐しなてく良いのか検討
         return true;
@@ -22,7 +22,7 @@ class StoreMemoRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(): array
+    public function rules(): array: array
     {
         return [
             'memo' => 'required|max:255',
