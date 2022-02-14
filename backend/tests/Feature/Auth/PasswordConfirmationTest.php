@@ -4,22 +4,22 @@ namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
 class PasswordConfirmationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_confirm_password_screen_can_be_rendered()
+    public function testConfirmPassword()
     {
         $user = User::factory()->create();
 
         $response = $this->actingAs($user)->get('/confirm-password');
-
-        $response->assertStatus(200);
+        $response->assertStatus(Response::HTTP_OK);
     }
 
-    public function test_password_can_be_confirmed()
+    public function testConfirmedPassword()
     {
         $user = User::factory()->create();
 
@@ -31,7 +31,7 @@ class PasswordConfirmationTest extends TestCase
         $response->assertSessionHasNoErrors();
     }
 
-    public function test_password_is_not_confirmed_with_invalid_password()
+    public function testNotConfirmedPassword()
     {
         $user = User::factory()->create();
 

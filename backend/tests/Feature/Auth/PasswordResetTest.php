@@ -6,20 +6,20 @@ use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
+use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
 class PasswordResetTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_reset_password_link_screen_can_be_rendered()
+    public function testResetPassword()
     {
         $response = $this->get('/forgot-password');
-
-        $response->assertStatus(200);
+        $response->assertStatus(Response::HTTP_OK);
     }
 
-    public function test_reset_password_link_can_be_requested()
+    public function testResetPasswordRequested()
     {
         Notification::fake();
 
@@ -30,7 +30,8 @@ class PasswordResetTest extends TestCase
         Notification::assertSentTo($user, ResetPassword::class);
     }
 
-    public function test_reset_password_screen_can_be_rendered()
+    // TODO: メソッド名を変更する必要がある
+    public function testResetPasswordNotification()
     {
         Notification::fake();
 
@@ -40,14 +41,13 @@ class PasswordResetTest extends TestCase
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) {
             $response = $this->get('/reset-password/'.$notification->token);
-
-            $response->assertStatus(200);
+            $response->assertStatus(Response::HTTP_OK);
 
             return true;
         });
     }
 
-    public function test_password_can_be_reset_with_valid_token()
+    public function testPasswordToken()
     {
         Notification::fake();
 
