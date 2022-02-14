@@ -6,12 +6,12 @@
         </h2>
     </x-slot>
 
-    @if ($trips === null)
+    @if ($memos === null)
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    さあ、旅行に行こう!
+                    メモ一覧
                 </div>
             </div>
         </div>
@@ -22,14 +22,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <!-- TODO 旅行の一覧を2列で表示するように変更する-->
-                    <h2 class="text-gray-800 py-4">次の旅行</h2>
-                    @foreach($trips as $trip)
-                    <a class="bg-blue-500" href="{{ route('trips.show', ['trip' => $trip->id]) }}" role="button">
-                        {{ $trip->trip_name }} <br>
-                        {{ $trip->start_day }} 〜 {{ $trip->end_day }}
+                    <h2 class="text-gray-800 py-4">メモ一覧</h2>
+                    @foreach($memos as $memo)
+                    <a class="bg-blue-500" href="{{ route('memos.show', ['memo' => $memo->id]) }}" role="button">
+                        {{ $memo->memo_name }} <br>
+                        {{ $memo->start_day }} 〜 {{ $memo->end_day }}
                     </a>
-                    <form action="{{ route('trips.destroy', ['trip' => $trip->id]) }}" method="POST">
-                        <a class="text-black" href="{{ route('trips.edit', ['trip' => $trip->id]) }}">
+                    <form action="{{ route('memos.destroy', ['memo' => $memo->id]) }}" method="POST">
+                        <a class="text-black" href="{{ route('memos.edit', ['memo' => $memo->id]) }}">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                             </svg>
