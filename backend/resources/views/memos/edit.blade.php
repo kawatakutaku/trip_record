@@ -14,7 +14,7 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('memos.update', ['memo' => $memo->id]) }}" method="post">
+                    <form action="{{ route('memos.update', ['memo' => $memo->id, 'cityId' => $cityId]) }}" method="post">
                         @method('put')
                         @csrf
                         <div class="mb-4">

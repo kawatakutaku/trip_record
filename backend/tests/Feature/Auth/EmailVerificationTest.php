@@ -8,24 +8,24 @@ use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\URL;
+use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
 class EmailVerificationTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_email_verification_screen_can_be_rendered()
+    public function testEmailVerification()
     {
         $user = User::factory()->create([
             'email_verified_at' => null,
         ]);
 
         $response = $this->actingAs($user)->get('/verify-email');
-
-        $response->assertStatus(200);
+        $response->assertStatus(Response::HTTP_OK);
     }
 
-    public function test_email_can_be_verified()
+    public function testEmailVerified()
     {
         $user = User::factory()->create([
             'email_verified_at' => null,
@@ -46,7 +46,7 @@ class EmailVerificationTest extends TestCase
         $response->assertRedirect(RouteServiceProvider::HOME.'?verified=1');
     }
 
-    public function test_email_is_not_verified_with_invalid_hash()
+    public function testEmailNotVerified()
     {
         $user = User::factory()->create([
             'email_verified_at' => null,
@@ -59,7 +59,6 @@ class EmailVerificationTest extends TestCase
         );
 
         $this->actingAs($user)->get($verificationUrl);
-
         $this->assertFalse($user->fresh()->hasVerifiedEmail());
     }
 }
