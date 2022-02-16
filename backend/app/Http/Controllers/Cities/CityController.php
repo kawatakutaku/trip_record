@@ -35,8 +35,8 @@ class CityController extends Controller
          */
 
         //  TODO: 絞り込みをしてmemoのindexのページで表示したい => というか、むしろindexのページで絞り込みをできるようにする方が良さそう？
-        $memos = Memo::where('city_id', $request->cityId);
-        return redirect()->route("memos.index", ['memo' => $memos]);
+        // $requestではnameにidが格納されて渡ってくる
+        return redirect()->route("memos.index", ['cityId' => $request->name]);
     }
 
 }
