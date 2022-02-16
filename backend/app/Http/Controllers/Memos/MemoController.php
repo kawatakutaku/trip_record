@@ -16,8 +16,9 @@ class MemoController extends Controller
 {
     /**
      * メモの一覧画面
-     * @param Illuminate\Http\Request
-     * @return Illuminate\View\View
+     *
+     * @param \Illuminate\Http\Request
+     * @return \Illuminate\View\View
      */
     public function index(Request $request): View
     {
@@ -29,8 +30,9 @@ class MemoController extends Controller
 
     /**
      * メモの新規作成画面
-     * @param Illuminate\Http\Request
-     * @return Illuminate\View\View
+     *
+     * @param \Illuminate\Http\Request
+     * @return \Illuminate\View\View
      */
     public function create(Request $request): View
     {
@@ -39,8 +41,9 @@ class MemoController extends Controller
 
     /**
      * メモの保存処理
+     *
      * @param  \App\Http\Requests\StoreMemoRequest  $request
-     * @return Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreMemoRequest $request): RedirectResponse
     {
@@ -65,9 +68,10 @@ class MemoController extends Controller
 
     /**
      * メモの詳細画面
-     * @param Illuminate\Http\Request $request
+     *
+     * @param \Illuminate\Http\Request $request
      * @param  \App\Models\Memo  $memo
-     * @return Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function show(Request $request, Memo $memo): View
     {
@@ -76,9 +80,10 @@ class MemoController extends Controller
 
     /**
      * メモの編集画面
-     * @param Illuminate\Http\Request $request
+     *
+     * @param \Illuminate\Http\Request $request
      * @param  \App\Models\Memo  $memo
-     * @return Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function edit(Request $request, Memo $memo): View
     {
@@ -90,7 +95,7 @@ class MemoController extends Controller
      *
      * @param  \App\Http\Requests\UpdateMemoRequest  $request
      * @param  \App\Models\Memo  $memo
-     * @return Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(UpdateMemoRequest $request, Memo $memo): RedirectResponse
     {
@@ -111,9 +116,10 @@ class MemoController extends Controller
 
     /**
      * メモの削除処理
-     * @param Illuminate\Http\Request $request
+     *
+     * @param \Illuminate\Http\Request $request
      * @param  \App\Models\Memo  $memo
-     * @return Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Request $request, Memo $memo): RedirectResponse
     {
