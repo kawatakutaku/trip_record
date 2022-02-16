@@ -7,106 +7,112 @@ use App\Http\Requests\Blogs\StoreBlogRequest;
 use App\Http\Requests\Blogs\UpdateBlogRequest;
 use App\Models\Blog;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 
 class BlogController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * ブログの一覧画面
      *
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request): View
     {
-        $blogs = Blog::all();
-        return view("blogs.index", ["blogs" => $blogs]);
+        $blogs = Blog::where("city_id", $request->cityId)->get();
+
+        return view("blogs.index", ["blogs" => $blogs, "cityId" => $request->cityId]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * ブログの新規作成画面
      *
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request): View
     {
-        return view("blogs.create");
+        return view("blogs.create", ["cityId" => $request->cityId]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * ブログの保存処理
      *
      * @param  \App\Http\Requests\StoreBlogRequest  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreBlogRequest $request, string $cityId)
+    public function store(StoreBlogRequest $request): RedirectResponse
     {
         $blog = new Blog();
 
         $blog->message = $request->message;
         $userId = Auth::id();
         $blog->user_id = $userId;
-        $blog->city_id = $cityId;
+        $blog->city_id = $request->cityId;
         $blog->created_at = Carbon::now();
         $blog->updated_at = Carbon::now();
         $blog->save();
 
-        return redirect("blogs.index");
+        return redirect(route("blogs.index", ["cityId" => $request->cityId]));
     }
 
     /**
-     * Display the specified resource.
+     * ブログの詳細画面
      *
+     * @param \Illuminate\Http\Request $request
      * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function show(Blog $blog)
+    public function show(Blog $blog, Request $request): View
     {
-        return view("blogs.show", ["blog" => $blog]);
+        return view("blogs.show", ["blog" => $blog, "cityId" => $request->cityId]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * ブログの編集画面
      *
+     * @param \Illuminate\Http\Request $request
      * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function edit(Blog $blog)
+    public function edit(Blog $blog, Request $request): View
     {
-        return view("blogs.edit", ["blog" => $blog]);
+        return view("blogs.edit", ["blog" => $blog, "cityId" => $request->cityId]);
     }
 
     /**
-     * Update the specified resource in storage.
+     * ブログの更新処理
      *
      * @param  \App\Http\Requests\UpdateBlogRequest  $request
      * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateBlogRequest $request, Blog $blog, string $cityId)
+    public function update(UpdateBlogRequest $request, Blog $blog): RedirectResponse
     {
-        $blog = Blog::find($blog);
-
         $blog->message = $request->message;
         $userId = Auth::id();
         $blog->user_id = $userId;
-        $blog->city_id = $cityId;
+        $blog->city_id = $request->cityId;
         $blog->created_at = Carbon::now();
-        $blog->updated_at = Carbon::now();
         $blog->save();
 
-        return redirect(route("blogs.show", ["blog" => $blog]));
+        return redirect(route("blogs.show", ["blog" => $blog, "cityId" => $request->cityId]));
     }
 
     /**
-     * Remove the specified resource from storage.
+     * ブログの削除処理
      *
+     * @param \Illuminate\Http\Request $request
      * @param  \App\Models\Blog  $blog
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Blog $blog)
+    public function destroy(Blog $blog, Request $request): RedirectResponse
     {
         $blog->delete();
 
-        return redirect(route("blogs.index"));
+        return redirect(route("blogs.index", ["cityId" => $request->cityId]));
     }
 }
