@@ -11,7 +11,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     {{-- TODO: blogs系のurlのときにnavにcreateも表示されるようにしたい --}}
-                    <x-linkbutton href="{{ route('blogs.create') }}">
+                    <x-linkbutton href="{{ route('blogs.create', ['cityId' => $cityId]) }}">
                         <i class="fas fa-lg fa-pen"></i>
                     </x-linkbutton>
                     @foreach ($blogs as $blog)
@@ -21,10 +21,10 @@
                                 <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="blog" id="blog">{{ $blog->message }}</p>
                             </div>
                             {{-- TODO: 詳細ボタンと削除ボタンを横並びにさせたい --}}
-                            <x-linkbutton href="{{ route('blogs.show', ['blog' => $blog->id]) }}">
+                            <x-linkbutton href="{{ route('blogs.show', ['blog' => $blog->id, 'cityId' => $cityId]) }}">
                                 <i class="fas fa-lg fa-file-alt"></i>
                             </x-linkbutton>
-                            <form action="{{ route('blogs.destroy', ['blog' => $blog->id]) }}" method="post">
+                            <form action="{{ route('blogs.destroy', ['blog' => $blog->id, 'cityId' => $cityId]) }}" method="post">
                                 <x-delete />
                             </form>
                         </div>

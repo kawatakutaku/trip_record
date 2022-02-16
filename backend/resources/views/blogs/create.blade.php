@@ -14,11 +14,11 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('blogs.store') }}" method="post">
+                    <form action="{{ route('blogs.store', ['cityId' => $cityId]) }}" method="post">
                         @csrf
                         <div class="row p-2 justify-content-center">
                             <div class="col-6">
-                                <x-textarea name="blog" id="blog" value="{{ old('blog') }}" placeholder="ブログ" />
+                                <x-textarea name="message" id="message" value="{{ old('message') }}" placeholder="ブログ" />
                             </div>
                         </div>
                         <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">

@@ -16,11 +16,11 @@
                         </div>
                     </div>
                     <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
-                        <x-linkbutton href="{{ route('blogs.edit', ['blog' => $blog->id]) }}">
+                        <x-linkbutton href="{{ route('blogs.edit', ['blog' => $blog->id, 'cityId' => $cityId]) }}">
                             <i class="fas fa-lg fa-edit"></i>
                         </x-linkbutton>
                         <!-- TODO: componentの中にformタグ自体も書けるようにしたい -->
-                        <form action="{{ route("blogs.destroy", ["blog" => $blog->id]) }}" method="post">
+                        <form action="{{ route("blogs.destroy", ["blog" => $blog->id, 'cityId' => $cityId]) }}" method="post">
                             <x-delete/>
                         </form>
                     </div>
