@@ -21,14 +21,10 @@ class MemoController extends Controller
      */
     public function index(Request $request): View
     {
-        if ($request->cityId)
-        {
-            $memos = Memo::where('city_id', $request->cityId)->get();
+        $memos = Memo::where('city_id', $request->cityId)->get();
 
-            return view("memos.index", ["memos" => $memos, "cityId" => $request->cityId]);
-        }
-        $memos = Memo::all();
-        return view("memos.index", ["memos" => $memos]);
+        return view("memos.index", ["memos" => $memos, "cityId" => $request->cityId]);
+
     }
 
     /**
