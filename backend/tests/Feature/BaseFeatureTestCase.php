@@ -15,6 +15,8 @@ use Tests\TestCase;
 class BaseFeatureTestCase extends TestCase
 {
 
+    protected $needLogin = true;
+
     // use RefreshDatabase;
 
     protected function setUp(): void
@@ -22,6 +24,11 @@ class BaseFeatureTestCase extends TestCase
         parent::setUp();
 
         $this->user = User::inRandomOrder()->first();
+
+        if ($this->needLogin) {
+            $this->loginForm();
+            $this->login();
+        }
     }
 
     /**
@@ -30,7 +37,7 @@ class BaseFeatureTestCase extends TestCase
      * @group login
      * @return void
      */
-    public function testLoginForm(): void
+    public function loginForm(): void
     {
         $loginFormResponse = $this->get(route("login"));
         $loginFormResponse->assertStatus(Response::HTTP_OK);
@@ -42,11 +49,33 @@ class BaseFeatureTestCase extends TestCase
      * @group login
      * @return void
      */
-    public function testLogin(): void
+    public function login(): void
     {
         $loginResponse = $this->post(route("login.post"), [User::ACCOUNT_EMAIL => $this->user->email, User::ACCOUNT_PASSWORD => User::ACCOUNT_PASSWORD_VALUE]);
         $this->assertAuthenticated();
         $loginResponse->assertStatus(Response::HTTP_FOUND);
         $loginResponse->assertRedirect(RouteServiceProvider::HOME);
+    }
+
+    /**
+     * ログアウト処理
+     * @test
+     * @group login
+     * @return void
+     */
+    public function logout(): void
+    {
+        $logoutResponse = $this->post(route("logout"));
+        $logoutResponse->assertStatus(Response::HTTP_FOUND);
+        $logoutResponse->assertRedirect(route("login"));
+    }
+
+    protected function tearDown(): void
+    {
+        if ($this->needLogin) {
+            $this->logout();
+        }
+
+        parent::tearDown();
     }
 }
