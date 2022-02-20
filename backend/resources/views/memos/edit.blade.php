@@ -14,15 +14,15 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('memos.update', ['memo' => $memo->id, 'cityId' => $cityId]) }}" method="post">
+                    <form action="{{ route('memos.update', [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}" method="post">
                         @method('put')
                         @csrf
                         <div class="mb-4">
                             <!-- TODO: dbから取得したデータを初期値として登録できるようにする(component側の記述を変更する) -->
-                            <x-textarea name="memo" id="memo">{{ old('memo') ?? $memo->memo }}</x-textarea>
+                            <x-textarea name="memo" id="memo">{{ old(App\Models\Memo::MEMO_MEMO) ?? $memo->memo }}</x-textarea>
                         </div>
                         <div class="mb-4">
-                            <x-input type="text" name="img" id="img" value="{{ old('img') ?? $memo->img }}" />
+                            <x-input type="text" name="img" id="img" value="{{ old(App\Models\Memo::MEMO_IMG) ?? $memo->img }}" />
                         </div>
                         <div class="flex items-center justify-between">
                             <x-button>

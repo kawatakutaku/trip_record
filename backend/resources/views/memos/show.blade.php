@@ -21,11 +21,11 @@
                         </div>
                     </div>
                     <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
-                        <x-linkbutton href="{{ route('memos.edit', ['memo' => $memo->id, 'cityId' => $cityId]) }}">
+                        <x-linkbutton href="{{ route('memos.edit', [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}">
                             <i class="fas fa-lg fa-edit"></i>
                         </x-linkbutton>
                         <!-- TODO: componentの中にformタグ自体も書けるようにしたい -->
-                        <form action="{{ route("memos.destroy", ["memo" => $memo->id]) }}" method="post">
+                        <form action="{{ route("memos.destroy", [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}" method="post">
                             <x-delete/>
                         </form>
                     </div>

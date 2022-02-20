@@ -14,16 +14,16 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('memos.store', ['cityId' => $cityId]) }}" method="post">
+                    <form action="{{ route('memos.store', [App\Models\City::CITY_ID_NAME => $cityId]) }}" method="post">
                         @csrf
                         <div class="row p-2 justify-content-center">
                             <div class="col-6">
-                                <x-textarea name="memo" id="memo" value="{{ old('memo') }}" placeholder="メモ" />
+                                <x-textarea name="memo" id="memo" value="{{ old(App\Models\Memo::MEMO_MEMO) }}" placeholder="メモ" />
                             </div>
                         </div>
                         <div class="row p-2 mt-3 justify-content-center">
                             <div class="col-6" id="img">
-                                <x-input type="file" name="img" id="img" value="{{ old('img') }}" placeholder="画像" />
+                                <x-input type="file" name="img" id="img" value="{{ old(App\Models\Memo::MEMO_IMG) }}" placeholder="画像" />
                             </div>
                         </div>
                         <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
