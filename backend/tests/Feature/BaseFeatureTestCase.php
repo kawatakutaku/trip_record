@@ -33,8 +33,6 @@ class BaseFeatureTestCase extends TestCase
 
     /**
      * ログイン画面
-     * @test
-     * @group login
      * @return void
      */
     public function loginForm(): void
@@ -45,8 +43,6 @@ class BaseFeatureTestCase extends TestCase
 
     /**
      * ログイン処理
-     * @test
-     * @group login
      * @return void
      */
     public function login(): void
@@ -59,8 +55,6 @@ class BaseFeatureTestCase extends TestCase
 
     /**
      * ログアウト処理
-     * @test
-     * @group login
      * @return void
      */
     public function logout(): void
