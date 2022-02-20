@@ -53,7 +53,7 @@ class BlogController extends Controller
         $blog->updated_at = Carbon::now();
         $blog->save();
 
-        return redirect("blogs.index", [City::CITY_ID_NAME => $request->cityId]);
+        return redirect(route("blogs.index", [City::CITY_ID_NAME => $request->cityId]));
     }
 
     /**
@@ -86,13 +86,10 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog): RedirectResponse
     {
-        $blog = Blog::find($blog);
-
         $blog->message = $request->message;
         $userId = Auth::id();
         $blog->user_id = $userId;
         $blog->city_id = $request->cityId;
-        $blog->created_at = Carbon::now();
         $blog->updated_at = Carbon::now();
         $blog->save();
 
