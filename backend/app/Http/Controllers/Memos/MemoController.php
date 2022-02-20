@@ -68,7 +68,7 @@ class MemoController extends Controller
      */
     public function show(Request $request, Memo $memo): View
     {
-        return view('memos.show', [ City::CITY_ID_NAME, Memo::MEMO_ID_NAME => $memo ]);
+        return view('memos.show', [ City::CITY_ID_NAME => $request->cityId, Memo::MEMO_ID_NAME => $memo ]);
     }
 
     /**
@@ -79,7 +79,7 @@ class MemoController extends Controller
      */
     public function edit(Request $request, Memo $memo): View
     {
-        return view('memos.edit', [ City::CITY_ID_NAME, Memo::MEMO_ID_NAME => $memo ]);
+        return view('memos.edit', [ City::CITY_ID_NAME => $request->cityId, Memo::MEMO_ID_NAME => $memo ]);
     }
 
     /**
@@ -103,7 +103,7 @@ class MemoController extends Controller
 
         $memo->save();
 
-        return redirect(route('memos.show', [ City::CITY_ID_NAME, Memo::MEMO_ID_NAME => $memo ]));
+        return redirect(route('memos.show', [ City::CITY_ID_NAME => $request->cityId, Memo::MEMO_ID_NAME => $memo]));
     }
 
     /**
