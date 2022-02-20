@@ -21,10 +21,10 @@
                                 <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name=App\Models\Blog::BLOG_MESSAGE id=App\Models\Blog::BLOG_MESSAGE>{{ $blog->message }}</p>
                             </div>
                             {{-- TODO: 詳細ボタンと削除ボタンを横並びにさせたい --}}
-                            <x-linkbutton href="{{ route('blogs.show', [App\Models\Blog::BLOG_ID_NAME => $blog->id]) }}">
+                            <x-linkbutton href="{{ route('blogs.show', [App\Models\City::CITY_ID_NAME => $cityId, App\Models\Blog::BLOG_ID_NAME => $blog->id]) }}">
                                 <i class="fas fa-lg fa-file-alt"></i>
                             </x-linkbutton>
-                            <form action="{{ route('blogs.destroy', [App\Models\Blog::BLOG_ID_NAME => $blog->id]) }}" method="post">
+                            <form action="{{ route('blogs.destroy', [App\Models\City::CITY_ID_NAME => $cityId, App\Models\Blog::BLOG_ID_NAME => $blog->id]) }}" method="post">
                                 <x-delete />
                             </form>
                         </div>
