@@ -15,6 +15,11 @@ class User extends Authenticatable
     const ACCOUNT_PASSWORD = 'password';
     const ACCOUNT_EMAIL = 'email';
     const ACCOUNT_PASSWORD_VALUE = 'password';
+    const ACCOUNT_NAME = 'name';
+    const ACCOUNT_PASSWORD_CONFIRMATION = 'password_confirmation';
+    const ACCOUNT_PROFILE = 'profile';
+    const ACCOUNT_IMG = 'img';
+    const ACCOUNT_SEX = 'sex';
 
     /**
      * The attributes that are mass assignable.
