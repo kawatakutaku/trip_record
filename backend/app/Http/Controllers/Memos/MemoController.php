@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Memos;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Memos\StoreMemoRequest;
 use App\Http\Requests\Memos\UpdateMemoRequest;
+use App\Models\City;
 use App\Models\Memo;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -21,14 +22,8 @@ class MemoController extends Controller
      */
     public function index(Request $request): View
     {
-        if ($request->cityId)
-        {
-            $memos = Memo::where('city_id', $request->cityId)->get();
-
-            return view("memos.index", ["memos" => $memos, "cityId" => $request->cityId]);
-        }
-        $memos = Memo::all();
-        return view("memos.index", ["memos" => $memos]);
+        $memos = Memo::where('city_id', $request->cityId)->get();
+        return view("memos.index", [City::CITY_ID_NAME => $request->cityId, Memo::MULTIPLE_MEMOS => $memos]);
     }
 
     /**
@@ -38,7 +33,7 @@ class MemoController extends Controller
      */
     public function create(Request $request): View
     {
-        return view('memos.create', ["cityId" => $request->cityId]);
+        return view('memos.create', [City::CITY_ID_NAME => $request->cityId]);
     }
 
     /**
@@ -48,8 +43,6 @@ class MemoController extends Controller
      */
     public function store(StoreMemoRequest $request): RedirectResponse
     {
-        // TODO: ログインと都市の選択をする機能を先に作らないとエラーが発生する
-
         $memo = new Memo();
 
         $memo->memo = $request->memo;
@@ -64,7 +57,7 @@ class MemoController extends Controller
 
         $memo->save();
 
-        return redirect(route("memos.index", ['cityId' => $request->cityId]));
+        return redirect(route("memos.index", [City::CITY_ID_NAME => $request->cityId]));
     }
 
     /**
@@ -75,7 +68,7 @@ class MemoController extends Controller
      */
     public function show(Request $request, Memo $memo): View
     {
-        return view('memos.show', [ "memo" => $memo, 'cityId' => $request->cityId ]);
+        return view('memos.show', [ City::CITY_ID_NAME, Memo::MEMO_ID_NAME => $memo ]);
     }
 
     /**
@@ -86,7 +79,7 @@ class MemoController extends Controller
      */
     public function edit(Request $request, Memo $memo): View
     {
-        return view('memos.edit', [ 'memo' => $memo, 'cityId' => $request->cityId ]);
+        return view('memos.edit', [ City::CITY_ID_NAME, Memo::MEMO_ID_NAME => $memo ]);
     }
 
     /**
@@ -110,7 +103,7 @@ class MemoController extends Controller
 
         $memo->save();
 
-        return redirect(route('memos.show', [ 'memo' => $memo, 'cityId' => $request->cityId ]));
+        return redirect(route('memos.show', [ City::CITY_ID_NAME, Memo::MEMO_ID_NAME => $memo ]));
     }
 
     /**
@@ -123,6 +116,6 @@ class MemoController extends Controller
     {
         $memo->delete();
 
-        return redirect(route('memos.index', ['cityId' => $request->cityId]));
+        return redirect(route('memos.index', [City::CITY_ID_NAME => $request->cityId]));
     }
 }
