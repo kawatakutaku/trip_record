@@ -14,6 +14,7 @@ use Tests\TestCase;
 
 class EmailVerificationTest extends BaseFeatureTestCase
 {
+    protected $needLogin = false;
 
     public function testEmailVerification()
     {

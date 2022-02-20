@@ -11,11 +11,13 @@ use Tests\TestCase;
 
 class AuthenticationTest extends BaseFeatureTestCase
 {
+    protected $needLogin = false;
 
     /**
      * 異常系のテスト
+     * @return void
      */
-    public function testWrongPassword()
+    public function testWrongPassword(): void
     {
         $user = User::factory()->create();
 

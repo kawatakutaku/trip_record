@@ -10,6 +10,8 @@ use Tests\TestCase;
 
 class PasswordConfirmationTest extends BaseFeatureTestCase
 {
+    protected $needLogin = false;
+
     public function testConfirmPassword()
     {
         $user = User::factory()->create();

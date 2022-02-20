@@ -12,6 +12,8 @@ use Tests\TestCase;
 
 class PasswordResetTest extends BaseFeatureTestCase
 {
+    protected $needLogin = false;
+
     public function testResetPassword()
     {
         $response = $this->get('/forgot-password');
