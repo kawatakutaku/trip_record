@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
+
+    const BLOG_ID_NAME = 'blog';
 }
