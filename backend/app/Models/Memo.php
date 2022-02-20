@@ -12,6 +12,7 @@ class Memo extends Model
     protected $table = "memos";
 
     const MEMO_ID_NAME = "memo";
+    const MULTIPLE_MEMOS = "memos";
     const MEMO_IMG = "img";
     const MEMO_MEMO = "memo";
 }
