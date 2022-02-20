@@ -6,30 +6,11 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Feature\BaseFeatureTestCase;
 use Tests\TestCase;
 
-class AuthenticationTest extends TestCase
+class AuthenticationTest extends BaseFeatureTestCase
 {
-    use RefreshDatabase;
-
-    public function testLoginForm()
-    {
-        $response = $this->get('/login');
-        $response->assertStatus(Response::HTTP_OK);
-    }
-
-    public function testLoginPost()
-    {
-        $user = User::factory()->create();
-
-        $response = $this->post('/login', [
-            'email' => $user->email,
-            'password' => 'password',
-        ]);
-
-        $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
-    }
 
     /**
      * 異常系のテスト

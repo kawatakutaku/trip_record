@@ -6,9 +6,10 @@ use App\Models\Blog;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Feature\BaseFeatureTestCase;
 use Tests\TestCase;
 
-class BlogTest extends TestCase
+class BlogTest extends BaseFeatureTestCase
 {
     protected function setUp(): void
     {

@@ -5,12 +5,11 @@ namespace Tests\Feature\Auth;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Feature\BaseFeatureTestCase;
 use Tests\TestCase;
 
-class RegistrationTest extends TestCase
+class RegistrationTest extends BaseFeatureTestCase
 {
-    use RefreshDatabase;
-
     public function testRegisterForm()
     {
         $response = $this->get('/register');

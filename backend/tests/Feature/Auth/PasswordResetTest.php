@@ -7,12 +7,11 @@ use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Feature\BaseFeatureTestCase;
 use Tests\TestCase;
 
-class PasswordResetTest extends TestCase
+class PasswordResetTest extends BaseFeatureTestCase
 {
-    use RefreshDatabase;
-
     public function testResetPassword()
     {
         $response = $this->get('/forgot-password');

@@ -5,12 +5,11 @@ namespace Tests\Feature\Auth;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Feature\BaseFeatureTestCase;
 use Tests\TestCase;
 
-class PasswordConfirmationTest extends TestCase
+class PasswordConfirmationTest extends BaseFeatureTestCase
 {
-    use RefreshDatabase;
-
     public function testConfirmPassword()
     {
         $user = User::factory()->create();
