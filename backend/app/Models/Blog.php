@@ -10,4 +10,6 @@ class Blog extends Model
     use HasFactory;
 
     const BLOG_ID_NAME = 'blog';
+    const MULTIPLE_BLOGS = 'blogs';
+    const BLOG_MESSAGE = 'message';
 }
