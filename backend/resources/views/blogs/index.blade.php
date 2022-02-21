@@ -11,20 +11,20 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     {{-- TODO: blogs系のurlのときにnavにcreateも表示されるようにしたい --}}
-                    <x-linkbutton href="{{ route('blogs.create', ['cityId' => $cityId]) }}">
+                    <x-linkbutton href="{{ route('blogs.create', [App\Models\City::CITY_ID_NAME => $cityId]) }}">
                         <i class="fas fa-lg fa-pen"></i>
                     </x-linkbutton>
                     @foreach ($blogs as $blog)
                         {{-- TODO: どのユーザーの投稿かもわかるようにしたい --}}
                         <div class="row p-2 justify-content-center">
                             <div class="col-6">
-                                <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="blog" id="blog">{{ $blog->message }}</p>
+                                <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name=App\Models\Blog::BLOG_MESSAGE id=App\Models\Blog::BLOG_MESSAGE>{{ $blog->message }}</p>
                             </div>
                             {{-- TODO: 詳細ボタンと削除ボタンを横並びにさせたい --}}
-                            <x-linkbutton href="{{ route('blogs.show', ['blog' => $blog->id, 'cityId' => $cityId]) }}">
+                            <x-linkbutton href="{{ route('blogs.show', [App\Models\City::CITY_ID_NAME => $cityId, App\Models\Blog::BLOG_ID_NAME => $blog->id]) }}">
                                 <i class="fas fa-lg fa-file-alt"></i>
                             </x-linkbutton>
-                            <form action="{{ route('blogs.destroy', ['blog' => $blog->id, 'cityId' => $cityId]) }}" method="post">
+                            <form action="{{ route('blogs.destroy', [App\Models\City::CITY_ID_NAME => $cityId, App\Models\Blog::BLOG_ID_NAME => $blog->id]) }}" method="post">
                                 <x-delete />
                             </form>
                         </div>

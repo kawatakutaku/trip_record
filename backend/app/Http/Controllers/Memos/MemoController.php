@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Memos;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Memos\StoreMemoRequest;
 use App\Http\Requests\Memos\UpdateMemoRequest;
+use App\Models\City;
 use App\Models\Memo;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
@@ -16,39 +17,32 @@ class MemoController extends Controller
 {
     /**
      * メモの一覧画面
-     *
-     * @param \Illuminate\Http\Request
-     * @return \Illuminate\View\View
+     * @param Illuminate\Http\Request
+     * @return Illuminate\View\View
      */
     public function index(Request $request): View
     {
         $memos = Memo::where('city_id', $request->cityId)->get();
-
-        return view("memos.index", ["memos" => $memos, "cityId" => $request->cityId]);
-
+        return view("memos.index", [City::CITY_ID_NAME => $request->cityId, Memo::MULTIPLE_MEMOS => $memos]);
     }
 
     /**
      * メモの新規作成画面
-     *
-     * @param \Illuminate\Http\Request
-     * @return \Illuminate\View\View
+     * @param Illuminate\Http\Request
+     * @return Illuminate\View\View
      */
     public function create(Request $request): View
     {
-        return view('memos.create', ["cityId" => $request->cityId]);
+        return view('memos.create', [City::CITY_ID_NAME => $request->cityId]);
     }
 
     /**
      * メモの保存処理
-     *
      * @param  \App\Http\Requests\StoreMemoRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return Illuminate\Http\RedirectResponse
      */
     public function store(StoreMemoRequest $request): RedirectResponse
     {
-        // TODO: ログインと都市の選択をする機能を先に作らないとエラーが発生する
-
         $memo = new Memo();
 
         $memo->memo = $request->memo;
@@ -63,31 +57,29 @@ class MemoController extends Controller
 
         $memo->save();
 
-        return redirect(route("memos.index", ['cityId' => $request->cityId]));
+        return redirect(route("memos.index", [City::CITY_ID_NAME => $request->cityId]));
     }
 
     /**
      * メモの詳細画面
-     *
-     * @param \Illuminate\Http\Request $request
+     * @param Illuminate\Http\Request $request
      * @param  \App\Models\Memo  $memo
-     * @return \Illuminate\View\View
+     * @return Illuminate\View\View
      */
     public function show(Request $request, Memo $memo): View
     {
-        return view('memos.show', [ "memo" => $memo, 'cityId' => $request->cityId ]);
+        return view('memos.show', [ City::CITY_ID_NAME => $request->cityId, Memo::MEMO_ID_NAME => $memo ]);
     }
 
     /**
      * メモの編集画面
-     *
-     * @param \Illuminate\Http\Request $request
+     * @param Illuminate\Http\Request $request
      * @param  \App\Models\Memo  $memo
-     * @return \Illuminate\View\View
+     * @return Illuminate\View\View
      */
     public function edit(Request $request, Memo $memo): View
     {
-        return view('memos.edit', [ 'memo' => $memo, 'cityId' => $request->cityId ]);
+        return view('memos.edit', [ City::CITY_ID_NAME => $request->cityId, Memo::MEMO_ID_NAME => $memo ]);
     }
 
     /**
@@ -95,7 +87,7 @@ class MemoController extends Controller
      *
      * @param  \App\Http\Requests\UpdateMemoRequest  $request
      * @param  \App\Models\Memo  $memo
-     * @return \Illuminate\Http\RedirectResponse
+     * @return Illuminate\Http\RedirectResponse
      */
     public function update(UpdateMemoRequest $request, Memo $memo): RedirectResponse
     {
@@ -111,20 +103,19 @@ class MemoController extends Controller
 
         $memo->save();
 
-        return redirect(route('memos.show', [ 'memo' => $memo, 'cityId' => $request->cityId ]));
+        return redirect(route('memos.show', [ City::CITY_ID_NAME => $request->cityId, Memo::MEMO_ID_NAME => $memo]));
     }
 
     /**
      * メモの削除処理
-     *
-     * @param \Illuminate\Http\Request $request
+     * @param Illuminate\Http\Request $request
      * @param  \App\Models\Memo  $memo
-     * @return \Illuminate\Http\RedirectResponse
+     * @return Illuminate\Http\RedirectResponse
      */
     public function destroy(Request $request, Memo $memo): RedirectResponse
     {
         $memo->delete();
 
-        return redirect(route('memos.index', ['cityId' => $request->cityId]));
+        return redirect(route('memos.index', [City::CITY_ID_NAME => $request->cityId]));
     }
 }

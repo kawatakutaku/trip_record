@@ -12,15 +12,15 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="row p-2 justify-content-center">
                         <div class="col-6">
-                            <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="blog" id="blog">{{ $blog->message }}</p>
+                            <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name=App\Models\Blog::BLOG_MESSAGE id=App\Models\Blog::BLOG_MESSAGE>{{ $blog->message }}</p>
                         </div>
                     </div>
                     <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
-                        <x-linkbutton href="{{ route('blogs.edit', ['blog' => $blog->id, 'cityId' => $cityId]) }}">
+                        <x-linkbutton href="{{ route('blogs.edit', [App\Models\City::CITY_ID_NAME => $cityId, App\Models\Blog::BLOG_ID_NAME => $blog->id]) }}">
                             <i class="fas fa-lg fa-edit"></i>
                         </x-linkbutton>
                         <!-- TODO: componentの中にformタグ自体も書けるようにしたい -->
-                        <form action="{{ route("blogs.destroy", ["blog" => $blog->id, 'cityId' => $cityId]) }}" method="post">
+                        <form action="{{ route("blogs.destroy", [App\Models\City::CITY_ID_NAME => $cityId, App\Models\Blog::BLOG_ID_NAME => $blog->id]) }}" method="post">
                             <x-delete/>
                         </form>
                     </div>

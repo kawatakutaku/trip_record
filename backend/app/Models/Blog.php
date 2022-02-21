@@ -4,8 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Blog extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
+
+    const BLOG_ID_NAME = 'blog';
+    const MULTIPLE_BLOGS = 'blogs';
+    const BLOG_MESSAGE = 'message';
 }
