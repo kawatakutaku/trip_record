@@ -11,4 +11,5 @@ class City extends Model
 
     const CREATED_AT = null;
     const UPDATED_AT = null;
+    const CITY_ID_NAME = 'cityId';
 }

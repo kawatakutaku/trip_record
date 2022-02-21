@@ -12,7 +12,6 @@ use Illuminate\Support\Facades\Hash;
 class UserSeeder extends BaseDatabaseSeeder
 {
     const USER_ID = 70000;
-    const AccountPassword = 'password';
 
     /**
      * Run the database seeds.
@@ -27,7 +26,7 @@ class UserSeeder extends BaseDatabaseSeeder
 
             $users = User::factory()->raw([
                 'id' => $userId,
-                'password' => Hash::make(static::AccountPassword),
+                'password' => Hash::make(User::ACCOUNT_PASSWORD),
             ]);
             User::upsert($users, ['id']);
         }

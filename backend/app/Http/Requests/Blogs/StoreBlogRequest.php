@@ -24,7 +24,7 @@ class StoreBlogRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'message' => 'required|60000',
+            'message' => 'required|max:60000',
         ];
     }
 }

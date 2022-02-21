@@ -9,11 +9,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\URL;
 use Symfony\Component\HttpFoundation\Response;
+use Tests\Feature\BaseFeatureTestCase;
 use Tests\TestCase;
 
-class EmailVerificationTest extends TestCase
+class EmailVerificationTest extends BaseFeatureTestCase
 {
-    use RefreshDatabase;
+    protected $needLogin = false;
 
     public function testEmailVerification()
     {
