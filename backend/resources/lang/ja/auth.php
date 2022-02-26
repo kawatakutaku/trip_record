@@ -19,4 +19,5 @@ return [
     'photo' => 'プロフィール写真',
     'profile' => 'プロフィール文',
     'gender' => '性別',
+    'remember-me' => 'ログイン状態を保持する',
 ];
