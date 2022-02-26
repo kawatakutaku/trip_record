@@ -1,8 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-100 leading-tight">
-            <!-- TODO: Dashboardのように言語ファイルを使用する-->
-            編集中
+            {{ __('memo.edit') }}
         </h2>
     </x-slot>
 
