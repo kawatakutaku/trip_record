@@ -18,8 +18,8 @@ class AddColumnUsersTalbe extends Migration
             $table->string('profile');
             $table->string('img');
             $table->string('sex');
-            $table->string('password_reset_token');
-            $table->string('register_token');
+            $table->string('password_reset_token')->nullable();
+            $table->string('register_token')->nullable();
         });
     }
 
