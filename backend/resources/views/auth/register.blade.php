@@ -12,23 +12,23 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
 
-            <!-- Name -->
+            <!-- 名前 -->
             <div>
-                <x-label for="name" :value="__('Name')" />
+                <x-label for="name" :value="__('auth.name')" />
 
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
             </div>
 
-            <!-- Email Address -->
+            <!-- Email -->
             <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
+                <x-label for="email" :value="__('auth.email')" />
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
             <!-- Password -->
             <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
+                <x-label for="password" :value="__('auth.password')" />
 
                 <x-input id="password" class="block mt-1 w-full"
                                 type="password"
@@ -38,11 +38,39 @@
 
             <!-- Confirm Password -->
             <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
+                <x-label for="password_confirmation" :value="__('auth.password-confirm')" />
 
                 <x-input id="password_confirmation" class="block mt-1 w-full"
                                 type="password"
                                 name="password_confirmation" required />
+            </div>
+
+            {{-- プロフィール写真 --}}
+            <div class="mt-4">
+                <x-label for="img" :value="__('auth.photo')" />
+
+                <x-input id="img" class="block mt-1 w-full"
+                                type="text"
+                                name="img" required />
+            </div>
+
+            {{-- プロフィール文 --}}
+            <div class="mt-4">
+                <x-label for="profile" :value="__('auth.profile')" />
+
+                <x-input id="profile" class="block mt-1 w-full"
+                                type="text"
+                                name="profile" required />
+            </div>
+
+            {{-- 性別 --}}
+            {{-- TODO: セレクトボックスになるように記述する --}}
+            <div class="mt-4">
+                <x-label for="sex" :value="__('auth.gender')" />
+
+                <x-input id="sex" class="block mt-1 w-full"
+                                type="text"
+                                name="sex" required />
             </div>
 
             <div class="flex items-center justify-end mt-4">
