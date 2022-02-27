@@ -20,7 +20,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'register_token' => Str::random(10),
             'password_reset_token' => Str::random(10),
-            'sex' => $this->faker->randomElement(['男性', '女性']),
+            'gender' => $this->faker->randomElement(['男性', '女性']),
             'img' => $this->faker->image(),
             'profile' => $this->faker->realText(30),
         ];
