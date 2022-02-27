@@ -21,7 +21,6 @@ class UserFactory extends Factory
             User::ACCOUNT_REMEMBER_TOKEN => Str::random(10),
             User::ACCOUNT_REGISTER_TOKEN => Str::random(10),
             User::ACCOUNT_PASSWORD_RESET_TOKEN => Str::random(10),
-            User::ACCOUNT_GENDER => $this->faker->randomElement(['男性', '女性']),
             User::ACCOUNT_IMG => $this->faker->image(),
             User::ACCOUNT_PROFILE => $this->faker->realText(30),
         ];
