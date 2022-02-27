@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Memo;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class MemoFactory extends Factory
@@ -14,8 +15,8 @@ class MemoFactory extends Factory
     public function definition()
     {
         return [
-            'memo' => $this->faker->realText(),
-            'img' => $this->faker->imageUrl(),
+            Memo::MEMO_MEMO => $this->faker->realText(),
+            Memo::MEMO_IMG => $this->faker->imageUrl(),
         ];
     }
 }
