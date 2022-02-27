@@ -5,6 +5,7 @@ namespace Tests\Feature\Auth;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\Feature\BaseFeatureTestCase;
 use Tests\TestCase;
@@ -19,7 +20,7 @@ class RegistrationTest extends BaseFeatureTestCase
      */
     public function testRegisterForm(): void
     {
-        $response = $this->get('/register');
+        $response = $this->get(route('register'));
         $response->assertStatus(Response::HTTP_OK);
     }
 
@@ -32,10 +33,11 @@ class RegistrationTest extends BaseFeatureTestCase
         $userData = $this->getUserData();
 
         // TODO: controllerとview側も変更してDBに合わせる必要がある
-        $response = $this->post('/register', $userData);
+        $registerResponse = $this->post(route('register.post'), $userData);
+        $registerResponse->assertStatus(Response::HTTP_FOUND);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(RouteServiceProvider::HOME);
+        $registerResponse->assertRedirect(RouteServiceProvider::HOME);
     }
 
     /**
@@ -44,7 +46,10 @@ class RegistrationTest extends BaseFeatureTestCase
      */
     public function getUserData(): array
     {
-        $userData = User::factory()->raw();
+        $userData = User::factory()->raw([
+            User::ACCOUNT_PASSWORD => User::ACCOUNT_PASSWORD_VALUE,
+            User::ACCOUNT_PASSWORD_CONFIRMATION => User::ACCOUNT_PASSWORD_VALUE,
+        ]);
 
         return $userData;
     }
