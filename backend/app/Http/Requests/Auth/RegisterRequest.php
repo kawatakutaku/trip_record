@@ -28,6 +28,8 @@ class RegisterRequest extends FormRequest
             User::ACCOUNT_NAME => 'required|string|max:255',
             User::ACCOUNT_EMAIL => 'required|string|email|max:255|unique:users',
             User::ACCOUNT_PASSWORD => 'required|string|min:8|confirmed',
+            // TODO: confirmのrequestは必要なのか
+            // User::ACCOUNT_PASSWORD_CONFIRMATION => 'required|same:password',
             User::ACCOUNT_PROFILE => 'required|string|max:255',
             User::ACCOUNT_IMG => 'required|string',
             User::ACCOUNT_GENDER => 'required|string'
