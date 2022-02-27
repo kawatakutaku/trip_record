@@ -49,18 +49,14 @@
             <div class="mt-4">
                 <x-label for="img" :value="__('auth.photo')" />
 
-                <x-input id="img" class="block mt-1 w-full"
-                                type="text"
-                                name="img" required />
+                <x-input id="img" class="block mt-1 w-full" type="text" name="img" :value="old('img')" required />
             </div>
 
             {{-- プロフィール文 --}}
             <div class="mt-4">
                 <x-label for="profile" :value="__('auth.profile')" />
 
-                <x-input id="profile" class="block mt-1 w-full"
-                                type="text"
-                                name="profile" required />
+                <x-input id="profile" class="block mt-1 w-full" type="text" name="profile" :value="old('profile')" required />
             </div>
 
             {{-- 性別 --}}
@@ -68,9 +64,7 @@
             <div class="mt-4">
                 <x-label for="gender" :value="__('auth.gender')" />
 
-                <x-input id="gender" class="block mt-1 w-full"
-                                type="text"
-                                name="gender" required />
+                <x-input id="gender" class="block mt-1 w-full" type="text" name="gender" :value="old('gender')" required />
             </div>
 
             <div class="flex items-center justify-end mt-4">
