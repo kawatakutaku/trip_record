@@ -43,7 +43,7 @@ class RegisteredUserController extends Controller
         $user->password = Hash::make($request->password);
         $user->img = $request->img;
         $user->profile = $request->profile;
-        $user->sex = $request->sex;
+        $user->gender = $request->gender;
 
         $user->save();
 

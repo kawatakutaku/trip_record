@@ -66,11 +66,11 @@
             {{-- 性別 --}}
             {{-- TODO: セレクトボックスになるように記述する --}}
             <div class="mt-4">
-                <x-label for="sex" :value="__('auth.gender')" />
+                <x-label for="gender" :value="__('auth.gender')" />
 
-                <x-input id="sex" class="block mt-1 w-full"
+                <x-input id="gender" class="block mt-1 w-full"
                                 type="text"
-                                name="sex" required />
+                                name="gender" required />
             </div>
 
             <div class="flex items-center justify-end mt-4">

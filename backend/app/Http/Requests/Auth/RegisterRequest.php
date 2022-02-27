@@ -30,7 +30,7 @@ class RegisterRequest extends FormRequest
             User::ACCOUNT_PASSWORD => 'required|string|min:8|confirmed',
             User::ACCOUNT_PROFILE => 'required|string|max:255',
             User::ACCOUNT_IMG => 'required|string',
-            User::ACCOUNT_SEX => 'required|string'
+            User::ACCOUNT_GENDER => 'required|string'
         ];
     }
 }
