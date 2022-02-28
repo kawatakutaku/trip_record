@@ -56,7 +56,7 @@
             <div class="mt-4">
                 <x-label for="profile" :value="__('auth.profile')" />
 
-                <x-input id="profile" class="block mt-1 w-full" type="text" name="profile" :value="old('profile')" required />
+                <x-textarea id="profile" class="block mt-1 w-full" name="profile" :value="old('profile')" required />
             </div>
 
             {{-- 性別 --}}
@@ -64,7 +64,10 @@
             <div class="mt-4">
                 <x-label for="gender" :value="__('auth.gender')" />
 
-                <x-input id="gender" class="block mt-1 w-full" type="text" name="gender" :value="old('gender')" required />
+                <select name="gender" id="gender" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="1">{{App\Models\MasterGender::MALE_USER}}</option>
+                    <option value="2">{{App\Models\MasterGender::FEMALE_USER}}</option>
+                </select>
             </div>
 
             <div class="flex items-center justify-end mt-4">
