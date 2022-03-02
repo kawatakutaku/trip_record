@@ -38,10 +38,15 @@ class RegisteredUserController extends Controller
 
         $user = new User();
 
+        $upload_img = $request->file('img');
+        if ($upload_img) {
+            $path = $upload_img->store('profile', 'public');
+        }
+
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->img = $request->img;
+        $user->img = $path;
         $user->profile = $request->profile;
         $user->gender = $request->gender;
 
