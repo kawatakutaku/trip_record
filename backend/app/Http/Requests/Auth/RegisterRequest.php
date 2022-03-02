@@ -31,7 +31,7 @@ class RegisterRequest extends FormRequest
             // TODO: confirmのrequestは必要なのか
             // User::ACCOUNT_PASSWORD_CONFIRMATION => 'required|same:password',
             User::ACCOUNT_PROFILE => 'required|string|max:255',
-            User::ACCOUNT_IMG => 'required|string',
+            User::ACCOUNT_IMG => 'required|file|image|mimes:jpeg,png',
             User::ACCOUNT_GENDER => 'required|string'
         ];
     }
