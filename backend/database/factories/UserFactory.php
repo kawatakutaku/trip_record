@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -13,16 +14,15 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
-            'register_token' => Str::random(10),
-            'password_reset_token' => Str::random(10),
-            'sex' => $this->faker->randomElement(['男性', '女性']),
-            'img' => $this->faker->image(),
-            'profile' => $this->faker->realText(30),
+            User::ACCOUNT_NAME => $this->faker->name(),
+            User::ACCOUNT_EMAIL => $this->faker->unique()->safeEmail(),
+            User::ACCOUNT_EMAIL_VERIFIED_AT => now(),
+            User::ACCOUNT_PASSWORD => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            User::ACCOUNT_REMEMBER_TOKEN => Str::random(10),
+            User::ACCOUNT_REGISTER_TOKEN => Str::random(10),
+            User::ACCOUNT_PASSWORD_RESET_TOKEN => Str::random(10),
+            User::ACCOUNT_IMG => $this->faker->image(),
+            User::ACCOUNT_PROFILE => $this->faker->realText(30),
         ];
     }
 
@@ -35,7 +35,7 @@ class UserFactory extends Factory
     {
         return $this->state(function (array $attributes) {
             return [
-                'email_verified_at' => null,
+                User::ACCOUNT_EMAIL_VERIFIED_AT => null,
             ];
         });
     }

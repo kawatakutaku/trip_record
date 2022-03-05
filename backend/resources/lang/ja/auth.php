@@ -12,7 +12,13 @@
 */
 
 return [
-    'failed'   => '認証に失敗しました。',
-    'password' => 'パスワードが間違っています。',
-    'throttle' => 'ログインの試行回数が多すぎます。:seconds 秒後にお試しください。',
+    'name' => '氏名',
+    'email' => 'メールアドレス',
+    'password' => 'パスワード',
+    'password-confirm' => 'パスワード(確認用)',
+    'photo' => 'プロフィール写真',
+    'profile' => 'プロフィール文',
+    'gender' => '性別',
+    'remember-me' => 'ログイン状態を保持する',
+    'register' => '新規登録',
 ];

@@ -26,6 +26,7 @@ use Database\Seeders\Memos\MemoResponseGoodSeeder;
 use Database\Seeders\Memos\MemoResponseSeeder;
 use Database\Seeders\Memos\MemoSeeder;
 use Database\Seeders\Questions\QuestionSeeder;
+use Database\Seeders\Users\MasterGenderSeeder;
 use Database\Seeders\Users\UserSeeder;
 use Illuminate\Database\Seeder;
 
@@ -39,6 +40,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+        $this->call(MasterGenderSeeder::class);
         $this->call(CitySeeder::class);
         $this->call(UserSeeder::class);
         $this->call(FriendSeeder::class);
