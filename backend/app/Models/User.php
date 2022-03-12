@@ -2,11 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\Authenticatable as AuthAuthenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Facade;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -57,8 +63,33 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function books()
+    /**
+     * 1ユーザーに対して複数のメモが紐づく
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function memos(): HasMany
     {
-        return $this->hasMany('App\Folder');
+        return $this->hasMany(Memo::class);
+    }
+
+    /**
+     * 1ユーザーに対して複数のメモいいねが紐づく
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function memoGood(): HasOne
+    {
+        return $this->hasOne(MemoGood::class);
+    }
+
+    public function getAuthAccount(): ?User
+    {
+        $user = Auth::user();
+        return $user;
+    }
+
+    public function getAuthAccountId(): ?String
+    {
+        $userId = Auth::id();
+        return $userId;
     }
 }
