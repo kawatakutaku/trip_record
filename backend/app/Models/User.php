@@ -74,11 +74,11 @@ class User extends Authenticatable
 
     /**
      * 1ユーザーに対して複数のメモいいねが紐づく
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function memoGood(): HasOne
+    public function memoGood(): HasMany
     {
-        return $this->hasOne(MemoGood::class);
+        return $this->hasMany(MemoGood::class);
     }
 
     public function getAuthAccount(): ?User
