@@ -27,6 +27,15 @@
                         <form action="{{ route("memos.destroy", [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}" method="post">
                             <x-delete/>
                         </form>
+                        <form action="{{ route("memos.like", [App\Models\Memo::MEMO_ID_NAME => $memo->id]) }}" method="post">
+                            @csrf
+                            <x-button>
+                                いいね
+                                <span class="badge">
+                                    {{ $memo->memoGoods->count() }}
+                                </span>
+                            </x-button>
+                        </form>
                     </div>
                 </div>
             </div>

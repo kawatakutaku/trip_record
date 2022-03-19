@@ -7,6 +7,8 @@ use App\Http\Requests\Memos\StoreMemoRequest;
 use App\Http\Requests\Memos\UpdateMemoRequest;
 use App\Models\City;
 use App\Models\Memo;
+use App\Models\MemoGood;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -46,10 +48,12 @@ class MemoController extends Controller
         $memo = new Memo();
 
         $memo->memo = $request->memo;
-        // TODO: migrationファイルで、imgをnull許可するように変更する
         $memo->img = $request->img;
         // TODO: user_idとcity_idはどうやって取得するのか検討
-        $userId = Auth::id();
+        // TODO: user_idを取得する部分を共通化する
+        $user = app(User::class);
+        $userId = $user->getAuthAccountId();
+
         $memo->user_id = $userId;
         $memo->city_id = $request->cityId;
         $memo->created_at = Carbon::now();
@@ -68,7 +72,7 @@ class MemoController extends Controller
      */
     public function show(Request $request, Memo $memo): View
     {
-        return view('memos.show', [ City::CITY_ID_NAME => $request->cityId, Memo::MEMO_ID_NAME => $memo ]);
+        return view('memos.show', [ City::CITY_ID_NAME => $request->cityId, Memo::MEMO_ID_NAME => $memo]);
     }
 
     /**
@@ -96,7 +100,8 @@ class MemoController extends Controller
         $memo->memo = $request->memo;
         $memo->img = $request->img;
         // TODO: user_idとcityIdはどうやって取得するのか検討
-        $userId = Auth::id();
+        $user = app(User::class);
+        $userId = $user->getAuthAccountId();
         $memo->user_id = $userId;
         $memo->city_id = $request->cityId;
         $memo->updated_at = Carbon::now();

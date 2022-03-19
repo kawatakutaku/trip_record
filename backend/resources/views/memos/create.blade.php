@@ -17,7 +17,7 @@
                         @csrf
                         <div class="row p-2 justify-content-center">
                             <div class="col-6">
-                                <x-textarea name="memo" id="memo" value="{{ old(App\Models\Memo::MEMO_MEMO) }}" placeholder="メモ" />
+                                <x-textarea name="memo" id="memo" placeholder="メモ">{{ old(App\Models\Memo::MEMO_MEMO) }}</x-textarea>
                             </div>
                         </div>
                         <div class="row p-2 mt-3 justify-content-center">

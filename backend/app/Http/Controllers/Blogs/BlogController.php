@@ -7,6 +7,7 @@ use App\Http\Requests\Blogs\StoreBlogRequest;
 use App\Http\Requests\Blogs\UpdateBlogRequest;
 use App\Models\Blog;
 use App\Models\City;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -46,7 +47,8 @@ class BlogController extends Controller
           $blog = new Blog();
 
           $blog->message = $request->message;
-          $userId = Auth::id();
+          $user = app(User::class);
+          $userId = $user->getAuthAccountId();
           $blog->user_id = $userId;
           $blog->city_id = $request->cityId;
           $blog->created_at = Carbon::now();
@@ -87,7 +89,8 @@ class BlogController extends Controller
      public function update(UpdateBlogRequest $request, Blog $blog): RedirectResponse
      {
           $blog->message = $request->message;
-          $userId = Auth::id();
+          $user = app(User::class);
+          $userId = $user->getAuthAccountId();
           $blog->user_id = $userId;
           $blog->city_id = $request->cityId;
           $blog->updated_at = Carbon::now();
