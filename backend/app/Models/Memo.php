@@ -38,6 +38,13 @@ class Memo extends Model
         return $this->hasMany(MemoGood::class);
     }
 
-
+    /**
+     * 1つのメモに対して複数の返信が紐づく
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function memoResponses(): HasMany
+    {
+        return $this->hasMany(MemoResponse::class);
+    }
 
 }

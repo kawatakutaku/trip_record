@@ -76,9 +76,27 @@ class User extends Authenticatable
      * 1ユーザーに対して複数のメモいいねが紐づく
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function memoGood(): HasMany
+    public function memoGoods(): HasMany
     {
         return $this->hasMany(MemoGood::class);
+    }
+
+    /**
+     * 1つのメモに対して複数の返信が紐づく
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function memoResponses(): HasMany
+    {
+        return $this->hasMany(MemoResponse::class);
+    }
+
+    /**
+     * 1つのメモに対して複数の返信が紐づく
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function memoResponseGoods(): HasMany
+    {
+        return $this->hasMany(MemoResponseGood::class);
     }
 
     public function getAuthAccount(): ?User
