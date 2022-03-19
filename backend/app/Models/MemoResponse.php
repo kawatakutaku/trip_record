@@ -12,6 +12,11 @@ class MemoResponse extends Model
 {
     use HasFactory, SoftDeletes;
 
+    const MEMO_RESPONSE_MESSAGE = 'message';
+    const MEMO_ID = 'memoId';
+    const MEMO_RESPONSE_ID = 'response';
+    const MEMO_RESPONSES = 'memoResponses';
+
     /**
      * 1つのメモの返信が1ユーザーに紐づく(従属する)
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
