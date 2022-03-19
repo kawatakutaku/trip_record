@@ -3,85 +3,50 @@
 namespace App\Http\Controllers\Memos;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreMemoGoodRequest;
-use App\Http\Requests\UpdateMemoGoodRequest;
+use App\Models\Memo;
 use App\Models\MemoGood;
+use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MemoGoodController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * メモのいいね機能
+     * @param \App\Models\Memo $memo
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function index()
+    public function likeOrUnlike(Memo $memo): RedirectResponse
     {
-        //
+        $user = app(User::class);
+        $userId = $user->getAuthAccountId();
+
+        // いいねされている場合
+        $memoGood = MemoGood::where("memo_id", $memo->id)->where("user_id", $userId)->first();
+        if ($memoGood) {
+            $memoGood->delete();
+
+            return redirect()->back();
+        }
+
+
+        // いいねされてない場合
+        $memoGoodInTrash = MemoGood::onlyTrashed()->where("memo_id", $memo->id)->where("user_id", $userId)->first();
+        if ($memoGoodInTrash) {
+            $memoGoodInTrash->restore();
+        } else {
+            $memoGood = new MemoGood();
+            $memoGood->user_id = $userId;
+            $memoGood->memo_id = $memo->id;
+            $memoGood->created_at = Carbon::now();
+            $memoGood->updated_at = Carbon::now();
+            $memoGood->save();
+        }
+
+
+        return redirect()->back();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreMemoGoodRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreMemoGoodRequest $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\MemoGood  $memoGood
-     * @return \Illuminate\Http\Response
-     */
-    public function show(MemoGood $memoGood)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\MemoGood  $memoGood
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(MemoGood $memoGood)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateMemoGoodRequest  $request
-     * @param  \App\Models\MemoGood  $memoGood
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateMemoGoodRequest $request, MemoGood $memoGood)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\MemoGood  $memoGood
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(MemoGood $memoGood)
-    {
-        //
-    }
 }
