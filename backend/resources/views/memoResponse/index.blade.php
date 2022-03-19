@@ -10,21 +10,20 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     {{-- TODO: memos系のurlのときにnavにcreateも表示されるようにしたい --}}
-                    <x-linkbutton href="{{ route('memos.create', [App\Models\City::CITY_ID_NAME => $cityId]) }}">
+                    <x-linkbutton href="{{ route('responses.create', [App\Models\MemoResponse::MEMO_ID => $memoId]) }}">
                         <i class="fas fa-lg fa-pen"></i>
                     </x-linkbutton>
-                    @foreach($memos as $memo)
+                    @foreach($memoResponses as $memoResponse)
                         <!-- TODO: どのユーザーの投稿かもわかるようにしたい-->
                         <div class="row p-2 justify-content-center">
                             <div class="col-6">
-                                <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo">{{ $memo->memo }}</p>
-                                <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="img" id="img">{{ $memo->img }}</p>
+                                <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="message" id="message">{{ $memoResponse->message }}</p>
                             </div>
                             {{-- TODO: 詳細ボタンと削除ボタンを横並びにさせたい --}}
-                            <x-linkbutton href="{{ route('memos.show', [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}">
+                            <x-linkbutton href="{{ route('responses.show', [App\Models\MemoResponse::MEMO_ID => $memo->id, App\Models\MemoResponse::MEMO_RESPONSE_ID => $memoResponse->id]) }}">
                                 <i class="fas fa-lg fa-file-alt"></i>
                             </x-linkbutton>
-                            <form action="{{ route('memos.destroy', [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}" method="post">
+                            <form action="{{ route('responses.destroy', [App\Models\MemoResponse::MEMO_ID => $memo->id, App\Models\MemoResponse::MEMO_RESPONSE_ID => $memoResponse->id]) }}" method="post">
                                 <x-delete />
                             </form>
                         </div>

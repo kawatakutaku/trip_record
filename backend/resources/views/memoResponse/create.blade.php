@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-100 leading-tight">
-            {{ __('memo_reponse.create') }}
+            {{ __('memo_response.create') }}
         </h2>
     </x-slot>
 
@@ -13,18 +13,14 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('memos.store', [App\Models\City::CITY_ID_NAME => $cityId]) }}" method="post">
+                    <form action="{{ route('responses.store', [App\Models\MemoResponse::MEMO_ID => $memoId]) }}" method="post">
                         @csrf
                         <div class="row p-2 justify-content-center">
                             <div class="col-6">
-                                <x-textarea name="memo" id="memo" placeholder="メモ">{{ old(App\Models\Memo::MEMO_MEMO) }}</x-textarea>
+                                <x-textarea name="message" id="message" placeholder="メモ">{{ old(App\Models\MemoResponse::MEMO_REPONSE_MESSAGE) }}</x-textarea>
                             </div>
                         </div>
-                        <div class="row p-2 mt-3 justify-content-center">
-                            <div class="col-6" id="img">
-                                <x-input type="file" name="img" id="img" value="{{ old(App\Models\Memo::MEMO_IMG) }}" placeholder="画像" />
-                            </div>
-                        </div>
+                        {{-- TODO: 画像も一緒に送信する場合は、画像用のカラムを用意する必要がある？ --}}
                         <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
                             <x-button>
                                 <i class="fas fa-2x fa-paper-plane"></i>

@@ -11,28 +11,23 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="row p-2 justify-content-center">
                         <div class="col-6">
-                            <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo">{{ $memo->memo }}</p>
-                        </div>
-                    </div>
-                    <div class="row p-2 mt-3 justify-content-center">
-                        <div class="col-6" id="img">
-                            <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="img" id="img">{{ $memo->img }}</p>
+                            <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="message" id="message">{{ $memoResponse->message }}</p>
                         </div>
                     </div>
                     <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
-                        <x-linkbutton href="{{ route('memos.edit', [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}">
+                        <x-linkbutton href="{{ route('responses.edit', [App\Models\MemoResponse::MEMO_ID => $memo->id, App\Models\MemoResponse::MEMO_RESPONSE_ID => $memoResponse->id]) }}">
                             <i class="fas fa-lg fa-edit"></i>
                         </x-linkbutton>
                         <!-- TODO: componentの中にformタグ自体も書けるようにしたい -->
-                        <form action="{{ route("memos.destroy", [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}" method="post">
+                        <form action="{{ route("responses.destroy", [App\Models\MemoResponse::MEMO_ID => $memo->id, App\Models\MemoResponse::MEMO_RESPONSE_ID => $memoResponse->id]) }}" method="post">
                             <x-delete/>
                         </form>
-                        <form action="{{ route("memos.like", [App\Models\Memo::MEMO_ID_NAME => $memo->id]) }}" method="post">
+                        <form action="{{ route("responses.like", [App\Models\MemoResponse::MEMO_ID => $memo->id]) }}" method="post">
                             @csrf
                             <x-button>
                                 いいね
                                 <span class="badge">
-                                    {{ $memo->memoGoods->count() }}
+                                    {{ $memoResponse->memoResopseGoods->count() }}
                                 </span>
                             </x-button>
                         </form>
