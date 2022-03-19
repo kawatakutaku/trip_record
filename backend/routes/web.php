@@ -5,6 +5,7 @@ use App\Http\Controllers\Cities\CityController;
 use App\Http\Controllers\Memos\DirectMessageController;
 use App\Http\Controllers\Memos\MemoController;
 use App\Http\Controllers\Memos\MemoGoodController;
+use App\Http\Controllers\Memos\MemoResponseController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\Users\MyPageController;
 use Illuminate\Support\Facades\Route;
@@ -35,6 +36,16 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/mypage', MyPageController::class)->name('mypage');
 
     Route::resource('memos', MemoController::class)->only([
+        'index',
+        'create',
+        'store',
+        'show',
+        'edit',
+        'update',
+        'destroy'
+    ]);
+
+    Route::resource('memos/{memoId}/response', MemoResponseController::class)->only([
         'index',
         'create',
         'store',
