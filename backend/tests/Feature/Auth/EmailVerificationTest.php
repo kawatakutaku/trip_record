@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\MasterGender;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Verified;
@@ -19,7 +20,8 @@ class EmailVerificationTest extends BaseFeatureTestCase
     public function testEmailVerification()
     {
         $user = User::factory()->create([
-            'email_verified_at' => null,
+            User::ACCOUNT_EMAIL_VERIFIED_AT => null,
+            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender,
         ]);
 
         $response = $this->actingAs($user)->get('/verify-email');
@@ -29,7 +31,8 @@ class EmailVerificationTest extends BaseFeatureTestCase
     public function testEmailVerified()
     {
         $user = User::factory()->create([
-            'email_verified_at' => null,
+            User::ACCOUNT_EMAIL_VERIFIED_AT => null,
+            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender,
         ]);
 
         Event::fake();
@@ -50,7 +53,8 @@ class EmailVerificationTest extends BaseFeatureTestCase
     public function testEmailNotVerified()
     {
         $user = User::factory()->create([
-            'email_verified_at' => null,
+            User::ACCOUNT_EMAIL_VERIFIED_AT => null,
+            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender,
         ]);
 
         $verificationUrl = URL::temporarySignedRoute(

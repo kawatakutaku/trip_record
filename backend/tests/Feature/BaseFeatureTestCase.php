@@ -47,10 +47,10 @@ class BaseFeatureTestCase extends TestCase
      */
     public function login(): void
     {
-        $loginResponse = $this->post(route("login.post"), [User::ACCOUNT_EMAIL => $this->user->email, User::ACCOUNT_PASSWORD => User::ACCOUNT_PASSWORD_VALUE]);
+        $loginResponse = $this->post(route("login.post"), [User::ACCOUNT_EMAIL => $this->user->email, User::ACCOUNT_PASSWORD => User::ACCOUNT_DEFAULT_PASSWORD_VALUE]);
         $this->assertAuthenticated();
         $loginResponse->assertStatus(Response::HTTP_FOUND);
-        $loginResponse->assertRedirect(RouteServiceProvider::HOME);
+        $loginResponse->assertRedirect(RouteServiceProvider::CITY);
     }
 
     /**

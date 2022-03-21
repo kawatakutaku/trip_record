@@ -21,7 +21,8 @@ class User extends Authenticatable
 
     const ACCOUNT_PASSWORD = 'password';
     const ACCOUNT_EMAIL = 'email';
-    const ACCOUNT_PASSWORD_VALUE = 'password';
+    const ACCOUNT_DEFAULT_PASSWORD_VALUE = 'password';
+    const ACCOUNT_WRONG_PASSWORD_VALUE = 'wrong-password';
     const ACCOUNT_NAME = 'name';
     const ACCOUNT_PASSWORD_CONFIRMATION = 'password_confirmation';
     const ACCOUNT_PROFILE = 'profile';
