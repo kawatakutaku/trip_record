@@ -56,8 +56,6 @@ class MemoController extends Controller
 
         $memo->user_id = $userId;
         $memo->city_id = $request->cityId;
-        $memo->created_at = Carbon::now();
-        $memo->updated_at = Carbon::now();
 
         $memo->save();
 
@@ -99,14 +97,8 @@ class MemoController extends Controller
 
         $memo->memo = $request->memo;
         $memo->img = $request->img;
-        // TODO: user_idとcityIdはどうやって取得するのか検討
-        $user = app(User::class);
-        $userId = $user->getAuthAccountId();
-        $memo->user_id = $userId;
-        $memo->city_id = $request->cityId;
-        $memo->updated_at = Carbon::now();
 
-        $memo->save();
+        $memo->update();
 
         return redirect(route('memos.show', [ City::CITY_ID_NAME => $request->cityId, Memo::MEMO_ID_NAME => $memo]));
     }
