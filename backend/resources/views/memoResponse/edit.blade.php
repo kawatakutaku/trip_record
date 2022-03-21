@@ -13,12 +13,12 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('responses.update', [App\Models\MemoResponse::MEMO_ID => $memo->id]) }}" method="post">
+                    <form action="{{ route('responses.update', [App\Models\MemoResponse::MEMO_ID => $memoId,  App\Models\MemoResponse::MEMO_RESPONSE_ID => $response->id]) }}" method="post">
                         @method('put')
                         @csrf
                         <div class="mb-4">
                             <!-- TODO: dbから取得したデータを初期値として登録できるようにする(component側の記述を変更する) -->
-                            <x-textarea name="message" id="message">{{ old(App\Models\MemoResponse::MEMO_REPONSE_MESSAGE) ?? $memoResponse->message }}</x-textarea>
+                            <x-textarea name="message" id="message">{{ old(App\Models\MemoResponse::MEMO_RESPONSE_MESSAGE) ?? $response->message }}</x-textarea>
                         </div>
                         <div class="flex items-center justify-between">
                             <x-button>

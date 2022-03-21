@@ -17,7 +17,7 @@
                         @csrf
                         <div class="row p-2 justify-content-center">
                             <div class="col-6">
-                                <x-textarea name="message" id="message" placeholder="メモ">{{ old(App\Models\MemoResponse::MEMO_REPONSE_MESSAGE) }}</x-textarea>
+                                <x-textarea name="message" id="message" placeholder="メモ">{{ old(App\Models\MemoResponse::MEMO_RESPONSE_MESSAGE) }}</x-textarea>
                             </div>
                         </div>
                         {{-- TODO: 画像も一緒に送信する場合は、画像用のカラムを用意する必要がある？ --}}
