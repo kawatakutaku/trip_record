@@ -4,6 +4,7 @@ namespace Tests\Feature\Memo;
 
 use App\Models\City;
 use App\Models\Memo;
+use App\Models\MemoLike;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -33,6 +34,8 @@ class MemoTest extends BaseFeatureTestCase
         $this->memoCreate();
         $this->memoStore();
         $this->memoShow();
+        $this->memoLike();
+        $this->memoUnlike();
         $this->memoEdit();
         $this->memoUpdate();
         $this->memoDestroy();
@@ -87,6 +90,34 @@ class MemoTest extends BaseFeatureTestCase
     {
         $memoShowResponse = $this->get(route("memos.show", [City::CITY_ID_NAME => $this->cityId, Memo::MEMO_ID_NAME => $this->memoStored->id]));
         $memoShowResponse->assertStatus(Response::HTTP_OK);
+    }
+    /**
+     * メモのいいね
+     * @return void
+     */
+    private function memoLike(): void
+    {
+        $memoLikeResponse = $this->post(route('memos.like', [Memo::MEMO_ID_NAME => $this->memoStored->id]));
+        $memoLikeResponse->assertStatus(Response::HTTP_FOUND);
+        $memoLikeResponse->assertRedirect(route("memos.show", [City::CITY_ID_NAME => $this->cityId, Memo::MEMO_ID_NAME => $this->memoStored->id]));
+
+        // 整合性チェック
+        $this->memoLiked = MemoLike::where(Memo::MEMO_ID, $this->memoStored->id)->where(Memo::MEMO_USER_ID, $this->user->id)->first();
+        $this->assertNotNull($this->memoLiked);
+    }
+    /**
+     * メモのいいね取り消し
+     * @return void
+     */
+    private function memoUnlike(): void
+    {
+        $memoUnlikeResponse = $this->post(route('memos.like', [Memo::MEMO_ID_NAME => $this->memoStored->id]));
+        $memoUnlikeResponse->assertStatus(Response::HTTP_FOUND);
+        $memoUnlikeResponse->assertRedirect(route("memos.show", [City::CITY_ID_NAME => $this->cityId, Memo::MEMO_ID_NAME => $this->memoStored->id]));
+
+        // 整合性チェック
+        $memoUnliked = MemoLike::find($this->memoLiked->id);
+        $this->assertNull($memoUnliked);
     }
     /**
      * メモの編集画面
