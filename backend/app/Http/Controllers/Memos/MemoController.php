@@ -7,7 +7,7 @@ use App\Http\Requests\Memos\StoreMemoRequest;
 use App\Http\Requests\Memos\UpdateMemoRequest;
 use App\Models\City;
 use App\Models\Memo;
-use App\Models\MemoGood;
+use App\Models\MemoLike;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;

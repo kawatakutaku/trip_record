@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class MemoGoodFactory extends Factory
+class MemoLikeFactory extends Factory
 {
     /**
      * Define the model's default state.

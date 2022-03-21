@@ -32,7 +32,7 @@
                             <x-button>
                                 いいね
                                 <span class="badge">
-                                    {{ $memo->memoGoods->count() }}
+                                    {{ $memo->MemoLikes->count() }}
                                 </span>
                             </x-button>
                         </form>

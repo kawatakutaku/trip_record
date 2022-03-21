@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class MemoGood extends Model
+class MemoLike extends Model
 {
     use HasFactory, SoftDeletes;
 
     const MEMO_LIKE = 'memoLike';
+    const MEMO_LIKE_MEMO_ID = 'memo_id';
+    const MEMO_LIKE_USER_ID = 'user_id';
 
     /**
      * 1メモいいねに対して1メモが紐づく

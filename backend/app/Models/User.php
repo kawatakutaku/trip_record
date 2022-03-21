@@ -77,9 +77,9 @@ class User extends Authenticatable
      * 1ユーザーに対して複数のメモいいねが紐づく
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function memoGoods(): HasMany
+    public function MemoLikes(): HasMany
     {
-        return $this->hasMany(MemoGood::class);
+        return $this->hasMany(MemoLike::class);
     }
 
     /**

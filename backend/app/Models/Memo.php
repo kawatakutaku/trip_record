@@ -18,6 +18,8 @@ class Memo extends Model
     const MULTIPLE_MEMOS = "memos";
     const MEMO_IMG = "img";
     const MEMO_MEMO = "memo";
+    const MEMO_ID = "memo_id";
+    const MEMO_USER_ID = "user_id";
 
 
     /**
@@ -33,9 +35,9 @@ class Memo extends Model
      * 1つのメモに対して複数のメモいいねが紐づく
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function memoGoods(): HasMany
+    public function MemoLikes(): HasMany
     {
-        return $this->hasMany(MemoGood::class);
+        return $this->hasMany(MemoLike::class);
     }
 
     /**
