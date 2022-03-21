@@ -21,7 +21,7 @@ class AuthenticationTest extends BaseFeatureTestCase
     public function testWrongPassword(): void
     {
         $user = User::factory()->create([
-            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender
+            User::ACCOUNT_GENDER => $this->genderId
         ]);
 
         $this->post('/login', [

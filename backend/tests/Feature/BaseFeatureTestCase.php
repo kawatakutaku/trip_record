@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\MasterGender;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -29,6 +30,8 @@ class BaseFeatureTestCase extends TestCase
             $this->loginForm();
             $this->login();
         }
+
+        $this->genderId = MasterGender::inRandomOrder()->first()->id;
     }
 
     /**

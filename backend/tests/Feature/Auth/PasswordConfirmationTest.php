@@ -16,7 +16,7 @@ class PasswordConfirmationTest extends BaseFeatureTestCase
     public function testConfirmPassword()
     {
         $user = User::factory()->create([
-            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender,
+            User::ACCOUNT_GENDER => $this->genderId,
         ]);
 
         $response = $this->actingAs($user)->get('/confirm-password');
@@ -26,7 +26,7 @@ class PasswordConfirmationTest extends BaseFeatureTestCase
     public function testConfirmedPassword()
     {
         $user = User::factory()->create([
-            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender,
+            User::ACCOUNT_GENDER => $this->genderId,
         ]);
 
         $response = $this->actingAs($user)->post('/confirm-password', [
@@ -40,7 +40,7 @@ class PasswordConfirmationTest extends BaseFeatureTestCase
     public function testNotConfirmedPassword()
     {
         $user = User::factory()->create([
-            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender,
+            User::ACCOUNT_GENDER => $this->genderId,
         ]);
 
         $response = $this->actingAs($user)->post('/confirm-password', [

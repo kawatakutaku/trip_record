@@ -26,7 +26,7 @@ class PasswordResetTest extends BaseFeatureTestCase
         Notification::fake();
 
         $user = User::factory()->create([
-            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender
+            User::ACCOUNT_GENDER => $this->genderId
         ]);
 
         $this->post('/forgot-password', [User::ACCOUNT_EMAIL => $user->email]);
@@ -40,7 +40,7 @@ class PasswordResetTest extends BaseFeatureTestCase
         Notification::fake();
 
         $user = User::factory()->create([
-            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender
+            User::ACCOUNT_GENDER => $this->genderId
         ]);
 
         $this->post('/forgot-password', [User::ACCOUNT_EMAIL => $user->email]);
@@ -58,7 +58,7 @@ class PasswordResetTest extends BaseFeatureTestCase
         Notification::fake();
 
         $user = User::factory()->create([
-            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender
+            User::ACCOUNT_GENDER => $this->genderId
         ]);
 
         $this->post('/forgot-password', [User::ACCOUNT_EMAIL => $user->email]);

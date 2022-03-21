@@ -21,7 +21,7 @@ class EmailVerificationTest extends BaseFeatureTestCase
     {
         $user = User::factory()->create([
             User::ACCOUNT_EMAIL_VERIFIED_AT => null,
-            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender,
+            User::ACCOUNT_GENDER => $this->genderId,
         ]);
 
         $response = $this->actingAs($user)->get('/verify-email');
@@ -32,7 +32,7 @@ class EmailVerificationTest extends BaseFeatureTestCase
     {
         $user = User::factory()->create([
             User::ACCOUNT_EMAIL_VERIFIED_AT => null,
-            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender,
+            User::ACCOUNT_GENDER => $this->genderId,
         ]);
 
         Event::fake();
@@ -54,7 +54,7 @@ class EmailVerificationTest extends BaseFeatureTestCase
     {
         $user = User::factory()->create([
             User::ACCOUNT_EMAIL_VERIFIED_AT => null,
-            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender,
+            User::ACCOUNT_GENDER => $this->genderId,
         ]);
 
         $verificationUrl = URL::temporarySignedRoute(

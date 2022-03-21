@@ -50,6 +50,7 @@ class RegistrationTest extends BaseFeatureTestCase
         $userData = User::factory()->raw([
             User::ACCOUNT_PASSWORD => User::ACCOUNT_DEFAULT_PASSWORD_VALUE,
             User::ACCOUNT_PASSWORD_CONFIRMATION => User::ACCOUNT_DEFAULT_PASSWORD_VALUE,
+            // TODO: これだとDBで保存されるときに、idが保存されない
             User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender,
         ]);
 
