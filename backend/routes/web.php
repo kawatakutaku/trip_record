@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function() {
         'destroy'
     ]);
 
-    Route::resource('memos/{memoId}/responses', MemoResponseController::class)->only([
+    Route::resource('responses', MemoResponseController::class)->only([
         'index',
         'create',
         'store',

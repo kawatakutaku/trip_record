@@ -13,7 +13,7 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('responses.update', [App\Models\MemoResponse::MEMO_ID => $memoId,  App\Models\MemoResponse::MEMO_RESPONSE_ID => $response->id]) }}" method="post">
+                    <form action="{{ route('responses.update', [App\Models\MemoResponse::MEMO_RESPONSE_ID => $response->id]) }}" method="post">
                         @method('put')
                         @csrf
                         <div class="mb-4">

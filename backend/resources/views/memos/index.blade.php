@@ -21,6 +21,10 @@
                                 <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="img" id="img">{{ $memo->img }}</p>
                             </div>
                             {{-- TODO: 詳細ボタンと削除ボタンを横並びにさせたい --}}
+                            {{-- TODO: memos系のurlのときにnavにcreateも表示されるようにしたい --}}
+                            <x-linkbutton href="{{ route('responses.create', [App\Models\MemoResponse::MEMO_ID => $memo->id]) }}">
+                                <i class="fas fa-lg fa-reply"></i>
+                            </x-linkbutton>
                             <x-linkbutton href="{{ route('memos.show', [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}">
                                 <i class="fas fa-lg fa-file-alt"></i>
                             </x-linkbutton>

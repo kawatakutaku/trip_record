@@ -16,28 +16,27 @@ class MemoResponseController extends Controller
 {
     /**
      * メモ返信の一覧機能
-     * @param string $memoId
      * @return \Illuminate\View\View
      */
-    public function index(string $memoId): View
+    public function index(): View
     {
         // TODO: 基底クラスを作って、そこでuserIdを取得するようにする
         $user = app(User::class);
         $userId = $user->getAuthAccountId();
 
-        $memoResponses = MemoResponse::where(MemoResponse::MEMO_RESPONSE_MEMO_ID, $memoId)->where(MemoResponse::MEMO_RESPONSE_USER_ID, $userId)->get();
+        $memoResponses = MemoResponse::where(MemoResponse::MEMO_RESPONSE_USER_ID, $userId)->get();
 
-        return view('memoResponse.index', [MemoResponse::MEMO_ID => $memoId, MemoResponse::MEMO_RESPONSES => $memoResponses]);
+        return view('memoResponse.index', [MemoResponse::MEMO_RESPONSES => $memoResponses]);
     }
 
     /**
      * メモ返信の新規作成機能
-     * @param string $memoId
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\View\View
      */
-    public function create(string $memoId): View
+    public function create(Request $request): View
     {
-        return view('memoResponse.create', [MemoResponse::MEMO_ID => $memoId]);
+        return view('memoResponse.create', [MemoResponse::MEMO_ID => $request->memoId]);
     }
 
     /**
@@ -46,7 +45,7 @@ class MemoResponseController extends Controller
      * @param string $memoId
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreMemoResponseRequest $request, string $memoId): RedirectResponse
+    public function store(StoreMemoResponseRequest $request): RedirectResponse
     {
         // ログインユーザーのidを取得
         $user = app(User::class);
@@ -55,15 +54,15 @@ class MemoResponseController extends Controller
         // メモ返信の保存処理
         $memoResponse = new MemoResponse();
 
-        $memoResponse->memo_id = $memoId;
+        $memoResponse->memo_id = $request->memoId;
         $memoResponse->user_id = $userId;
         $memoResponse->message = $request->message;
         $memoResponse->save();
 
         // メモ返信の一覧の取得
-        $memoResponses = MemoResponse::where(MemoResponse::MEMO_RESPONSE_USER_ID, $userId)->where(MemoResponse::MEMO_RESPONSE_MEMO_ID, $memoId)->get();
+        $memoResponses = MemoResponse::where(MemoResponse::MEMO_RESPONSE_USER_ID, $userId)->where(MemoResponse::MEMO_RESPONSE_MEMO_ID, $request->memoId)->get();
 
-        return redirect(route('responses.index', [MemoResponse::MEMO_ID => $memoId, MemoResponse::MEMO_RESPONSES => $memoResponses]));
+        return redirect(route('responses.index', [MemoResponse::MEMO_RESPONSES => $memoResponses]));
     }
 
     /**
@@ -73,9 +72,9 @@ class MemoResponseController extends Controller
      * @param string $memoId
      * @return \Illuminate\View\View
      */
-    public function show(string $memoId, MemoResponse $response): View
+    public function show(MemoResponse $response): View
     {
-        return view('memoResponse.show', [MemoResponse::MEMO_RESPONSE_ID => $response, MemoResponse::MEMO_ID => $memoId]);
+        return view('memoResponse.show', [MemoResponse::MEMO_RESPONSE_ID => $response]);
     }
 
     /**
@@ -84,9 +83,9 @@ class MemoResponseController extends Controller
      * @param string $memoId
      * @return \Illuminate\View\View
      */
-    public function edit(string $memoId, MemoResponse $response): View
+    public function edit(MemoResponse $response): View
     {
-        return view('memoResponse.edit', [MemoResponse::MEMO_RESPONSE_ID => $response, MemoResponse::MEMO_ID => $memoId]);
+        return view('memoResponse.edit', [MemoResponse::MEMO_RESPONSE_ID => $response]);
     }
 
     /**
@@ -96,13 +95,13 @@ class MemoResponseController extends Controller
      * @param string $memoId
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateMemoResponseRequest $request, string $memoId, MemoResponse $response): RedirectResponse
+    public function update(UpdateMemoResponseRequest $request, MemoResponse $response): RedirectResponse
     {
         // messageの更新処理
         $response->message = $request->message;
         $response->update();
 
-        return redirect(route('responses.show', [MemoResponse::MEMO_RESPONSE_ID => $response, MemoResponse::MEMO_ID => $memoId]));
+        return redirect(route('responses.show', [MemoResponse::MEMO_RESPONSE_ID => $response]));
     }
 
     /**
@@ -111,15 +110,15 @@ class MemoResponseController extends Controller
      * @param string $memoId
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(string $memoId, MemoResponse $response): RedirectResponse
+    public function destroy(MemoResponse $response): RedirectResponse
     {
         $userId = $response->user_id;
 
         // メモ返信の削除処理
         $response->delete();
 
-        $memoResponses = MemoResponse::where(MemoResponse::MEMO_RESPONSE_USER_ID, $userId)->where(MemoResponse::MEMO_RESPONSE_MEMO_ID, $memoId)->get();
+        $memoResponses = MemoResponse::where(MemoResponse::MEMO_RESPONSE_USER_ID, $userId)->get();
 
-        return redirect(route('responses.index', [MemoResponse::MEMO_ID => $memoId, MemoResponse::MEMO_RESPONSES => $memoResponses]));
+        return redirect(route('responses.index', [MemoResponse::MEMO_RESPONSES => $memoResponses]));
     }
 }
