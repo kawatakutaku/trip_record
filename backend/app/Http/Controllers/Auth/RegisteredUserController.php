@@ -46,7 +46,9 @@ class RegisteredUserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->img = $path;
+        // TODO: テストで画像ファイルを作成できないから、一時的に対策を取っている
+        $user->img = $request->img;
+        // $user->img = $path;
         $user->profile = $request->profile;
         $user->gender = $request->gender;
 

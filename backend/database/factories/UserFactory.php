@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 
 class UserFactory extends Factory
@@ -21,6 +22,8 @@ class UserFactory extends Factory
             User::ACCOUNT_REMEMBER_TOKEN => Str::random(10),
             User::ACCOUNT_REGISTER_TOKEN => Str::random(10),
             User::ACCOUNT_PASSWORD_RESET_TOKEN => Str::random(10),
+            // TODO: UploadedFileを使用して、jpegとかpng形式の画像ファイルを自動的に作成してもらえるようにしたい
+            // User::ACCOUNT_IMG => UploadedFile::fake()->image('avator.jpeg'),
             User::ACCOUNT_IMG => $this->faker->image(),
             User::ACCOUNT_PROFILE => $this->faker->realText(30),
         ];
