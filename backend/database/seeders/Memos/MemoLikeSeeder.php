@@ -23,7 +23,7 @@ class MemoLikeSeeder extends BaseDatabaseSeeder
         {
             $MemoLikeId = static::MEMO_GOOD_ID . $i;
             $userId = UserSeeder::USER_ID . $i;
-            $memoId = MemoSeeder::MEMO_ID . $i;
+            $memoId = MemoSeeder::MEMO_DB_ID . $i;
 
             $MemoLikes = MemoLike::factory()->raw([
                 'id' => $MemoLikeId,

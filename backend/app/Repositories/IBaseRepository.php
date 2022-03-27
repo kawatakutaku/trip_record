@@ -13,6 +13,11 @@ use Illuminate\View\View;
 interface IBaseRepository
 {
     /**
+     * @param int
+     */
+    public function getAuthUserId(int $authUserId);
+
+    /**
      * @param \Illuminate\Foundation\Http\FormRequest $request
      */
     public function store(FormRequest $request);

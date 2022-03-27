@@ -18,8 +18,8 @@ class Memo extends Model
     const MULTIPLE_MEMOS = "memos";
     const MEMO_IMG = "img";
     const MEMO_MEMO = "memo";
-    const MEMO_ID = "memo_id";
-    const MEMO_USER_ID = "user_id";
+    const MEMO_DB_ID = "memo_id";
+    const MEMO_DB_USER_ID = "user_id";
 
 
     /**

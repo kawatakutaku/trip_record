@@ -14,6 +14,11 @@ use Illuminate\Foundation\Http\FormRequest;
 abstract class BaseRepository implements IBaseRepository
 {
     /**
+     * @param int
+     */
+    abstract public function getAuthUserId(int $authUserId);
+
+    /**
      * 保存処理
      * @param \Illuminate\Foundation\Http\FormRequest $request
      */
