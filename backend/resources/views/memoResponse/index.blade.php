@@ -16,10 +16,10 @@
                                 <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="message" id="message">{{ $memoResponse->message }}</p>
                             </div>
                             {{-- TODO: 詳細ボタンと削除ボタンを横並びにさせたい --}}
-                            <x-linkbutton href="{{ route('responses.show', [App\Models\MemoResponse::MEMO_RESPONSE_ID => $memoResponse->id]) }}">
+                            <x-linkbutton href="{{ route('responses.show', [App\Models\MemoResponse::MEMO_RESPONSE_ID => $memoResponse->id, App\Models\MemoResponse::MEMO_ID => $memoId]) }}">
                                 <i class="fas fa-lg fa-file-alt"></i>
                             </x-linkbutton>
-                            <form action="{{ route('responses.destroy', [App\Models\MemoResponse::MEMO_RESPONSE_ID => $memoResponse->id]) }}" method="post">
+                            <form action="{{ route('responses.destroy', [App\Models\MemoResponse::MEMO_RESPONSE_ID => $memoResponse->id, App\Models\MemoResponse::MEMO_ID => $memoId]) }}" method="post">
                                 <x-delete />
                             </form>
                         </div>

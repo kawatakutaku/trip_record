@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Memos;
 
+use App\Domain\UseCases\MemoResponse\DestroyUseCase;
+use App\Domain\UseCases\MemoResponse\IndexUseCase;
+use App\Domain\UseCases\MemoResponse\StoreUseCase;
+use App\Domain\UseCases\MemoResponse\UpdateUseCase;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Memos\StoreMemoResponseRequest;
 use App\Http\Requests\Memos\UpdateMemoResponseRequest;
 use App\Models\Memo;
 use App\Models\MemoResponse;
 use App\Models\User;
+use App\Repositories\Memo\IMemoResponseRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -16,17 +21,14 @@ class MemoResponseController extends Controller
 {
     /**
      * メモ返信の一覧機能
+     * @param \App\Domain\UseCases\MemoResponse\IndexUseCase $useCase
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\View\View
      */
-    public function index(): View
+    public function index(Request $request, IndexUseCase $useCase): View
     {
-        // TODO: 基底クラスを作って、そこでuserIdを取得するようにする
-        $user = app(User::class);
-        $userId = $user->getAuthAccountId();
-
-        $memoResponses = MemoResponse::where(MemoResponse::MEMO_RESPONSE_USER_ID, $userId)->get();
-
-        return view('memoResponse.index', [MemoResponse::MEMO_RESPONSES => $memoResponses]);
+        $memoResponses = $useCase->getIndexMemoResponses($request->memoId);
+        return view('memoResponse.index', [MemoResponse::MEMO_RESPONSES => $memoResponses, MemoResponse::MEMO_ID => $request->memoId]);
     }
 
     /**
@@ -42,34 +44,18 @@ class MemoResponseController extends Controller
     /**
      * メモ返信の保存処理
      * @param  \App\Http\Requests\Memos\StoreMemoResponseRequest  $request
-     * @param string $memoId
+     * @param \App\Domain\UseCases\MemoResponse\StoreUseCase $useCase
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(StoreMemoResponseRequest $request): RedirectResponse
+    public function store(StoreMemoResponseRequest $request,  StoreUseCase $useCase): RedirectResponse
     {
-        // ログインユーザーのidを取得
-        $user = app(User::class);
-        $userId = $user->getAuthAccountId();
-
-        // メモ返信の保存処理
-        $memoResponse = new MemoResponse();
-
-        $memoResponse->memo_id = $request->memoId;
-        $memoResponse->user_id = $userId;
-        $memoResponse->message = $request->message;
-        $memoResponse->save();
-
-        // メモ返信の一覧の取得
-        $memoResponses = MemoResponse::where(MemoResponse::MEMO_RESPONSE_USER_ID, $userId)->where(MemoResponse::MEMO_RESPONSE_MEMO_ID, $request->memoId)->get();
-
-        return redirect(route('responses.index', [MemoResponse::MEMO_RESPONSES => $memoResponses]));
+        $memoResponses = $useCase->execute($request);
+        return redirect(route('responses.index', [MemoResponse::MEMO_RESPONSES => $memoResponses, MemoResponse::MEMO_ID => $request->memoId]));
     }
 
     /**
      * メモ返信の詳細機能
-     * @param \Illuminate\Http\Request $request
      * @param  \App\Models\MemoResponse  $response
-     * @param string $memoId
      * @return \Illuminate\View\View
      */
     public function show(MemoResponse $response): View
@@ -80,7 +66,6 @@ class MemoResponseController extends Controller
     /**
      * メモ返信の編集機能
      * @param  \App\Models\MemoResponse  $response
-     * @param string $memoId
      * @return \Illuminate\View\View
      */
     public function edit(MemoResponse $response): View
@@ -92,33 +77,24 @@ class MemoResponseController extends Controller
      * メモ返信の更新処理
      * @param  \App\Http\Requests\Memos\UpdateMemoResponseRequest  $request
      * @param  \App\Models\MemoResponse  $response
-     * @param string $memoId
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateMemoResponseRequest $request, MemoResponse $response): RedirectResponse
+    public function update(UpdateMemoResponseRequest $request, MemoResponse $response,  UpdateUseCase $useCase): RedirectResponse
     {
-        // messageの更新処理
-        $response->message = $request->message;
-        $response->update();
-
+        $useCase->execute($request, $response);
         return redirect(route('responses.show', [MemoResponse::MEMO_RESPONSE_ID => $response]));
     }
 
     /**
      * メモ返信の削除機能
      * @param  \App\Models\MemoResponse  $response
-     * @param string $memoId
+     * @param \App\Domain\UseCases\MemoResponse\DestroyUseCase $useCase
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(MemoResponse $response): RedirectResponse
+    public function destroy(MemoResponse $response, DestroyUseCase $useCase): RedirectResponse
     {
-        $userId = $response->user_id;
-
-        // メモ返信の削除処理
-        $response->delete();
-
-        $memoResponses = MemoResponse::where(MemoResponse::MEMO_RESPONSE_USER_ID, $userId)->get();
-
-        return redirect(route('responses.index', [MemoResponse::MEMO_RESPONSES => $memoResponses]));
+        $memoResponses = $useCase->execute($response);
+        return redirect(route('responses.index', [MemoResponse::MEMO_RESPONSES => $memoResponses, MemoResponse::MEMO_ID => $response->memo_id]));
     }
+
 }
