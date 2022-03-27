@@ -13,7 +13,7 @@ abstract class BaseMemoResponseUseCase extends BaseUseCase
      * メモの一覧のために取得するメソッド
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    protected function getMemoResponses(string $memoId=null): Collection
+    protected function getMemoResponses(int $memoId=null): Collection
     {
         $authUserId = $this->getAuthUserId();
 

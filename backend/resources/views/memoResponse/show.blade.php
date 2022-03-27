@@ -22,7 +22,7 @@
                         <form action="{{ route("responses.destroy", [App\Models\MemoResponse::MEMO_RESPONSE_ID => $response->id]) }}" method="post">
                             <x-delete/>
                         </form>
-                        {{-- <form action="{{ route("responses.like", [App\Models\MemoResponse::MEMO_ID => $memoId]) }}" method="post"> --}}
+                        {{-- <form action="{{ route("responses.like", [App\Models\MemoResponse::MEMO_DB_ID => $memoId]) }}" method="post"> --}}
                             @csrf
                             <x-button>
                                 いいね

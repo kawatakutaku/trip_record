@@ -13,7 +13,7 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('responses.store', [App\Models\MemoResponse::MEMO_ID => $memoId]) }}" method="post">
+                    <form action="{{ route('responses.store', [App\Models\MemoResponse::MEMO_DB_ID => $memoId]) }}" method="post">
                         @csrf
                         <div class="row p-2 justify-content-center">
                             <div class="col-6">

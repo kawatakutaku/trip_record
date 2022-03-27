@@ -28,7 +28,7 @@ class MemoResponseController extends Controller
     public function index(Request $request, IndexUseCase $useCase): View
     {
         $memoResponses = $useCase->getIndexMemoResponses($request->memoId);
-        return view('memoResponse.index', [MemoResponse::MEMO_RESPONSES => $memoResponses, MemoResponse::MEMO_ID => $request->memoId]);
+        return view('memoResponse.index', [MemoResponse::MEMO_RESPONSES => $memoResponses, MemoResponse::MEMO_DB_ID => $request->memoId]);
     }
 
     /**
@@ -38,7 +38,7 @@ class MemoResponseController extends Controller
      */
     public function create(Request $request): View
     {
-        return view('memoResponse.create', [MemoResponse::MEMO_ID => $request->memoId]);
+        return view('memoResponse.create', [MemoResponse::MEMO_DB_ID => $request->memoId]);
     }
 
     /**
@@ -50,7 +50,7 @@ class MemoResponseController extends Controller
     public function store(StoreMemoResponseRequest $request,  StoreUseCase $useCase): RedirectResponse
     {
         $memoResponses = $useCase->execute($request);
-        return redirect(route('responses.index', [MemoResponse::MEMO_RESPONSES => $memoResponses, MemoResponse::MEMO_ID => $request->memoId]));
+        return redirect(route('responses.index', [MemoResponse::MEMO_RESPONSES => $memoResponses, MemoResponse::MEMO_DB_ID => $request->memoId]));
     }
 
     /**
@@ -94,7 +94,7 @@ class MemoResponseController extends Controller
     public function destroy(MemoResponse $response, DestroyUseCase $useCase): RedirectResponse
     {
         $memoResponses = $useCase->execute($response);
-        return redirect(route('responses.index', [MemoResponse::MEMO_RESPONSES => $memoResponses, MemoResponse::MEMO_ID => $response->memo_id]));
+        return redirect(route('responses.index', [MemoResponse::MEMO_RESPONSES => $memoResponses, MemoResponse::MEMO_DB_ID => $response->memo_id]));
     }
 
 }

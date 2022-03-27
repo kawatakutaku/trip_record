@@ -13,7 +13,10 @@ class MemoResponseRepository extends BaseRepository implements IMemoResponseRepo
 {
     private $authUserId;
 
-    public function getAuthUserId(string $authUserId)
+    /**
+     * @param int
+     */
+    public function getAuthUserId(int $authUserId)
     {
         $this->authUserId = $authUserId;
     }

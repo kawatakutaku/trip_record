@@ -29,7 +29,7 @@ class DestroyUseCase extends BaseMemoResponseUseCase
         $this->getBaseRepository()->destroy($model);
 
         // メモ返信の一覧の取得
-        $memoResponses = $this->getMemoResponses();
+        $memoResponses = $this->getMemoResponses($model->memo_id);
 
         return $memoResponses;
     }

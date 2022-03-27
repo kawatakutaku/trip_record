@@ -61,7 +61,7 @@ class MemoResponseTest extends BaseFeatureTestCase
      */
     private function memoResponseCreate(): void
     {
-        $memoResponseCreateResponse = $this->get(route("responses.create", [MemoResponse::MEMO_ID => $this->memoId]));
+        $memoResponseCreateResponse = $this->get(route("responses.create", [MemoResponse::MEMO_DB_ID => $this->memoId]));
         $memoResponseCreateResponse->assertStatus(Response::HTTP_OK);
     }
     /**
@@ -74,7 +74,7 @@ class MemoResponseTest extends BaseFeatureTestCase
         $memoResponseStoreData = $this->getMemoResponseData();
 
         // 保存処理のテスト
-        $memoResponseStoreResponse = $this->post(route("responses.store", [MemoResponse::MEMO_ID => $this->memoId]), $memoResponseStoreData);
+        $memoResponseStoreResponse = $this->post(route("responses.store", [MemoResponse::MEMO_DB_ID => $this->memoId]), $memoResponseStoreData);
         $memoResponseStoreResponse->assertStatus(Response::HTTP_FOUND);
         $memoResponseStoreResponse->assertRedirect(route("responses.index"));
 
