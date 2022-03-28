@@ -22,7 +22,7 @@
                             </div>
                             {{-- TODO: 詳細ボタンと削除ボタンを横並びにさせたい --}}
                             {{-- TODO: memos系のurlのときにnavにcreateも表示されるようにしたい --}}
-                            <x-linkbutton href="{{ route('responses.create', [App\Models\MemoResponse::MEMO_DB_ID => $memo->id]) }}">
+                            <x-linkbutton href="{{ route('responses.create', [App\Models\MemoResponse::MEMO_ID => $memo->id]) }}">
                                 <i class="fas fa-lg fa-reply"></i>
                             </x-linkbutton>
                             <x-linkbutton href="{{ route('memos.show', [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}">

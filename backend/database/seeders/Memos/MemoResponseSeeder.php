@@ -23,7 +23,7 @@ class MemoResponseSeeder extends BaseDatabaseSeeder
         {
             $memoResponseId = static::MEMO_RESPONSE_ID . $i;
             $userId = UserSeeder::USER_ID . $i;
-            $memoId = MemoSeeder::MEMO_DB_ID . $i;
+            $memoId = MemoSeeder::MEMO_ID . $i;
 
             $memoResponses = MemoResponse::factory()->raw([
                 'id' => $memoResponseId,

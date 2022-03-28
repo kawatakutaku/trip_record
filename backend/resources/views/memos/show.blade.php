@@ -36,7 +36,7 @@
                                 </span>
                             </x-button>
                         </form>
-                        <x-linkbutton href="{{ route('responses.create', [App\Models\MemoResponse::MEMO_DB_ID => $memo->id]) }}">
+                        <x-linkbutton href="{{ route('responses.create', [App\Models\MemoResponse::MEMO_ID => $memo->id]) }}">
                             <i class="fas fa-lg fa-reply"></i>
                         </x-linkbutton>
                     </div>

@@ -13,11 +13,11 @@ class MemoResponse extends Model
     use HasFactory, SoftDeletes;
 
     const MEMO_RESPONSE_MESSAGE = 'message';
-    const MEMO_DB_ID = 'memoId';
+    const MEMO_ID = 'memoId';
     const MEMO_RESPONSE_ID = 'response';
     const MEMO_RESPONSES = 'memoResponses';
-    const MEMO_RESPONSE_USER_ID = 'user_id';
-    const MEMO_RESPONSE_MEMO_ID = 'memo_id';
+    const MEMO_RESPONSE_DB_USER_ID = 'user_id';
+    const MEMO_RESPONSE_DB_MEMO_ID = 'memo_id';
 
     /**
      * 1つのメモの返信が1ユーザーに紐づく(従属する)

@@ -12,7 +12,7 @@ use Illuminate\Database\Seeder;
 
 class MemoSeeder extends BaseDatabaseSeeder
 {
-    const MEMO_DB_ID = 50000;
+    const MEMO_ID = 50000;
 
     /**
      * Run the database seeds.
@@ -23,7 +23,7 @@ class MemoSeeder extends BaseDatabaseSeeder
     {
         for ($i=0; $i<DatabaseSeeder::RECORD_NUM; $i++)
         {
-            $memoId = static::MEMO_DB_ID . $i;
+            $memoId = static::MEMO_ID . $i;
             $userId = UserSeeder::USER_ID . $i;
             $cityId = City::inRandomOrder()->first()->id;
 

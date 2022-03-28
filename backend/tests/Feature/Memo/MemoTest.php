@@ -102,7 +102,7 @@ class MemoTest extends BaseFeatureTestCase
         $memoLikeResponse->assertRedirect(route("memos.show", [City::CITY_ID_NAME => $this->cityId, Memo::MEMO_ID_NAME => $this->memoStored->id]));
 
         // 整合性チェック
-        $this->memoLiked = MemoLike::where(Memo::MEMO_DB_ID, $this->memoStored->id)->where(Memo::MEMO_DB_USER_ID, $this->user->id)->first();
+        $this->memoLiked = MemoLike::where(Memo::MEMO_ID, $this->memoStored->id)->where(Memo::MEMO_DB_USER_ID, $this->user->id)->first();
         $this->assertNotNull($this->memoLiked);
     }
     /**

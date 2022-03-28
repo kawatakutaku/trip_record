@@ -61,7 +61,7 @@ class MemoResponseTest extends BaseFeatureTestCase
      */
     private function memoResponseCreate(): void
     {
-        $memoResponseCreateResponse = $this->get(route("responses.create", [MemoResponse::MEMO_DB_ID => $this->memoId]));
+        $memoResponseCreateResponse = $this->get(route("responses.create", [MemoResponse::MEMO_ID => $this->memoId]));
         $memoResponseCreateResponse->assertStatus(Response::HTTP_OK);
     }
     /**
@@ -74,13 +74,13 @@ class MemoResponseTest extends BaseFeatureTestCase
         $memoResponseStoreData = $this->getMemoResponseData();
 
         // 保存処理のテスト
-        $memoResponseStoreResponse = $this->post(route("responses.store", [MemoResponse::MEMO_DB_ID => $this->memoId]), $memoResponseStoreData);
+        $memoResponseStoreResponse = $this->post(route("responses.store", [MemoResponse::MEMO_ID => $this->memoId]), $memoResponseStoreData);
         $memoResponseStoreResponse->assertStatus(Response::HTTP_FOUND);
         $memoResponseStoreResponse->assertRedirect(route("responses.index"));
 
         // 整合性チェック
         // TODO: storeで保存したデータを厳密には取得できてない可能性がある
-        $this->memoResponseStored = MemoResponse::where(MemoResponse::MEMO_RESPONSE_MEMO_ID, $this->memoId)->where(MemoResponse::MEMO_RESPONSE_USER_ID, $this->userId)->orderBy("created_at", "desc")->first();
+        $this->memoResponseStored = MemoResponse::where(MemoResponse::MEMO_RESPONSE_DB_MEMO_ID, $this->memoId)->where(MemoResponse::MEMO_RESPONSE_DB_USER_ID, $this->userId)->orderBy("created_at", "desc")->first();
 
         // TODO: 基底クラスに整合性チェック用のfor文を書いて、チェックしたい
         $this->assertEquals($this->memoResponseStored->message, $memoResponseStoreData[MemoResponse::MEMO_RESPONSE_MESSAGE]);
