@@ -2,11 +2,14 @@
 
 namespace App\Repositories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Repositories\IBaseRepository;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 /**
  * crudを行う基底のinterface
@@ -14,27 +17,37 @@ use Illuminate\Foundation\Http\FormRequest;
 abstract class BaseRepository implements IBaseRepository
 {
     /**
-     * @param int
+     * @return int
      */
-    abstract public function getAuthUserId(int $authUserId);
+    public function getAuthUserId(): int
+    {
+        $user = app(User::class);
+        $authUserId = $user->getAuthAccountId();
+        return $authUserId;
+    }
 
     /**
-     * 保存処理
-     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Database\Eloquent\Collection
      */
-    abstract public function store(FormRequest $request);
+    abstract public function index(Request $request): Collection;
 
     /**
-     * 更新処理
      * @param \Illuminate\Foundation\Http\FormRequest $request
-     * @param \Illuminate\Database\Eloquent\Model
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    abstract public function store(FormRequest $request): Collection;
+
+    /**
+     * @param \Illuminate\Foundation\Http\FormRequest $request
+     * @param \Illuminate\Database\Eloquent\Model $model
      */
     abstract public function update(FormRequest $request, Model $model);
 
     /**
-     * 削除処理
-     * @param \Illuminate\Database\Eloquent\Model
+     * @param \Illuminate\Database\Eloquent\Model $model
+     * @return \Illuminate\Database\Eloquent\Collection
      */
-    abstract public function destroy(Model $model);
+    abstract public function destroy(Model $model): Collection;
 
 }

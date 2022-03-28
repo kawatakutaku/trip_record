@@ -12,6 +12,7 @@ use App\Models\City;
 use App\Models\Memo;
 use App\Models\MemoLike;
 use App\Models\User;
+use App\Repositories\Memo\IMemoRepository;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -20,6 +21,13 @@ use Illuminate\View\View;
 
 class MemoController extends Controller
 {
+    private $repository;
+
+    public function __construct(IMemoRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
     /**
      * メモの一覧画面
      * @param Illuminate\Http\Request
@@ -27,7 +35,7 @@ class MemoController extends Controller
      */
     public function index(Request $request): View
     {
-        $memos = Memo::where('city_id', $request->cityId)->get();
+        $memos = $this->repository->index($request);
         return view("memos.index", [City::CITY_ID_NAME => $request->cityId, Memo::MULTIPLE_MEMOS => $memos]);
     }
 
@@ -44,12 +52,11 @@ class MemoController extends Controller
     /**
      * メモの保存処理
      * @param  \App\Http\Requests\Memos\StoreMemoRequest $request
-     * @param \App\Domain\UseCases\Memo\StoreUseCase $useCase
      * @return Illuminate\Http\RedirectResponse
      */
-    public function store(StoreMemoRequest $request, StoreUseCase $useCase): RedirectResponse
+    public function store(StoreMemoRequest $request): RedirectResponse
     {
-        $memos = $useCase->execute($request);
+        $memos = $this->repository->store($request);
         return redirect(route("memos.index", [Memo::MULTIPLE_MEMOS => $memos, City::CITY_ID_NAME => $request->cityId]));
     }
 
@@ -82,22 +89,21 @@ class MemoController extends Controller
      * @param  \App\Models\Memo  $memo
      * @return Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateMemoRequest $request, Memo $memo, UpdateUseCase $useCase): RedirectResponse
+    public function update(UpdateMemoRequest $request, Memo $memo): RedirectResponse
     {
         // TODO: ログインと都市の選択をする機能を先に作らないとエラーが発生する
-        $useCase->execute($request, $memo);
+        $this->repository->update($request, $memo);
         return redirect(route('memos.show', [Memo::MEMO_ID_NAME => $memo, City::CITY_ID_NAME => $request->cityId]));
     }
 
     /**
      * メモの削除処理
-     * @param Illuminate\Http\Request $request
      * @param  \App\Models\Memo  $memo
      * @return Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request, Memo $memo, DestroyUseCase $useCase): RedirectResponse
+    public function destroy(Memo $memo): RedirectResponse
     {
-        $memos = $useCase->execute($memo);
-        return redirect(route('memos.index', [Memo::MULTIPLE_MEMOS => $memos, City::CITY_ID_NAME => $request->cityId]));
+        $memos = $this->repository->destroy($memo);
+        return redirect(route('memos.index', [Memo::MULTIPLE_MEMOS => $memos, City::CITY_ID_NAME => $memo->city_id]));
     }
 }
