@@ -38,17 +38,16 @@ class RegisteredUserController extends Controller
 
         $user = new User();
 
-        $upload_img = $request->file('img');
-        if ($upload_img) {
-            $path = $upload_img->store('profile', 'public');
-        }
-
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         // TODO: テストで画像ファイルを作成できないから、一時的に対策を取っている
-        $user->img = $request->img;
-        // $user->img = $path;
+        $uploadImg = $request->file('img');
+        if ($uploadImg) {
+            $fileName = $uploadImg->getClientOriginalName();
+            $userImg = $uploadImg->storeAs('profile', $fileName ,'public');
+            $user->img = $$userImg;
+        }
         $user->profile = $request->profile;
         $user->gender = $request->gender;
 

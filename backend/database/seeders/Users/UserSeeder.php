@@ -28,6 +28,7 @@ class UserSeeder extends BaseDatabaseSeeder
             $users = User::factory()->raw([
                 'id' => $userId,
                 User::ACCOUNT_GENDER => $genderId,
+                User::ACCOUNT_IMG => 'profileName.jpg',
                 User::ACCOUNT_PASSWORD => Hash::make(User::ACCOUNT_PASSWORD),
             ]);
             User::upsert($users, ['id']);

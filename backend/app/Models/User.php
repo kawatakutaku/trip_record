@@ -32,6 +32,8 @@ class User extends Authenticatable
     const ACCOUNT_REMEMBER_TOKEN = 'remember_token';
     const ACCOUNT_REGISTER_TOKEN = 'register_token';
     const ACCOUNT_PASSWORD_RESET_TOKEN = 'password_reset_token';
+    const ACCOUNT_USER_ID = 'userId';
+    const ACCOUNT_USER_MODEL = 'user';
 
 
     /**
@@ -110,5 +112,14 @@ class User extends Authenticatable
     {
         $userId = Auth::id();
         return $userId;
+    }
+
+    /**
+     * ユーザーのプロフィール画像を返すアクセサ
+     * @param string|null
+     */
+    public function getImgAttribute(?string $userImg)
+    {
+        return asset('storage/'.$userImg);
     }
 }
