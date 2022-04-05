@@ -36,7 +36,6 @@ class MemoController extends Controller
      */
     public function index(Request $request): View
     {
-        // TODO: 画像を表示する方法を調べる
         // TODO: repository側でuserクラスのインスタンスを生成させる方法を知る
         $memos = $this->repository->index($request);
         $user = $this->user->getAuthAccount();
