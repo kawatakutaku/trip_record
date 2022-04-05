@@ -49,4 +49,14 @@ class Memo extends Model
         return $this->hasMany(MemoResponse::class);
     }
 
+
+    /**
+     * メモの画像を返すアクセサ
+     * @param string|null
+     */
+    public function getImgAttribute(?string $memoImg)
+    {
+        return asset('storage/'.$memoImg);
+    }
+
 }

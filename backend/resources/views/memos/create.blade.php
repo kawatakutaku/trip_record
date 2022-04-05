@@ -13,7 +13,7 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('memos.store', [App\Models\City::CITY_ID_NAME => $cityId]) }}" method="post">
+                    <form action="{{ route('memos.store', [App\Models\City::CITY_ID_NAME => $cityId]) }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row p-2 justify-content-center">
                             <div class="col-6">
@@ -22,7 +22,7 @@
                         </div>
                         <div class="row p-2 mt-3 justify-content-center">
                             <div class="col-6" id="img">
-                                <x-input type="file" name="img" id="img" value="{{ old(App\Models\Memo::MEMO_IMG) }}" placeholder="画像" />
+                                <x-input type="file" name="img" id="img" value="{{ old(App\Models\Memo::MEMO_IMG) }}" placeholder="画像" accept="image/png,image/jpeg,image/gif" />
                             </div>
                         </div>
                         <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">

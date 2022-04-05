@@ -36,7 +36,14 @@ class MemoRepository extends BaseRepository implements IMemoRepository
         $memo = new Memo();
 
         $memo->memo = $request->memo;
-        $memo->img = $request->img;
+        // 画像をstorageに保存
+        $memoImg = $request->file('img');
+        if ($memoImg) {
+            $fileName = $memoImg->getClientOriginalName();
+            $memoImg = $memoImg->storeAs('memos', $fileName ,'public');
+            // dd($memoImg, basename($memoImg));
+            $memo->img = $memoImg;
+        }
         $memo->user_id = $this->getAuthUserId();
         $memo->city_id = $request->cityId;
         $memo->save();

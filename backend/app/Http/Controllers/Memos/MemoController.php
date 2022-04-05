@@ -23,9 +23,10 @@ class MemoController extends Controller
 {
     private $repository;
 
-    public function __construct(IMemoRepository $repository)
+    public function __construct(IMemoRepository $repository, User $user)
     {
         $this->repository = $repository;
+        $this->user = $user;
     }
 
     /**
@@ -35,8 +36,11 @@ class MemoController extends Controller
      */
     public function index(Request $request): View
     {
+        // TODO: 画像を表示する方法を調べる
+        // TODO: repository側でuserクラスのインスタンスを生成させる方法を知る
         $memos = $this->repository->index($request);
-        return view("memos.index", [City::CITY_ID_NAME => $request->cityId, Memo::MULTIPLE_MEMOS => $memos]);
+        $user = $this->user->getAuthAccount();
+        return view("memos.index", [City::CITY_ID_NAME => $request->cityId, Memo::MULTIPLE_MEMOS => $memos, User::ACCOUNT_USER_MODEL => $user]);
     }
 
     /**
