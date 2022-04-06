@@ -15,16 +15,11 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     @foreach($memos as $memo)
                         @if ($user->id == $memo->user_id)
-                            <!-- TODO: どのユーザーの投稿かもわかるようにしたい-->
                             <div class="row p-2 justify-content-center">
                                 <div class="col-6">
-                                    <p>hello</p>
-                                    <img src="{{ asset('storage/uploads/'.$user->img) }}" alt="">
+                                    <img src="{{ $user->img }}" alt="">
                                     <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo">{{ $memo->memo }}</p>
                                     @if ($memo->img)
-                                        @php
-                                            // dump(asset('storage/memos/'.$memo->img));
-                                        @endphp
                                         <img src="{{ $memo->img }}" alt="">
                                     @endif
                                 </div>
@@ -53,11 +48,12 @@
                                 </form>
                             </div>
                         @else
-                            <!-- TODO: どのユーザーの投稿かもわかるようにしたい-->
+                            @php
+                                $user = App\Models\User::find($memo->user_id);
+                            @endphp
                             <div class="row p-2 justify-content-center">
                                 <div class="col-6">
-                                    <p>world</p>
-                                    <img src="{{ asset('storage/uploads/'.$user->img) }}" alt="">
+                                    <img src="{{ $user->img }}" alt="">
                                     <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo">{{ $memo->memo }}</p>
                                     @if ($memo->img)
                                         <img src="{{ $memo->img }}" alt="">

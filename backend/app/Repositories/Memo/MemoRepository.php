@@ -5,6 +5,7 @@ namespace App\Repositories\Memo;
 use App\Models\City;
 use App\Models\Memo;
 use App\Models\MemoResponse;
+use App\Models\User;
 use App\Repositories\BaseRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -41,7 +42,6 @@ class MemoRepository extends BaseRepository implements IMemoRepository
         if ($memoImg) {
             $fileName = $memoImg->getClientOriginalName();
             $memoImg = $memoImg->storeAs('memos', $fileName ,'public');
-            // dd($memoImg, basename($memoImg));
             $memo->img = $memoImg;
         }
         $memo->user_id = $this->getAuthUserId();

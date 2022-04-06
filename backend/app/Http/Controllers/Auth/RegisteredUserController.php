@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
         if ($uploadImg) {
             $fileName = $uploadImg->getClientOriginalName();
             $userImg = $uploadImg->storeAs('profile', $fileName ,'public');
-            $user->img = $$userImg;
+            $user->img = $userImg;
         }
         $user->profile = $request->profile;
         $user->gender = $request->gender;
