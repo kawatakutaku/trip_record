@@ -13,7 +13,7 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('memos.update', [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}" method="post">
+                    <form action="{{ route('memos.update', [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}" method="post" enctype="multipart/form-data">
                         @method('put')
                         @csrf
                         <div class="mb-4">
@@ -21,7 +21,7 @@
                             <x-textarea name="memo" id="memo">{{ old(App\Models\Memo::MEMO_MEMO) ?? $memo->memo }}</x-textarea>
                         </div>
                         <div class="mb-4">
-                            <x-input type="text" name="img" id="img" value="{{ old(App\Models\Memo::MEMO_IMG) ?? $memo->img }}" />
+                            <x-input type="file" name="img" id="img" value="{{ old(App\Models\Memo::MEMO_IMG) ?? $memo->img }}" placeholder="画像" accept="image/png,image/jpeg,image/gif" />
                         </div>
                         <div class="flex items-center justify-between">
                             <x-button>
