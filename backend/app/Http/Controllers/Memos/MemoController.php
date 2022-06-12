@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Memos;
 
+use App\Domain\UseCases\Memo\DestroyUseCase;
+use App\Domain\UseCases\Memo\StoreUseCase;
+use App\Domain\UseCases\Memo\UpdateUseCase;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Memos\StoreMemoRequest;
 use App\Http\Requests\Memos\UpdateMemoRequest;
 use App\Models\City;
 use App\Models\Memo;
-use App\Models\MemoGood;
+use App\Models\MemoLike;
 use App\Models\User;
+use App\Repositories\Memo\IMemoRepository;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,6 +21,14 @@ use Illuminate\View\View;
 
 class MemoController extends Controller
 {
+    private $repository;
+
+    public function __construct(IMemoRepository $repository, User $user)
+    {
+        $this->repository = $repository;
+        $this->user = $user;
+    }
+
     /**
      * メモの一覧画面
      * @param Illuminate\Http\Request
@@ -24,8 +36,10 @@ class MemoController extends Controller
      */
     public function index(Request $request): View
     {
-        $memos = Memo::where('city_id', $request->cityId)->get();
-        return view("memos.index", [City::CITY_ID_NAME => $request->cityId, Memo::MULTIPLE_MEMOS => $memos]);
+        // TODO: repository側でuserクラスのインスタンスを生成させる方法を知る
+        $memos = $this->repository->index($request);
+        $user = $this->user->getAuthAccount();
+        return view("memos.index", [City::CITY_ID_NAME => $request->cityId, Memo::MULTIPLE_MEMOS => $memos, User::ACCOUNT_USER_MODEL => $user]);
     }
 
     /**
@@ -40,28 +54,13 @@ class MemoController extends Controller
 
     /**
      * メモの保存処理
-     * @param  \App\Http\Requests\StoreMemoRequest  $request
+     * @param  \App\Http\Requests\Memos\StoreMemoRequest $request
      * @return Illuminate\Http\RedirectResponse
      */
     public function store(StoreMemoRequest $request): RedirectResponse
     {
-        $memo = new Memo();
-
-        $memo->memo = $request->memo;
-        $memo->img = $request->img;
-        // TODO: user_idとcity_idはどうやって取得するのか検討
-        // TODO: user_idを取得する部分を共通化する
-        $user = app(User::class);
-        $userId = $user->getAuthAccountId();
-
-        $memo->user_id = $userId;
-        $memo->city_id = $request->cityId;
-        $memo->created_at = Carbon::now();
-        $memo->updated_at = Carbon::now();
-
-        $memo->save();
-
-        return redirect(route("memos.index", [City::CITY_ID_NAME => $request->cityId]));
+        $memos = $this->repository->store($request);
+        return redirect(route("memos.index", [Memo::MULTIPLE_MEMOS => $memos, City::CITY_ID_NAME => $request->cityId]));
     }
 
     /**
@@ -72,7 +71,7 @@ class MemoController extends Controller
      */
     public function show(Request $request, Memo $memo): View
     {
-        return view('memos.show', [ City::CITY_ID_NAME => $request->cityId, Memo::MEMO_ID_NAME => $memo]);
+        return view('memos.show', [Memo::MEMO_ID_NAME => $memo, City::CITY_ID_NAME => $request->cityId]);
     }
 
     /**
@@ -83,44 +82,31 @@ class MemoController extends Controller
      */
     public function edit(Request $request, Memo $memo): View
     {
-        return view('memos.edit', [ City::CITY_ID_NAME => $request->cityId, Memo::MEMO_ID_NAME => $memo ]);
+        return view('memos.edit', [Memo::MEMO_ID_NAME => $memo, City::CITY_ID_NAME => $request->cityId]);
     }
 
     /**
      * メモの更新処理
      *
-     * @param  \App\Http\Requests\UpdateMemoRequest  $request
+     * @param  \App\Http\Requests\Memos\UpdateMemoRequest  $request
      * @param  \App\Models\Memo  $memo
      * @return Illuminate\Http\RedirectResponse
      */
     public function update(UpdateMemoRequest $request, Memo $memo): RedirectResponse
     {
         // TODO: ログインと都市の選択をする機能を先に作らないとエラーが発生する
-
-        $memo->memo = $request->memo;
-        $memo->img = $request->img;
-        // TODO: user_idとcityIdはどうやって取得するのか検討
-        $user = app(User::class);
-        $userId = $user->getAuthAccountId();
-        $memo->user_id = $userId;
-        $memo->city_id = $request->cityId;
-        $memo->updated_at = Carbon::now();
-
-        $memo->save();
-
-        return redirect(route('memos.show', [ City::CITY_ID_NAME => $request->cityId, Memo::MEMO_ID_NAME => $memo]));
+        $this->repository->update($request, $memo);
+        return redirect(route('memos.show', [Memo::MEMO_ID_NAME => $memo, City::CITY_ID_NAME => $request->cityId]));
     }
 
     /**
      * メモの削除処理
-     * @param Illuminate\Http\Request $request
      * @param  \App\Models\Memo  $memo
      * @return Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request, Memo $memo): RedirectResponse
+    public function destroy(Memo $memo): RedirectResponse
     {
-        $memo->delete();
-
-        return redirect(route('memos.index', [City::CITY_ID_NAME => $request->cityId]));
+        $memos = $this->repository->destroy($memo);
+        return redirect(route('memos.index', [Memo::MULTIPLE_MEMOS => $memos, City::CITY_ID_NAME => $memo->city_id]));
     }
 }

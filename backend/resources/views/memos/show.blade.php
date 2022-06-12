@@ -14,11 +14,13 @@
                             <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="memo" id="memo">{{ $memo->memo }}</p>
                         </div>
                     </div>
-                    <div class="row p-2 mt-3 justify-content-center">
-                        <div class="col-6" id="img">
-                            <p class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name="img" id="img">{{ $memo->img }}</p>
+                    @if ($memo->img)
+                        <div class="row p-2 mt-3 justify-content-center">
+                            <div class="col-6" id="img">
+                                <img src="{{ $memo->img }}" alt="">
+                            </div>
                         </div>
-                    </div>
+                    @endif
                     <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
                         <x-linkbutton href="{{ route('memos.edit', [App\Models\Memo::MEMO_ID_NAME => $memo->id, App\Models\City::CITY_ID_NAME => $cityId]) }}">
                             <i class="fas fa-lg fa-edit"></i>
@@ -32,10 +34,13 @@
                             <x-button>
                                 いいね
                                 <span class="badge">
-                                    {{ $memo->memoGoods->count() }}
+                                    {{ $memo->MemoLikes->count() }}
                                 </span>
                             </x-button>
                         </form>
+                        <x-linkbutton href="{{ route('responses.create', [App\Models\MemoResponse::MEMO_ID => $memo->id]) }}">
+                            <i class="fas fa-lg fa-reply"></i>
+                        </x-linkbutton>
                     </div>
                 </div>
             </div>

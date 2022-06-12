@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMemoGoodsTable extends Migration
+class CreateMemoLikesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateMemoGoodsTable extends Migration
      */
     public function up()
     {
-        Schema::create('memo_goods', function (Blueprint $table) {
+        Schema::create('memo_likes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('memo_id');
@@ -29,6 +29,6 @@ class CreateMemoGoodsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memo_goods');
+        Schema::dropIfExists('memo_likes');
     }
 }

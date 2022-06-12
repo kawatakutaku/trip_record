@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\MasterGender;
 use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -24,9 +25,11 @@ class PasswordResetTest extends BaseFeatureTestCase
     {
         Notification::fake();
 
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            User::ACCOUNT_GENDER => $this->genderId
+        ]);
 
-        $this->post('/forgot-password', ['email' => $user->email]);
+        $this->post('/forgot-password', [User::ACCOUNT_EMAIL => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class);
     }
@@ -36,9 +39,11 @@ class PasswordResetTest extends BaseFeatureTestCase
     {
         Notification::fake();
 
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            User::ACCOUNT_GENDER => $this->genderId
+        ]);
 
-        $this->post('/forgot-password', ['email' => $user->email]);
+        $this->post('/forgot-password', [User::ACCOUNT_EMAIL => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) {
             $response = $this->get('/reset-password/'.$notification->token);
@@ -52,16 +57,18 @@ class PasswordResetTest extends BaseFeatureTestCase
     {
         Notification::fake();
 
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            User::ACCOUNT_GENDER => $this->genderId
+        ]);
 
-        $this->post('/forgot-password', ['email' => $user->email]);
+        $this->post('/forgot-password', [User::ACCOUNT_EMAIL => $user->email]);
 
         Notification::assertSentTo($user, ResetPassword::class, function ($notification) use ($user) {
             $response = $this->post('/reset-password', [
                 'token' => $notification->token,
-                'email' => $user->email,
-                'password' => 'password',
-                'password_confirmation' => 'password',
+                User::ACCOUNT_EMAIL => $user->email,
+                User::ACCOUNT_PASSWORD => User::ACCOUNT_DEFAULT_PASSWORD_VALUE,
+                User::ACCOUNT_PASSWORD_CONFIRMATION => User::ACCOUNT_DEFAULT_PASSWORD_VALUE,
             ]);
 
             $response->assertSessionHasNoErrors();

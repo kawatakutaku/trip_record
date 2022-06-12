@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-100 leading-tight">
-            {{ __('memo.create') }}
+            {{ __('memo_response.edit') }}
         </h2>
     </x-slot>
 
@@ -13,19 +13,14 @@
                     @if ($errors->any())
                         <x-alert />
                     @endif
-                    <form action="{{ route('memos.store', [App\Models\City::CITY_ID_NAME => $cityId]) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('responses.update', [App\Models\MemoResponse::MEMO_RESPONSE_ID => $response->id]) }}" method="post">
+                        @method('put')
                         @csrf
-                        <div class="row p-2 justify-content-center">
-                            <div class="col-6">
-                                <x-textarea name="memo" id="memo" placeholder="メモ">{{ old(App\Models\Memo::MEMO_MEMO) }}</x-textarea>
-                            </div>
+                        <div class="mb-4">
+                            <!-- TODO: dbから取得したデータを初期値として登録できるようにする(component側の記述を変更する) -->
+                            <x-textarea name="message" id="message">{{ old(App\Models\MemoResponse::MEMO_RESPONSE_MESSAGE) ?? $response->message }}</x-textarea>
                         </div>
-                        <div class="row p-2 mt-3 justify-content-center">
-                            <div class="col-6" id="img">
-                                <x-input type="file" name="img" id="img" value="{{ old(App\Models\Memo::MEMO_IMG) }}" placeholder="画像" accept="image/png,image/jpeg,image/gif" />
-                            </div>
-                        </div>
-                        <div class="col-6 col-md-4 col-xl-3 col-xs-12 mx-auto mt-5">
+                        <div class="flex items-center justify-between">
                             <x-button>
                                 <i class="fas fa-2x fa-paper-plane"></i>
                             </x-button>

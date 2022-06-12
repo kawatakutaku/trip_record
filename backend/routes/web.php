@@ -4,7 +4,8 @@ use App\Http\Controllers\Blogs\BlogController;
 use App\Http\Controllers\Cities\CityController;
 use App\Http\Controllers\Memos\DirectMessageController;
 use App\Http\Controllers\Memos\MemoController;
-use App\Http\Controllers\Memos\MemoGoodController;
+use App\Http\Controllers\Memos\MemoLikeController;
+use App\Http\Controllers\Memos\MemoResponseController;
 use App\Http\Controllers\TripController;
 use App\Http\Controllers\Users\MyPageController;
 use Illuminate\Support\Facades\Route;
@@ -44,7 +45,17 @@ Route::group(['middleware' => 'auth'], function() {
         'destroy'
     ]);
 
-    Route::post('/memo_like/{memo}', [MemoGoodController::class ,'likeOrUnlike'])->name('memos.like');
+    Route::resource('responses', MemoResponseController::class)->only([
+        'index',
+        'create',
+        'store',
+        'show',
+        'edit',
+        'update',
+        'destroy'
+    ]);
+
+    Route::post('/memo_like/{memo}', [MemoLikeController::class ,'likeOrUnlike'])->name('memos.like');
 
     Route::resource('blogs', BlogController::class)->only([
         'index',

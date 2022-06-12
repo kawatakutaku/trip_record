@@ -21,7 +21,8 @@ class User extends Authenticatable
 
     const ACCOUNT_PASSWORD = 'password';
     const ACCOUNT_EMAIL = 'email';
-    const ACCOUNT_PASSWORD_VALUE = 'password';
+    const ACCOUNT_DEFAULT_PASSWORD_VALUE = 'password';
+    const ACCOUNT_WRONG_PASSWORD_VALUE = 'wrong-password';
     const ACCOUNT_NAME = 'name';
     const ACCOUNT_PASSWORD_CONFIRMATION = 'password_confirmation';
     const ACCOUNT_PROFILE = 'profile';
@@ -31,6 +32,8 @@ class User extends Authenticatable
     const ACCOUNT_REMEMBER_TOKEN = 'remember_token';
     const ACCOUNT_REGISTER_TOKEN = 'register_token';
     const ACCOUNT_PASSWORD_RESET_TOKEN = 'password_reset_token';
+    const ACCOUNT_USER_ID = 'userId';
+    const ACCOUNT_USER_MODEL = 'user';
 
 
     /**
@@ -76,9 +79,27 @@ class User extends Authenticatable
      * 1ユーザーに対して複数のメモいいねが紐づく
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function memoGood(): HasMany
+    public function MemoLikes(): HasMany
     {
-        return $this->hasMany(MemoGood::class);
+        return $this->hasMany(MemoLike::class);
+    }
+
+    /**
+     * 1つのメモに対して複数の返信が紐づく
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function memoResponses(): HasMany
+    {
+        return $this->hasMany(MemoResponse::class);
+    }
+
+    /**
+     * 1つのメモに対して複数の返信が紐づく
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function memoResponseGoods(): HasMany
+    {
+        return $this->hasMany(MemoResponseGood::class);
     }
 
     public function getAuthAccount(): ?User
@@ -91,5 +112,14 @@ class User extends Authenticatable
     {
         $userId = Auth::id();
         return $userId;
+    }
+
+    /**
+     * ユーザーのプロフィール画像を返すアクセサ
+     * @param string|null
+     */
+    public function getImgAttribute(?string $userImg)
+    {
+        return asset('storage/'.$userImg);
     }
 }

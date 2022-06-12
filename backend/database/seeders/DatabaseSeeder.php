@@ -21,7 +21,7 @@ use Database\Seeders\Hitchhikes\Spots\HitchhikeResponseSeeder;
 use Database\Seeders\Hitchhikes\Spots\HitchhikeSeeder;
 use Database\Seeders\Hitchhikes\Spots\SuccessSeeder;
 use Database\Seeders\Memos\DirectMessageSeeder;
-use Database\Seeders\Memos\MemoGoodSeeder;
+use Database\Seeders\Memos\MemoLikeSeeder;
 use Database\Seeders\Memos\MemoResponseGoodSeeder;
 use Database\Seeders\Memos\MemoResponseSeeder;
 use Database\Seeders\Memos\MemoSeeder;
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         $this->call(BlogGoodSeeder::class);
         $this->call(BlogResponseGoodSeeder::class);
         $this->call(MemoSeeder::class);
-        $this->call(MemoGoodSeeder::class);
+        $this->call(MemoLikeSeeder::class);
         $this->call(MemoResponseSeeder::class);
         $this->call(MemoResponseGoodSeeder::class);
         $this->call(DirectMessageSeeder::class);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Memos;
 
+use App\Models\MemoResponse;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreMemoResponseRequest extends FormRequest
@@ -13,7 +14,7 @@ class StoreMemoResponseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,7 @@ class StoreMemoResponseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            MemoResponse::MEMO_RESPONSE_MESSAGE => 'string|max:255',
         ];
     }
 }

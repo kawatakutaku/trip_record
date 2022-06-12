@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\MasterGender;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,9 @@ class PasswordConfirmationTest extends BaseFeatureTestCase
 
     public function testConfirmPassword()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            User::ACCOUNT_GENDER => $this->genderId,
+        ]);
 
         $response = $this->actingAs($user)->get('/confirm-password');
         $response->assertStatus(Response::HTTP_OK);
@@ -22,10 +25,12 @@ class PasswordConfirmationTest extends BaseFeatureTestCase
 
     public function testConfirmedPassword()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            User::ACCOUNT_GENDER => $this->genderId,
+        ]);
 
         $response = $this->actingAs($user)->post('/confirm-password', [
-            'password' => 'password',
+            User::ACCOUNT_PASSWORD => User::ACCOUNT_DEFAULT_PASSWORD_VALUE,
         ]);
 
         $response->assertRedirect();
@@ -34,10 +39,12 @@ class PasswordConfirmationTest extends BaseFeatureTestCase
 
     public function testNotConfirmedPassword()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            User::ACCOUNT_GENDER => $this->genderId,
+        ]);
 
         $response = $this->actingAs($user)->post('/confirm-password', [
-            'password' => 'wrong-password',
+            User::ACCOUNT_PASSWORD => User::ACCOUNT_WRONG_PASSWORD_VALUE,
         ]);
 
         $response->assertSessionHasErrors();

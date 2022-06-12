@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\MasterGender;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -37,7 +38,7 @@ class RegistrationTest extends BaseFeatureTestCase
         $registerResponse->assertStatus(Response::HTTP_FOUND);
 
         $this->assertAuthenticated();
-        $registerResponse->assertRedirect(RouteServiceProvider::HOME);
+        $registerResponse->assertRedirect(RouteServiceProvider::CITY);
     }
 
     /**
@@ -47,9 +48,13 @@ class RegistrationTest extends BaseFeatureTestCase
     public function getUserData(): array
     {
         $userData = User::factory()->raw([
-            User::ACCOUNT_PASSWORD => User::ACCOUNT_PASSWORD_VALUE,
-            User::ACCOUNT_PASSWORD_CONFIRMATION => User::ACCOUNT_PASSWORD_VALUE,
+            User::ACCOUNT_PASSWORD => User::ACCOUNT_DEFAULT_PASSWORD_VALUE,
+            User::ACCOUNT_PASSWORD_CONFIRMATION => User::ACCOUNT_DEFAULT_PASSWORD_VALUE,
+            // TODO: これだとDBで保存されるときに、idが保存されない
+            User::ACCOUNT_GENDER => MasterGender::inRandomOrder()->first()->gender,
         ]);
+
+        // dd($userData);
 
         return $userData;
     }

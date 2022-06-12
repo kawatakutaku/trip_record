@@ -18,6 +18,8 @@ class Memo extends Model
     const MULTIPLE_MEMOS = "memos";
     const MEMO_IMG = "img";
     const MEMO_MEMO = "memo";
+    const MEMO_DB_ID = "memo_id";
+    const MEMO_DB_USER_ID = "user_id";
 
 
     /**
@@ -33,11 +35,28 @@ class Memo extends Model
      * 1つのメモに対して複数のメモいいねが紐づく
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function memoGoods(): HasMany
+    public function MemoLikes(): HasMany
     {
-        return $this->hasMany(MemoGood::class);
+        return $this->hasMany(MemoLike::class);
+    }
+
+    /**
+     * 1つのメモに対して複数の返信が紐づく
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function memoResponses(): HasMany
+    {
+        return $this->hasMany(MemoResponse::class);
     }
 
 
+    /**
+     * メモの画像を返すアクセサ
+     * @param string|null
+     */
+    public function getImgAttribute(?string $memoImg)
+    {
+        return asset('storage/'.$memoImg);
+    }
 
 }

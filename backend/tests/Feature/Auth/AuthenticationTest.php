@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Auth;
 
+use App\Models\MasterGender;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -19,7 +20,9 @@ class AuthenticationTest extends BaseFeatureTestCase
      */
     public function testWrongPassword(): void
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create([
+            User::ACCOUNT_GENDER => $this->genderId
+        ]);
 
         $this->post('/login', [
             'email' => $user->email,
